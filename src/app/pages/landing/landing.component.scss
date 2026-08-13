@@ -50,3 +50,41 @@
 	.partner-section { grid-template-columns: 1fr 1fr; }
 	.partner-section__photo { min-height: 100%; }
 }
+
+@media (max-width: 767px) {
+	.hero { min-height: 27rem; margin: .7rem .5rem 0; }
+	.hero__content { padding: 1.5rem 1.15rem; }
+	.hero h1 { max-width: 17rem; font-size: 3.7rem; }
+	.hero__content > p:not(.eyebrow) { max-width: 17rem; margin-top: 1rem; font-size: .66rem; line-height: 1.65; }
+	.eyebrow { margin-bottom: .55rem; font-size: .46rem; }
+	.button { margin-top: 1.15rem; padding: .6rem .85rem; font-size: .45rem; }
+	.statement { max-width: 21rem; padding: 4rem 1.2rem 4.5rem; }
+	.statement h2, .water-section h2, .process-section h2, .partner-section h2, .quality-section h2 { font-size: 3.05rem; }
+	.statement > p:last-child { max-width: 17rem; margin-top: 1rem; font-size: .62rem; line-height: 1.65; }
+	.story-grid { display: block; min-height: 0; margin: 0 .5rem 4.5rem; }
+	.story-grid__image { min-height: 22rem; }
+	.story-grid__copy { position: relative; width: calc(100% - 1.2rem); margin: -1.5rem 0 0 1.2rem; padding: 2.35rem 1.35rem 2.1rem; }
+	.story-grid h2 { font-size: 2.95rem; }
+	.story-grid__copy > p:not(.eyebrow) { margin-top: 1rem; font-size: .63rem; line-height: 1.7; }
+	.text-link { margin-top: 1.25rem; font-size: .45rem; }
+	.water-section { padding: 0 .5rem 4.5rem; }
+	.water-section__heading { max-width: 20rem; margin-bottom: 2.2rem; }
+	.water-cards { display: grid; gap: 1.25rem; }
+	.water-cards article { background: #f5f7f5; }
+	.water-cards article + article { background: #eaf5f0; }
+	.water-card__photo { min-height: 20.5rem; }
+	.water-cards article > div:last-child { min-height: 0; padding: 1.75rem 1.35rem 2rem; }
+	.water-cards h3 { font-size: 2.7rem; }
+	.water-cards article > div:last-child > p:not(.eyebrow) { margin-top: 1rem; font-size: .63rem; line-height: 1.7; }
+	.landscape-break { min-height: 24rem; margin: 0 .5rem; }
+	.landscape-break > div { padding: 1.5rem 1.15rem; }
+	.landscape-break h2 { font-size: 3.05rem; }
+	.quality-section { display: block; margin: 0 .5rem; padding: 3.25rem 1.35rem; }
+	.quality-section > p { margin-top: 1.5rem; font-size: .64rem; line-height: 1.75; }
+	.process-section { padding: 4.7rem 1.15rem; }
+	.process-line { max-width: 18rem; gap: .5rem; margin-top: 1.75rem; font-size: 1.25rem; line-height: 1.35; }
+	.partner-section { display: block; margin: 0 .5rem; }
+	.partner-section__photo { min-height: 21rem; }
+	.partner-section__copy { width: calc(100% - 1.1rem); margin: -1.35rem 0 0 1.1rem; padding: 2.6rem 1.35rem 2.8rem; }
+	.partner-section > .partner-section__copy > p:not(.eyebrow) { margin-top: 1rem; font-size: .63rem; line-height: 1.7; }
+}
