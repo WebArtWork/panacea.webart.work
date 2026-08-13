@@ -9,7 +9,6 @@
 		"@angular/common": "22.1.0",
 		"@angular/compiler": "22.1.0",
 		"@angular/core": "22.1.0",
-		"@angular/forms": "22.1.0",
 		"@angular/platform-browser": "22.1.0",
 		"@angular/platform-server": "22.1.0",
 		"@angular/router": "22.1.0",
@@ -32,9 +31,7 @@
 		"postcss": "8.5.15",
 		"prettier": "3.8.1",
 		"tailwindcss": "4.1.12",
-		"ng-packagr": "22.0.0",
-		"typescript": "6.0.3",
-		"vitest": "4.1.8"
+		"typescript": "6.0.3"
 	},
 	"overrides": {
 		"esbuild": "0.28.1",
