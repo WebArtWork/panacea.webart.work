@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ngx.webart.work/sitemap.xml

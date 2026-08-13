@@ -1,0 +1,8 @@
+:host { position: sticky; top: 0; z-index: 50; display: block; background: white; }
+.topbar { display: grid; min-height: 6.5rem; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem; border-top: 5px solid var(--c-primary); border-bottom: 1px solid #e8ebe8; padding: .5rem clamp(1rem, 3vw, 3.5rem); color: var(--c-primary); }
+.topbar nav a, .mobile-menu a { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color .2s ease; }
+.topbar nav a:hover, .mobile-menu a:hover { color: #8d4230; }
+.nav-cta { border-bottom: 1px solid currentColor; padding-bottom: .25rem; }
+.icon-button { color: var(--c-primary); font-size: 1.4rem; }
+.mobile-menu { display: grid; gap: 1.1rem; border-bottom: 1px solid #e8ebe8; padding: 1.5rem; background: white; color: var(--c-primary); }
+@media (max-width: 767px) { .topbar { min-height: 5rem; } .topbar img { width: 80px; height: auto; } }

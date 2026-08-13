@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PANACEA — вода, народжена в серці Подільських Товтр</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      try {
+        const storedMode = localStorage.getItem('app-mode');
+        const preferredMode =
+          storedMode === 'dark' || storedMode === 'light'
+            ? storedMode
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        document.documentElement.setAttribute('data-mode', preferredMode);
+      } catch {}
+    </script>
+
+    <meta
+      name="description"
+      content="Природна мінеральна вода PANACEA з власного родовища у серці Подільських Товтр."
+    />
+    <meta name="author" content="PANACEA" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+
+    <meta itemprop="name" content="PANACEA" />
+    <meta
+      itemprop="description"
+      content="Вода, народжена в серці Подільських Товтр і видобута з глибини 153 метрів."
+    />
+    <meta itemprop="image" content="https://ngx.webart.work/images/panacea/hero-tovtry.webp" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PANACEA" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:url" content="https://ngx.webart.work/" />
+    <meta property="og:title" content="PANACEA — вода, народжена в серці Подільських Товтр" />
+    <meta
+      property="og:description"
+      content="Природна мінеральна вода PANACEA з власного родовища у серці Подільських Товтр."
+    />
+    <meta property="og:image" content="https://ngx.webart.work/images/panacea/hero-tovtry.webp" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PANACEA — вода з Подільських Товтр" />
+    <meta
+      name="twitter:description"
+      content="Природна мінеральна вода PANACEA з власного родовища, видобута з глибини 153 метрів."
+    />
+    <meta name="twitter:image" content="https://ngx.webart.work/images/panacea/hero-tovtry.webp" />
+    <meta name="twitter:image:src" content="https://ngx.webart.work/images/panacea/hero-tovtry.webp" />
+
+    <link rel="canonical" href="https://ngx.webart.work/" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

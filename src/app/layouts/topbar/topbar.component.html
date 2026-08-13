@@ -1,0 +1,33 @@
+<header class="topbar">
+	<button class="icon-button md:hidden" type="button" aria-label="Open menu" (click)="toggleMenu()">
+		<span aria-hidden="true">☰</span>
+	</button>
+
+	<nav class="hidden items-center gap-7 md:flex" aria-label="Основна навігація">
+		<a href="#source">Про воду</a>
+		<a href="#source">Наше джерело</a>
+		<a href="#products">Продукція</a>
+	</nav>
+
+	<a routerLink="/" aria-label="PANACEA — головна сторінка">
+		<img ngSrc="images/panacea/logo-panacea.svg" width="144" height="58" priority alt="PANACEA" />
+	</a>
+
+	<nav class="hidden items-center justify-end gap-7 md:flex" aria-label="Додаткова навігація">
+		<a href="#quality">Якість</a>
+		<a href="#partnership">Партнерам</a>
+		<a class="nav-cta" href="mailto:info@panacea.ua">Контакти</a>
+	</nav>
+
+	<a class="icon-button md:hidden" href="#water" aria-label="Переглянути нашу воду">→</a>
+</header>
+
+@if (menuOpen()) {
+	<nav class="mobile-menu md:hidden" aria-label="Mobile navigation">
+		<a href="#source" (click)="closeMenu()">Про воду</a>
+		<a href="#source" (click)="closeMenu()">Наше джерело</a>
+		<a href="#products" (click)="closeMenu()">Продукція</a>
+		<a href="#quality" (click)="closeMenu()">Якість</a>
+		<a href="#partnership" (click)="closeMenu()">Партнерам</a>
+	</nav>
+}
