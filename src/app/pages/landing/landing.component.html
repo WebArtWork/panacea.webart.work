@@ -1,7 +1,7 @@
 <section class="hero" aria-label="Природна вода PANACEA">
 	<img ngSrc="interface/hero-tovtry.webp" alt="Пагорби та ліси Подільських Товтр" fill priority />
 	<div class="hero__shade"></div>
-	<div class="hero__content">
+	<div class="hero__content" [class.hero__content--enter]="heroEntranceReady()">
 		<p class="eyebrow">Природна мінеральна вода</p>
 	<h1>Вода, що<br />йде з глибини</h1>
 		<p>Вода PANACEA народжується в глибині Подільських Товтр — там, де час, камінь і природа створюють її особливий характер.</p>
@@ -15,29 +15,91 @@
 	<p>Ми бережемо природну силу джерела та робимо її частиною вашого щоденного ритму — вдома, у подорожі, у ресторані чи готелі.</p>
 </section>
 
-<section class="story-grid">
-	<div class="story-grid__image"><img ngSrc="interface/source-153m.webp" alt="Природне джерело PANACEA" fill /></div>
-	<div class="story-grid__copy">
-		<p class="eyebrow">Власне родовище</p>
-		<h2>Глибина, що<br />зберігає природне</h2>
-		<p>Вода видобувається з власного родовища на глибині 153 метрів. Її шлях починається під землею та продовжується під уважним контролем на кожному етапі.</p>
-		<a class="text-link" href="#quality">Як ми дбаємо про якість</a>
-	</div>
-</section>
+<section id="products" class="products" aria-label="Продукція PANACEA">
+	<article class="product-row product-row--arden">
+		<div class="product-row__image">
+			<img ngSrc="products/arden-2.png" alt="PANACEA Arden у скляній пляшці" fill />
+		</div>
+		<div class="product-row__copy">
+			<p class="eyebrow">Мінеральна вода</p>
+			<h2>PANACEA<br />Arden</h2>
+			<p>Мінеральна природна лікувально-столова вода «Збручанська», сильногазована</p>
+			<ul class="product-variants">
+				<li><strong>Скло 0,5 л</strong></li>
+			</ul>
+		</div>
+	</article>
 
-<section id="products" class="product-gallery" aria-label="Продукція PANACEA">
-	@for (product of products; track product.src) {
-		<button class="product-gallery__card" type="button" (click)="openProduct(product)" [attr.aria-label]="'Відкрити ' + product.alt">
-			<img [ngSrc]="product.src" [alt]="product.alt" fill />
-		</button>
-	}
-</section>
+	<article class="product-row product-row--arden product-row--reverse">
+		<div class="product-row__copy">
+			<p class="eyebrow">Мінеральна вода</p>
+			<h2>PANACEA<br />Arden</h2>
+			<p>Артезіанська питна вода оброблена, сильногазована</p>
+			<ul class="product-variants">
+				<li><strong>Ж/б 0,5 л</strong></li>
+			</ul>
+		</div>
+		<div class="product-row__image">
+			<img ngSrc="products/arden-1.png" alt="PANACEA Arden у банці" fill />
+		</div>
+	</article>
 
-@if (activeProduct(); as product) {
-	<button class="product-fullscreen" type="button" [attr.aria-label]="'Закрити перегляд ' + product.alt" (click)="closeProduct()">
-		<img [ngSrc]="product.src" [alt]="product.alt" fill priority />
-	</button>
-}
+	<article class="product-row product-row--diamond">
+		<div class="product-row__image">
+			<img ngSrc="products/diamond-4.png" alt="PANACEA Diamond у скляній пляшці" fill />
+		</div>
+		<div class="product-row__copy">
+			<p class="eyebrow">Природна вода</p>
+			<h2>PANACEA<br />Diamond</h2>
+			<p>Артезіанська питна вода оброблена, слабогазована</p>
+			<ul class="product-variants">
+				<li><strong>Скло 0,5 л</strong></li>
+			</ul>
+		</div>
+	</article>
+
+	<article class="product-row product-row--diamond product-row--reverse">
+		<div class="product-row__copy">
+			<p class="eyebrow">Природна вода</p>
+			<h2>PANACEA<br />Diamond</h2>
+			<p>Артезіанська питна вода оброблена, негазована</p>
+			<ul class="product-variants">
+				<li><strong>Скло 0,5 л</strong></li>
+			</ul>
+		</div>
+		<div class="product-row__image">
+			<img ngSrc="products/diamond-5.png" alt="PANACEA Diamond у скляній пляшці" fill />
+		</div>
+	</article>
+
+	<article class="product-row product-row--diamond">
+		<div class="product-row__image">
+			<img ngSrc="products/diamond-1.png" alt="PANACEA Diamond у банці" fill />
+		</div>
+		<div class="product-row__copy">
+			<p class="eyebrow">Природна вода</p>
+			<h2>PANACEA<br />Diamond</h2>
+			<p>Артезіанська питна вода оброблена, сильногазована</p>
+			<ul class="product-variants">
+				<li><strong>Ж/б 0,5 л</strong></li>
+			</ul>
+		</div>
+	</article>
+
+	<article class="product-row product-row--diamond product-row--reverse">
+		<div class="product-row__copy">
+			<p class="eyebrow">Природна вода</p>
+			<h2>PANACEA<br />Diamond</h2>
+			<p>Артезіанська питна вода оброблена, слабогазована</p>
+			<ul class="product-variants">
+				<li><strong>Ж/б 0,5 л</strong></li>
+			</ul>
+		</div>
+		<div class="product-row__image">
+			<img ngSrc="products/diamond-2.png" alt="PANACEA Diamond у банці" fill />
+		</div>
+	</article>
+</section>
 
 <section class="landscape-break" aria-label="Подільські Товтри">
 	<img ngSrc="interface/podilski-tovtry-landscape.webp" alt="Ландшафт Подільських Товтр" fill />
@@ -49,7 +111,7 @@
 	<p>Ми не створюємо воду — ми зберігаємо її природний характер. Власне джерело, лабораторний контроль і сучасне виробництво працюють разом, щоб кожна пляшка PANACEA була такою, якою має бути.</p>
 </section>
 
-<section id="products" class="process-section">
+<section class="process-section">
 	<p class="eyebrow">Шлях PANACEA</p>
 	<h2>Від глибини<br />до вашого столу</h2>
 	<div class="process-line"><span>Джерело</span><i>01</i><span>Контроль</span><i>02</i><span>Розлив</span><i>03</i><span>Ваш день</span></div>
@@ -63,4 +125,40 @@
 	<p>Співпрацюємо з готелями, ресторанами, торговельними мережами та дистриб'юторами. PANACEA додає асортименту природне походження і впізнаваний характер.</p>
 	<a class="button" href="mailto:partners@panacea.ua">Стати партнером</a>
 	</div>
+</section>
+
+<section id="contacts" class="contact-section" aria-label="Зворотній зв'язок">
+	<div class="contact-section__intro">
+		<p class="eyebrow">Зв'язок</p>
+		<h2>Зворотній<br />зв'язок</h2>
+	</div>
+	<form class="contact-form" (ngSubmit)="onContactSubmit()" #contactForm="ngForm">
+		<label class="contact-form__field contact-form__field--full">
+			<span>Ваше ім'я*</span>
+			<input type="text" name="name" required [(ngModel)]="contact.name" />
+		</label>
+		<label class="contact-form__field">
+			<span>Номер телефону*</span>
+			<input type="tel" name="phone" required [(ngModel)]="contact.phone" />
+		</label>
+		<label class="contact-form__field">
+			<span>E-mail*</span>
+			<input type="email" name="email" required [(ngModel)]="contact.email" />
+		</label>
+		<label class="contact-form__field contact-form__field--full">
+			<span>Країна*</span>
+			<select name="country" required [(ngModel)]="contact.country">
+				<option value="" disabled selected hidden></option>
+				<option value="UA">Україна</option>
+				<option value="PL">Польща</option>
+				<option value="DE">Німеччина</option>
+				<option value="other">Інше</option>
+			</select>
+		</label>
+		<label class="contact-form__field contact-form__field--full">
+			<span>Запитання</span>
+			<textarea name="message" rows="4" [(ngModel)]="contact.message"></textarea>
+		</label>
+		<button type="submit" class="button" [disabled]="contactForm.invalid">Відправити</button>
+	</form>
 </section>
