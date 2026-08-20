@@ -9,7 +9,7 @@
 	</div>
 </section>
 
-<section id="source" class="statement">
+<section id="source" class="statement reveal">
 	<p class="eyebrow">Подільські Товтри</p>
 	<h2>Вода з місцем<br />свого походження</h2>
 	<p>Ми бережемо природну силу джерела та робимо її частиною вашого щоденного ритму — вдома, у подорожі, у ресторані чи готелі.</p>
@@ -103,15 +103,15 @@
 
 <section class="landscape-break" aria-label="Подільські Товтри">
 	<img ngSrc="interface/podilski-tovtry-landscape.webp" alt="Ландшафт Подільських Товтр" fill />
-	<div><p class="eyebrow">Подільські Товтри</p><h2>Природа має<br />свій характер</h2></div>
+	<div class="reveal"><p class="eyebrow">Подільські Товтри</p><h2>Природа має<br />свій характер</h2></div>
 </section>
 
 <section id="quality" class="quality-section">
-	<div><p class="eyebrow">Від природи — до вас</p><h2>Турбота<br />в кожній краплі</h2></div>
-	<p>Ми не створюємо воду — ми зберігаємо її природний характер. Власне джерело, лабораторний контроль і сучасне виробництво працюють разом, щоб кожна пляшка PANACEA була такою, якою має бути.</p>
+	<div class="reveal"><p class="eyebrow">Від природи — до вас</p><h2>Турбота<br />в кожній краплі</h2></div>
+	<p class="reveal reveal--delay">Ми не створюємо воду — ми зберігаємо її природний характер. Власне джерело, лабораторний контроль і сучасне виробництво працюють разом, щоб кожна пляшка PANACEA була такою, якою має бути.</p>
 </section>
 
-<section class="process-section">
+<section class="process-section reveal">
 	<p class="eyebrow">Шлях PANACEA</p>
 	<h2>Від глибини<br />до вашого столу</h2>
 	<div class="process-line"><span>Джерело</span><i>01</i><span>Контроль</span><i>02</i><span>Розлив</span><i>03</i><span>Ваш день</span></div>
@@ -119,7 +119,7 @@
 
 <section id="partnership" class="partner-section">
 	<div class="partner-section__photo"><img ngSrc="interface/horeca-partnership.webp" alt="PANACEA для закладів гостинності" fill /></div>
-	<div class="partner-section__copy">
+	<div class="partner-section__copy reveal">
 	<p class="eyebrow">Для бізнесу</p>
 	<h2>Вода, що пасує<br />вашому простору</h2>
 	<p>Співпрацюємо з готелями, ресторанами, торговельними мережами та дистриб'юторами. PANACEA додає асортименту природне походження і впізнаваний характер.</p>
@@ -128,11 +128,11 @@
 </section>
 
 <section id="contacts" class="contact-section" aria-label="Зворотній зв'язок">
-	<div class="contact-section__intro">
+	<div class="contact-section__intro reveal">
 		<p class="eyebrow">Зв'язок</p>
 		<h2>Зворотній<br />зв'язок</h2>
 	</div>
-	<form class="contact-form" (ngSubmit)="onContactSubmit()" #contactForm="ngForm">
+	<form class="contact-form reveal reveal--delay" (ngSubmit)="onContactSubmit()" #contactForm="ngForm">
 		<label class="contact-form__field contact-form__field--full">
 			<span>Ваше ім'я*</span>
 			<input type="text" name="name" required [(ngModel)]="contact.name" />

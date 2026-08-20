@@ -31,28 +31,28 @@ export class LandingComponent {
 		afterNextRender(() => {
 			this.heroEntranceReady.set(true);
 			// deferred: afterNextRender can fire mid-hydration, before Angular finishes
-			// claiming the SSR'd product rows, which would leave the observer watching
+			// claiming the SSR'd content, which would leave the observer watching
 			// nodes that get swapped out
-			setTimeout(() => this.observeProductRows());
+			setTimeout(() => this.observeReveals());
 		});
 	}
 
-	private observeProductRows(): void {
-		const rows = this.document.querySelectorAll<HTMLElement>('.product-row');
+	private observeReveals(): void {
+		const targets = this.document.querySelectorAll<HTMLElement>('.product-row, .reveal');
 		const viewportHeight = window.innerHeight;
 
-		// rows already on screen at load get no animation, only ones below
-		// the fold are opted into the pre-enter (hidden) state; if the
-		// observer ever fails to fire, everything else stays visible by
-		// default instead of permanently hidden
-		const offscreenRows: HTMLElement[] = [];
-		rows.forEach((row) => {
-			if (row.getBoundingClientRect().top > viewportHeight) {
-				row.classList.add('pre-enter');
-				offscreenRows.push(row);
+		// elements already on screen at load get no animation, only ones
+		// below the fold are opted into the pre-enter (hidden) state; if
+		// the observer ever fails to fire, everything else stays visible
+		// by default instead of permanently hidden
+		const offscreen: HTMLElement[] = [];
+		targets.forEach((el) => {
+			if (el.getBoundingClientRect().top > viewportHeight) {
+				el.classList.add('pre-enter');
+				offscreen.push(el);
 			}
 		});
-		if (offscreenRows.length === 0) return;
+		if (offscreen.length === 0) return;
 
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -63,13 +63,13 @@ export class LandingComponent {
 					}
 				}
 			},
-			{ threshold: 0.2 },
+			{ threshold: 0.2, rootMargin: '0px 0px -10% 0px' },
 		);
-		offscreenRows.forEach((row) => observer.observe(row));
+		offscreen.forEach((el) => observer.observe(el));
 
-		// safety net: never leave a row permanently hidden
+		// safety net: never leave an element permanently hidden
 		setTimeout(() => {
-			offscreenRows.forEach((row) => row.classList.remove('pre-enter'));
+			offscreen.forEach((el) => el.classList.remove('pre-enter'));
 			observer.disconnect();
 		}, 4000);
 	}
