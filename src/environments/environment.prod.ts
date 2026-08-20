@@ -9,7 +9,7 @@ export const environment: {
 	apiUrl: 'https://it.webart.work',
 	appVersion: '1.0.0',
 	production: true,
-	companyId: 'demo',
+	companyId: 'panacea',
 	defaultLanguage: 'ua',
 	languages: [
 		{

@@ -1,6 +1,7 @@
 import { DOCUMENT, NgOptimizedImage } from '@angular/common';
 import { afterNextRender, Component, inject, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ContactService } from '../../feature/contact/contact.service';
 
 interface ContactFormValue {
 	name: string;
@@ -10,6 +11,8 @@ interface ContactFormValue {
 	message: string;
 }
 
+type ContactSubmitStatus = 'idle' | 'sending' | 'success' | 'error';
+
 @Component({
 	imports: [NgOptimizedImage, FormsModule],
 	templateUrl: './landing.component.html',
@@ -17,14 +20,33 @@ interface ContactFormValue {
 })
 export class LandingComponent {
 	readonly heroEntranceReady = signal(false);
-	readonly contact: ContactFormValue = { name: '', phone: '', email: '', country: '', message: '' };
+	readonly contact: ContactFormValue = { name: '', phone: '', email: '', country: 'UA', message: '' };
+	readonly contactSubmitStatus = signal<ContactSubmitStatus>('idle');
 	private readonly document = inject(DOCUMENT);
+	private readonly contactService = inject(ContactService);
 
-	onContactSubmit(): void {
+	async onContactSubmit(form: NgForm): Promise<void> {
+		if (form.invalid || this.contactSubmitStatus() === 'sending') return;
+
+		this.contactSubmitStatus.set('sending');
 		const { name, phone, email, country, message } = this.contact;
-		const body = [`Ім'я: ${name}`, `Телефон: ${phone}`, `E-mail: ${email}`, `Країна: ${country}`, `Запитання: ${message}`].join('\n');
-		const mailto = `mailto:info@panacea.ua?subject=${encodeURIComponent('Зворотній зв\'язок з сайту')}&body=${encodeURIComponent(body)}`;
-		this.document.defaultView?.open(mailto, '_self');
+		const text = [
+			name ? `Ім'я: ${name}` : null,
+			`Телефон: ${phone}`,
+			email ? `E-mail: ${email}` : null,
+			country ? `Країна: ${country}` : null,
+			message ? `Запитання: ${message}` : null,
+		]
+			.filter(Boolean)
+			.join('\n');
+
+		const sent = await this.contactService.send(text);
+		if (sent) {
+			this.contactSubmitStatus.set('success');
+			form.resetForm({ country: 'UA' });
+		} else {
+			this.contactSubmitStatus.set('error');
+		}
 	}
 
 	constructor() {
@@ -34,7 +56,38 @@ export class LandingComponent {
 			// claiming the SSR'd content, which would leave the observer watching
 			// nodes that get swapped out
 			setTimeout(() => this.observeReveals());
+			setTimeout(() => this.setupParallax());
 		});
+	}
+
+	private setupParallax(): void {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		if (this.document.querySelectorAll('.product-row__image img').length === 0) return;
+
+		const range = 22; // px of travel, kept subtle
+		let ticking = false;
+		// re-queried on every frame rather than captured once: NgOptimizedImage
+		// can replace the underlying <img> node after the initial paint, which
+		// would otherwise leave this tracking a detached element forever
+		const update = () => {
+			const vh = window.innerHeight;
+			this.document.querySelectorAll<HTMLElement>('.product-row__image img').forEach((img) => {
+				const rect = img.getBoundingClientRect();
+				const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+				img.style.transform = `translateY(${(progress * range).toFixed(1)}px)`;
+			});
+			ticking = false;
+		};
+		const onScroll = () => {
+			if (!ticking) {
+				ticking = true;
+				requestAnimationFrame(update);
+			}
+		};
+
+		update();
+		window.addEventListener('scroll', onScroll, { passive: true });
+		window.addEventListener('resize', onScroll);
 	}
 
 	private observeReveals(): void {
