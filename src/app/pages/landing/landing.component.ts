@@ -57,6 +57,15 @@ export class LandingComponent {
 			// nodes that get swapped out
 			setTimeout(() => this.observeReveals());
 			setTimeout(() => this.setupParallax());
+			// the native autoplay attribute doesn't reliably kick in once
+			// hydration has touched the element, so trigger playback ourselves;
+			// swallow rejections (e.g. stricter autoplay policies) and just
+			// leave the poster frame showing
+			setTimeout(() => {
+				const videos = this.document.querySelectorAll<HTMLVideoElement>('.hero__video');
+				const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				videos.forEach((video) => (reduceMotion ? video.pause() : video.play().catch(() => undefined)));
+			});
 		});
 	}
 

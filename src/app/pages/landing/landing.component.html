@@ -1,5 +1,9 @@
 <section class="hero" aria-label="Природна вода PANACEA">
-	<img ngSrc="interface/hero-tovtry.webp" alt="Пагорби та ліси Подільських Товтр" fill priority />
+	<video class="hero__video" autoplay muted loop playsinline disablepictureinpicture poster="/interface/hero-video-poster.webp" aria-hidden="true">
+		<source src="/interface/hero-video.webm" type="video/webm" />
+		<source src="/interface/hero-video.mp4" type="video/mp4" />
+		<img ngSrc="interface/hero-tovtry.webp" alt="Пагорби та ліси Подільських Товтр" fill priority />
+	</video>
 	<div class="hero__shade"></div>
 	<div class="hero__content" [class.hero__content--enter]="heroEntranceReady()">
 		<p class="eyebrow">Природна мінеральна вода</p>
@@ -9,16 +13,22 @@
 	</div>
 </section>
 
-<section id="source" class="statement reveal">
+<section id="source" class="statement reveal topo-bg">
 	<p class="eyebrow">Подільські Товтри</p>
 	<h2>Вода з місцем<br />свого походження</h2>
 	<p>Природа створила. Ми зберегли. Власне родовище, сучасне виробництво та багаторівневий контроль якості, щоб природна сила води залишалась незмінною від джерела до кожної пляшки.</p>
 </section>
 
 <section id="products" class="products" aria-label="Продукція PANACEA">
-	<div class="products__intro reveal">
+	<div class="products__intro reveal topo-bg">
 		<h3>Лікувальна Arden</h3>
 		<p>Мінеральна вода Збручанського родовища з унікальним мінеральним складом, використовується у програмах питного лікування.</p>
+		<div class="ticker" aria-hidden="true">
+			<div class="ticker__track">
+				<span>Здоров'я</span><span>Природність</span><span>Чистота</span><span>Баланс</span><span>Мінерали</span>
+				<span>Здоров'я</span><span>Природність</span><span>Чистота</span><span>Баланс</span><span>Мінерали</span>
+			</div>
+		</div>
 	</div>
 
 	<article class="product-row product-row--arden">
@@ -49,9 +59,15 @@
 		</div>
 	</article>
 
-	<div class="products__intro reveal">
+	<div class="products__intro reveal topo-bg">
 		<h3>Столова Diamond</h3>
 		<p>Природна вода для щоденного вживання. Чистота, збалансований склад і якість у кожній пляшці.</p>
+		<div class="ticker" aria-hidden="true">
+			<div class="ticker__track">
+				<span>Свіжість</span><span>Природність</span><span>Чистота</span><span>Баланс</span><span>Здоров'я</span>
+				<span>Свіжість</span><span>Природність</span><span>Чистота</span><span>Баланс</span><span>Здоров'я</span>
+			</div>
+		</div>
 	</div>
 
 	<article class="product-row product-row--diamond">
@@ -121,7 +137,7 @@
 	<p class="reveal reveal--delay">Panacea виробляється на потужностях ТОВ «Збручанські джерела». Власне виробництво та багаторівневий контроль дозволяють стежити за якістю на кожному етапі від видобутку води до розливу. Наше завдання — зберегти природні властивості води від джерела до кожної пляшки.</p>
 </section>
 
-<section class="process-section reveal">
+<section class="process-section reveal topo-bg">
 	<p class="eyebrow">Шлях PANACEA</p>
 	<h2>Від глибини<br />до вашого столу</h2>
 	<div class="process-line"><span>Джерело</span><i>01</i><span>Контроль</span><i>02</i><span>Розлив</span><i>03</i><span>Ваш день</span></div>
