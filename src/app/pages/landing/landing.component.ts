@@ -56,7 +56,7 @@ export class LandingComponent {
 			// deferred: afterNextRender can fire mid-hydration, before Angular finishes
 			// claiming the SSR'd content, which would leave the observer watching
 			// nodes that get swapped out
-			setTimeout(() => this.observeReveals());
+			setTimeout(() => this.observeReveals(), 100);
 			setTimeout(() => this.setupParallax());
 			// the native autoplay attribute doesn't reliably kick in once
 			// hydration has touched the element, so trigger playback ourselves;

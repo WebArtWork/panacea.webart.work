@@ -9,16 +9,15 @@
 	<div class="hero__shade"></div>
 	<div class="hero__content" [class.hero__content--enter]="heroEntranceReady()">
 		<p class="eyebrow">Природна мінеральна вода</p>
-	<h1>Вода, що<br />йде з глибини</h1>
-		<p>Правильна вода — запорука довгого життя. Здорове життя починається з щоденних виборів. Обирай воду, якій довіряєш.</p>
+	<h1>Правильна вода<br />запорука довгого життя</h1>
+		<p>Здорове життя починається з щоденних виборів. Обирай воду, якій довіряєш.</p>
 		<a class="button button--light" href="#source">Відкрити джерело</a>
 	</div>
 </section>
 
 <section id="source" class="statement reveal">
 	<p class="eyebrow">Подільські Товтри</p>
-	<h2>Вода з місцем<br />свого походження</h2>
-	<p class="statement__lead">Природа створила. Ми зберегли.</p>
+	<h2>Природа створила.<br />Ми зберегли.</h2>
 	<p>Власне родовище, сучасне виробництво та багаторівневий контроль якості, щоб природна сила води залишалась незмінною від джерела до кожної пляшки.</p>
 </section>
 
@@ -131,13 +130,13 @@
 </section>
 
 <section class="landscape-break" aria-label="Подільські Товтри">
-	<img ngSrc="interface/podilski-tovtry-landscape.webp" alt="Ландшафт Подільських Товтр" fill />
-	<div class="reveal"><p class="eyebrow">Подільські Товтри</p><h2>Вода, народжена<br />в серці Товтр</h2><p>Panacea походить із Сатанова, Хмельницької області — з унікального природного регіону Поділля. У долині річки Збруч розташоване Збручанське родовище, де природним шляхом формується наша вода. Її мінералізація 0,6–0,9 г/дм³.</p></div>
+	<img ngSrc="interface/bottling-facility.png" alt="Лінія розливу води PANACEA" fill />
+	<div class="reveal"><p class="eyebrow">Подільські Товтри</p><h2>Вода, народжена<br />в серці Товтр</h2><p>Panacea походить із Сатанова, Хмельницької області з унікального природного регіону Поділля. У долині річки Збруч розташоване Збручанське родовище, де природним шляхом формується наша вода. Її мінералізація 0,6–0,9 г/дм³.</p></div>
 </section>
 
 <section id="quality" class="quality-section">
 	<div class="reveal"><p class="eyebrow">Від родовища до пляшки</p><h2>Турбота<br />в кожній краплі</h2></div>
-	<p class="reveal reveal--delay">Panacea виробляється на потужностях ТОВ «Збручанські джерела». Власне виробництво та багаторівневий контроль дозволяють стежити за якістю на кожному етапі від видобутку води до розливу. Наше завдання — зберегти природні властивості води від джерела до кожної пляшки.</p>
+	<p class="reveal reveal--delay">Panacea виробляється на потужностях ТОВ «Збручанські джерела». Власне виробництво та багаторівневий контроль дозволяють стежити за якістю на кожному етапі від видобутку води до розливу. Наше завдання зберегти природні властивості води від джерела до кожної пляшки.</p>
 </section>
 
 <section class="process-section reveal topo-bg">
@@ -160,51 +159,54 @@
 	<div class="contact-section__intro reveal">
 		<h2>Зворотній<br />зв'язок</h2>
 	</div>
-	<form class="contact-form reveal reveal--delay" (ngSubmit)="onContactSubmit(contactForm)" #contactForm="ngForm">
-		<label class="contact-form__field contact-form__field--full">
-			<span>Ваше ім'я</span>
-			<input type="text" name="name" [(ngModel)]="contact.name" />
-		</label>
-		<label class="contact-form__field">
-			<span>Номер телефону*</span>
-			<input type="tel" name="phone" required [(ngModel)]="contact.phone" />
-		</label>
-		<label class="contact-form__field">
-			<span>E-mail</span>
-			<input type="email" name="email" [(ngModel)]="contact.email" />
-		</label>
-		<label class="contact-form__field contact-form__field--full">
-			<span>Країна</span>
-			<select name="country" [(ngModel)]="contact.country">
-				<option value="UA">Україна</option>
-				<option value="PL">Польща</option>
-				<option value="HU">Угорщина</option>
-				<option value="RO">Румунія</option>
-				<option value="CZ">Чехія</option>
-				<option value="DE">Німеччина</option>
-				<option value="SE">Швеція</option>
-				<option value="NL">Нідерланди</option>
-				<option value="GB">Велика Британія</option>
-				<option value="FR">Франція</option>
-				<option value="IT">Італія</option>
-				<option value="GR">Греція</option>
-				<option value="ES">Іспанія</option>
-				<option value="PT">Португалія</option>
-				<option value="other">Інше</option>
-			</select>
-		</label>
-		<label class="contact-form__field contact-form__field--full">
-			<span>Запитання</span>
-			<textarea name="message" rows="4" [(ngModel)]="contact.message"></textarea>
-		</label>
-		<button type="submit" class="button" [disabled]="contactForm.invalid || contactSubmitStatus() === 'sending'">
-			{{ contactSubmitStatus() === 'sending' ? 'Надсилаємо...' : 'Відправити' }}
-		</button>
-		@if (contactSubmitStatus() === 'success') {
-			<p class="contact-form__status contact-form__status--ok">Дякуємо! Ваше повідомлення надіслано.</p>
-		}
-		@if (contactSubmitStatus() === 'error') {
-			<p class="contact-form__status contact-form__status--error">Не вдалося надіслати. Спробуйте ще раз або напишіть нам напряму.</p>
-		}
-	</form>
+	@if (contactSubmitStatus() === 'success') {
+		<div class="contact-success" role="status" aria-live="polite">
+			<p>Дякуємо! Ваше повідомлення надіслано.</p>
+		</div>
+	} @else {
+		<form class="contact-form reveal reveal--delay" (ngSubmit)="onContactSubmit(contactForm)" #contactForm="ngForm">
+			<label class="contact-form__field contact-form__field--full">
+				<span>Ваше ім'я</span>
+				<input type="text" name="name" [(ngModel)]="contact.name" />
+			</label>
+			<label class="contact-form__field">
+				<span>Номер телефону*</span>
+				<input type="tel" name="phone" required [(ngModel)]="contact.phone" />
+			</label>
+			<label class="contact-form__field">
+				<span>E-mail</span>
+				<input type="email" name="email" [(ngModel)]="contact.email" />
+			</label>
+			<label class="contact-form__field contact-form__field--full">
+				<span>Країна</span>
+				<select name="country" [(ngModel)]="contact.country">
+					<option value="UA">Україна</option>
+					<option value="PL">Польща</option>
+					<option value="HU">Угорщина</option>
+					<option value="RO">Румунія</option>
+					<option value="CZ">Чехія</option>
+					<option value="DE">Німеччина</option>
+					<option value="SE">Швеція</option>
+					<option value="NL">Нідерланди</option>
+					<option value="GB">Велика Британія</option>
+					<option value="FR">Франція</option>
+					<option value="IT">Італія</option>
+					<option value="GR">Греція</option>
+					<option value="ES">Іспанія</option>
+					<option value="PT">Португалія</option>
+					<option value="other">Інше</option>
+				</select>
+			</label>
+			<label class="contact-form__field contact-form__field--full">
+				<span>Запитання</span>
+				<textarea name="message" rows="4" [(ngModel)]="contact.message"></textarea>
+			</label>
+			<button type="submit" class="button" [disabled]="contactForm.invalid || contactSubmitStatus() === 'sending'">
+				{{ contactSubmitStatus() === 'sending' ? 'Надсилаємо...' : 'Відправити' }}
+			</button>
+			@if (contactSubmitStatus() === 'error') {
+				<p class="contact-form__status contact-form__status--error">Не вдалося надіслати. Спробуйте ще раз або напишіть нам напряму.</p>
+			}
+		</form>
+	}
 </section>
