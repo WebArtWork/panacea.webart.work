@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://panacea.webart.work/sitemap.xml
+Sitemap: https://zbruchanskidzherela.com.ua/sitemap.xml
