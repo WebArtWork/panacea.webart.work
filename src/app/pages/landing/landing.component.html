@@ -32,9 +32,9 @@
 	</div>
 
 	<article class="product-row product-row--arden">
-		<div class="product-row__image">
+		<button class="product-row__image" type="button" (click)="openProductPreview('products/arden-2.png', 'PANACEA Arden у скляній пляшці')" aria-label="Збільшити PANACEA Arden у скляній пляшці">
 			<img ngSrc="products/arden-2.png" alt="PANACEA Arden у скляній пляшці" fill />
-		</div>
+		</button>
 		<div class="product-row__copy">
 			<p class="eyebrow">Мінеральна вода</p>
 			<h2>PANACEA<br />Arden</h2>
@@ -54,9 +54,9 @@
 				<li><strong>Ж/б 0,5 л</strong></li>
 			</ul>
 		</div>
-		<div class="product-row__image">
+		<button class="product-row__image" type="button" (click)="openProductPreview('products/arden-1.png', 'PANACEA Arden у банці')" aria-label="Збільшити PANACEA Arden у банці">
 			<img ngSrc="products/arden-1.png" alt="PANACEA Arden у банці" fill />
-		</div>
+		</button>
 	</article>
 
 	<div class="products__intro reveal topo-bg">
@@ -71,9 +71,9 @@
 	</div>
 
 	<article class="product-row product-row--diamond">
-		<div class="product-row__image">
+		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-4.png', 'PANACEA Diamond у скляній пляшці')" aria-label="Збільшити PANACEA Diamond у скляній пляшці">
 			<img ngSrc="products/diamond-4.png" alt="PANACEA Diamond у скляній пляшці" fill />
-		</div>
+		</button>
 		<div class="product-row__copy">
 			<p class="eyebrow">Природна вода</p>
 			<h2>PANACEA<br />Diamond</h2>
@@ -93,15 +93,15 @@
 				<li><strong>Скло 0,5 л</strong></li>
 			</ul>
 		</div>
-		<div class="product-row__image">
+		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-5.png', 'PANACEA Diamond у скляній пляшці')" aria-label="Збільшити PANACEA Diamond у скляній пляшці">
 			<img ngSrc="products/diamond-5.png" alt="PANACEA Diamond у скляній пляшці" fill />
-		</div>
+		</button>
 	</article>
 
 	<article class="product-row product-row--diamond">
-		<div class="product-row__image">
+		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-1.png', 'PANACEA Diamond у банці')" aria-label="Збільшити PANACEA Diamond у банці">
 			<img ngSrc="products/diamond-1.png" alt="PANACEA Diamond у банці" fill />
-		</div>
+		</button>
 		<div class="product-row__copy">
 			<p class="eyebrow">Природна вода</p>
 			<h2>PANACEA<br />Diamond</h2>
@@ -121,14 +121,20 @@
 				<li><strong>Ж/б 0,5 л</strong></li>
 			</ul>
 		</div>
-		<div class="product-row__image">
+		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-2.png', 'PANACEA Diamond у банці')" aria-label="Збільшити PANACEA Diamond у банці">
 			<img ngSrc="products/diamond-2.png" alt="PANACEA Diamond у банці" fill />
-		</div>
+		</button>
 	</article>
 </section>
 
+@if (activeProductPreview(); as product) {
+	<button class="product-preview" type="button" (click)="closeProductPreview()" [attr.aria-label]="'Закрити перегляд ' + product.alt">
+		<img [ngSrc]="product.src" [alt]="product.alt" fill priority />
+	</button>
+}
+
 <section class="origin-section" aria-label="Вода PANACEA у Подільських Товтрах">
-	<img ngSrc="interface/hero-tovtry.webp" alt="Пагорби та ліси Подільських Товтр" fill />
+	<img ngSrc="interface/podilski-tovtry-landscape.webp" alt="Ландшафт Подільських Товтр" fill />
 	<div class="origin-section__shade"></div>
 	<div class="origin-section__content reveal">
 		<p class="eyebrow">Природна мінеральна вода</p>
@@ -148,8 +154,7 @@
 </section>
 
 <section class="process-section reveal topo-bg">
-	<p class="eyebrow">Шлях PANACEA</p>
-	<h2>Від глибини<br />до вашого столу</h2>
+	<h2>Від джерела<br />до вашого столу</h2>
 	<div class="process-line"><span>Джерело</span><i>01</i><span>Контроль</span><i>02</i><span>Розлив</span></div>
 </section>
 
@@ -157,7 +162,7 @@
 	<div class="partner-section__photo"><img ngSrc="interface/horeca-partnership.webp" alt="PANACEA для закладів гостинності" fill /></div>
 	<div class="partner-section__copy reveal">
 	<p class="eyebrow">Для бізнесу</p>
-	<h2>Вода, що пасує<br />вашому простору</h2>
+	<h2>Вода, що доповнює<br />ваш простір</h2>
 	<p>Співпрацюємо з готелями, ресторанами, торговельними мережами та дистриб'юторами. PANACEA додає асортименту природне походження і впізнаваний характер.</p>
 	<a class="button" href="mailto:partners@panacea.ua">Стати партнером</a>
 	</div>

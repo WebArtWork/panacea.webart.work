@@ -13,8 +13,14 @@ interface ContactFormValue {
 
 type ContactSubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
+interface ProductPreview {
+	alt: string;
+	src: string;
+}
+
 @Component({
 	imports: [NgOptimizedImage, FormsModule],
+	host: { '(document:keydown.escape)': 'closeProductPreview()' },
 	templateUrl: './landing.component.html',
 	styleUrl: './landing.component.scss',
 })
@@ -23,6 +29,7 @@ export class LandingComponent {
 	readonly heroPosterSrc = signal('/interface/hero-video-poster.webp');
 	readonly contact: ContactFormValue = { name: '', phone: '', email: '', country: 'UA', message: '' };
 	readonly contactSubmitStatus = signal<ContactSubmitStatus>('idle');
+	readonly activeProductPreview = signal<ProductPreview | null>(null);
 	private readonly document = inject(DOCUMENT);
 	private readonly contactService = inject(ContactService);
 
@@ -48,6 +55,14 @@ export class LandingComponent {
 		} else {
 			this.contactSubmitStatus.set('error');
 		}
+	}
+
+	openProductPreview(src: string, alt: string): void {
+		this.activeProductPreview.set({ src, alt });
+	}
+
+	closeProductPreview(): void {
+		this.activeProductPreview.set(null);
 	}
 
 	constructor() {

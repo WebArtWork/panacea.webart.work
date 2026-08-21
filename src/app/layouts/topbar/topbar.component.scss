@@ -6,4 +6,5 @@
 .icon-button { color: #163b2d; font-size: 1.4rem; }
 .brand-mark { display: block; font-family: var(--ff-display); font-size: 1.35rem; font-weight: 700; letter-spacing: -.06em; }
 .mobile-menu { display: grid; gap: 1.1rem; border-bottom: 1px solid #e8ebe8; padding: 1.5rem; background: white; color: #163b2d; }
+@media (min-width: 768px) { .topbar nav a { font-size: .78rem; } }
 @media (max-width: 767px) { .topbar { min-height: 3.5rem; padding: .35rem .75rem; } .topbar img { width: 72px; height: auto; } .icon-button { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; font-size: 1.75rem; line-height: 1; } }
