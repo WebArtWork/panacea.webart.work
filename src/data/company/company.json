@@ -3,7 +3,7 @@
 	"name": "PANACEA",
 	"title": "PANACEA — природна мінеральна вода з Подільських Товтр",
 	"description": "Природна мінеральна вода з власного родовища ТОВ «Збручанські джерела». Вода, народжена в серці Подільських Товтр.",
-	"image": "/interface/hero-tovtry.webp",
+	"image": "/interface/bottling-facility.png",
 	"logo": "/logo-panacea.svg",
 	"siteUrl": "https://panacea.webart.work",
 	"lang": "uk",
@@ -11,7 +11,7 @@
 	"defaultSeo": {
 		"title": "PANACEA — вода, народжена в серці Подільських Товтр",
 		"description": "Природна мінеральна вода PANACEA з власного родовища ТОВ «Збручанські джерела», видобута з глибини 153 метрів.",
-		"image": "/interface/hero-tovtry.webp",
+		"image": "/interface/bottling-facility.png",
 		"robots": "index, follow"
 	}
 }
