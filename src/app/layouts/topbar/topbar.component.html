@@ -13,11 +13,17 @@
 		<img ngSrc="logo-panacea.svg" width="144" height="22" priority alt="PANACEA" />
 	</a>
 
-	<nav class="hidden items-center justify-end gap-7 md:flex" aria-label="Додаткова навігація">
-		<a href="#quality">Якість</a>
-		<a href="#partnership">Партнерам</a>
-		<a class="nav-cta" href="#contacts">Контакти</a>
-	</nav>
+	<div class="topbar__right">
+		<nav class="hidden items-center justify-end gap-7 md:flex" aria-label="Додаткова навігація">
+			<a href="#quality">Якість</a>
+			<a href="#partnership">Партнерам</a>
+			<a class="nav-cta" href="#contacts">Контакти</a>
+		</nav>
+		<div class="topbar__contacts" aria-label="Контакти PANACEA">
+			<a href="tel:+380977111077" aria-label="Зателефонувати у відділ збуту"><span class="material-symbols-outlined" aria-hidden="true">call</span></a>
+			<a href="https://www.instagram.com/panacea_mineral_water" target="_blank" rel="noopener noreferrer" aria-label="Instagram PANACEA"><span class="material-symbols-outlined" aria-hidden="true">photo_camera</span></a>
+		</div>
+	</div>
 </header>
 
 @if (menuOpen()) {

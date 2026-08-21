@@ -80,29 +80,52 @@ export class LandingComponent {
 			if (window.matchMedia('(max-width: 767px)').matches) {
 				this.heroPosterSrc.set('/interface/hero-video-mobile-poster.webp');
 			}
-			setTimeout(() => {
-				const videos = this.document.querySelectorAll<HTMLVideoElement>('.hero__video');
-				const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-				videos.forEach((video) => (reduceMotion ? video.pause() : video.play().catch(() => undefined)));
-			});
+			this.setupHeroPlayback();
+		});
+	}
+
+	private setupHeroPlayback(): void {
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const videos = this.document.querySelectorAll<HTMLVideoElement>('.hero__video');
+		const play = (video: HTMLVideoElement) => {
+			if (reduceMotion || this.document.visibilityState !== 'visible') return;
+			video.muted = true;
+			video.defaultMuted = true;
+			video.playsInline = true;
+			void video.play().catch(() => undefined);
+		};
+
+		videos.forEach((video) => {
+			if (reduceMotion) {
+				video.pause();
+				return;
+			}
+			video.addEventListener('loadeddata', () => play(video), { once: true });
+			video.addEventListener('canplay', () => play(video), { once: true });
+			play(video);
+		});
+
+		this.document.addEventListener('visibilitychange', () => {
+			if (this.document.visibilityState === 'visible') videos.forEach(play);
 		});
 	}
 
 	private setupParallax(): void {
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-		if (this.document.querySelectorAll('.product-row__image img').length === 0) return;
+		if (this.document.querySelectorAll('.product-row__image > img').length === 0) return;
 
 		const range = 22; // px of travel, kept subtle
+		const imageScale = 1;
 		let ticking = false;
 		// re-queried on every frame rather than captured once: NgOptimizedImage
 		// can replace the underlying <img> node after the initial paint, which
 		// would otherwise leave this tracking a detached element forever
 		const update = () => {
 			const vh = window.innerHeight;
-			this.document.querySelectorAll<HTMLElement>('.product-row__image img').forEach((img) => {
+			this.document.querySelectorAll<HTMLElement>('.product-row__image > img').forEach((img) => {
 				const rect = img.getBoundingClientRect();
 				const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-				img.style.transform = `translateY(${(progress * range).toFixed(1)}px)`;
+				img.style.transform = `translateY(${(progress * range).toFixed(1)}px) scale(${imageScale})`;
 			});
 			ticking = false;
 		};

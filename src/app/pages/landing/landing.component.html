@@ -1,5 +1,5 @@
 <section class="hero" aria-label="Природна вода PANACEA">
-	<video class="hero__video" autoplay muted loop playsinline disablepictureinpicture [attr.poster]="heroPosterSrc()" aria-hidden="true">
+	<video class="hero__video" autoplay muted loop playsinline preload="auto" disablepictureinpicture [attr.poster]="heroPosterSrc()" aria-hidden="true">
 		<source media="(max-width: 767px)" src="/interface/hero-video-mobile.webm" type="video/webm" />
 		<source media="(max-width: 767px)" src="/interface/hero-video-mobile.mp4" type="video/mp4" />
 		<source src="/interface/hero-video.webm" type="video/webm" />
@@ -9,18 +9,19 @@
 	<div class="hero__shade"></div>
 	<div class="hero__content" [class.hero__content--enter]="heroEntranceReady()">
 		<h1>Правильна вода<br />запорука довгого життя</h1>
-		<a class="button button--light" href="#source">Відкрити джерело</a>
+		<a class="button button--light" href="#contacts">Замовити</a>
 	</div>
 </section>
 
 <section id="source" class="statement reveal">
 	<p class="eyebrow">Подільські Товтри</p>
+	<img class="statement__mark" ngSrc="interface/brand-mark-dark.png" alt="" width="365" height="323" />
 	<h2>Природа створила.<br />Ми зберегли.</h2>
 	<p>Власне родовище, сучасне виробництво та багаторівневий контроль якості, щоб природна сила води залишалась незмінною від джерела до кожної пляшки.</p>
 </section>
 
 <section id="products" class="products" aria-label="Продукція PANACEA">
-	<div class="products__intro reveal topo-bg">
+	<div class="products__intro reveal topo-bg topo-bg--wide">
 		<h3>Лікувальна Arden</h3>
 		<p>Мінеральна вода Збручанського родовища з унікальним мінеральним складом, використовується у програмах питного лікування.</p>
 		<div class="ticker" aria-hidden="true">
@@ -31,9 +32,12 @@
 		</div>
 	</div>
 
-	<article class="product-row product-row--arden">
+	<article class="product-row product-row--arden product-row--glass">
 		<button class="product-row__image" type="button" (click)="openProductPreview('products/arden-2.png', 'PANACEA Arden у скляній пляшці')" aria-label="Збільшити PANACEA Arden у скляній пляшці">
 			<img ngSrc="products/arden-2.png" alt="PANACEA Arden у скляній пляшці" fill />
+			<span class="product-row__badges" aria-label="Логістичні дані: 8, 27, 4">
+				<span><img src="/interface/logistics-bottle-crate.png" alt="" /><b>×8</b><small>в упаковці</small></span><span><img src="/interface/logistics-pallet-layer.png" alt="" /><b>×27</b><small>упаковок</small></span><span><img src="/interface/logistics-pallet-stack.png" alt="" /><b>×4</b><small>палети</small></span>
+			</span>
 		</button>
 		<div class="product-row__copy">
 			<p class="eyebrow">Мінеральна вода</p>
@@ -42,6 +46,7 @@
 			<ul class="product-variants">
 				<li><strong>Скло 0,5 л</strong></li>
 			</ul>
+			<a class="button button--light product-row__order" href="#contacts">Замовити</a>
 		</div>
 	</article>
 
@@ -53,13 +58,17 @@
 			<ul class="product-variants">
 				<li><strong>Ж/б 0,5 л</strong></li>
 			</ul>
+			<a class="button button--light product-row__order" href="#contacts">Замовити</a>
 		</div>
 		<button class="product-row__image" type="button" (click)="openProductPreview('products/arden-1.png', 'PANACEA Arden у банці')" aria-label="Збільшити PANACEA Arden у банці">
 			<img ngSrc="products/arden-1.png" alt="PANACEA Arden у банці" fill />
+			<span class="product-row__badges" aria-label="Логістичні дані: 8, 27, 5">
+				<span><img src="/interface/logistics-bottle-crate.png" alt="" /><b>×8</b><small>в упаковці</small></span><span><img src="/interface/logistics-pallet-layer.png" alt="" /><b>×27</b><small>упаковок</small></span><span><img src="/interface/logistics-pallet-stack.png" alt="" /><b>×5</b><small>палет</small></span>
+			</span>
 		</button>
 	</article>
 
-	<div class="products__intro reveal topo-bg">
+	<div class="products__intro reveal topo-bg topo-bg--composition">
 		<h3>Столова Diamond</h3>
 		<p>Природна вода для щоденного вживання. Чистота, збалансований склад і якість у кожній пляшці.</p>
 		<div class="ticker" aria-hidden="true">
@@ -70,9 +79,12 @@
 		</div>
 	</div>
 
-	<article class="product-row product-row--diamond">
+	<article class="product-row product-row--diamond product-row--glass">
 		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-4.png', 'PANACEA Diamond у скляній пляшці')" aria-label="Збільшити PANACEA Diamond у скляній пляшці">
 			<img ngSrc="products/diamond-4.png" alt="PANACEA Diamond у скляній пляшці" fill />
+			<span class="product-row__badges" aria-label="Логістичні дані: 8, 27, 4">
+				<span><img src="/interface/logistics-bottle-crate.png" alt="" /><b>×8</b><small>в упаковці</small></span><span><img src="/interface/logistics-pallet-layer.png" alt="" /><b>×27</b><small>упаковок</small></span><span><img src="/interface/logistics-pallet-stack.png" alt="" /><b>×4</b><small>палети</small></span>
+			</span>
 		</button>
 		<div class="product-row__copy">
 			<p class="eyebrow">Природна вода</p>
@@ -81,10 +93,11 @@
 			<ul class="product-variants">
 				<li><strong>Скло 0,5 л</strong></li>
 			</ul>
+			<a class="button button--light product-row__order" href="#contacts">Замовити</a>
 		</div>
 	</article>
 
-	<article class="product-row product-row--diamond product-row--reverse">
+	<article class="product-row product-row--diamond product-row--glass product-row--reverse">
 		<div class="product-row__copy">
 			<p class="eyebrow">Природна вода</p>
 			<h2>PANACEA<br />Diamond</h2>
@@ -92,15 +105,22 @@
 			<ul class="product-variants">
 				<li><strong>Скло 0,5 л</strong></li>
 			</ul>
+			<a class="button button--light product-row__order" href="#contacts">Замовити</a>
 		</div>
 		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-5.png', 'PANACEA Diamond у скляній пляшці')" aria-label="Збільшити PANACEA Diamond у скляній пляшці">
 			<img ngSrc="products/diamond-5.png" alt="PANACEA Diamond у скляній пляшці" fill />
+			<span class="product-row__badges" aria-label="Логістичні дані: 8, 27, 4">
+				<span><img src="/interface/logistics-bottle-crate.png" alt="" /><b>×8</b><small>в упаковці</small></span><span><img src="/interface/logistics-pallet-layer.png" alt="" /><b>×27</b><small>упаковок</small></span><span><img src="/interface/logistics-pallet-stack.png" alt="" /><b>×4</b><small>палети</small></span>
+			</span>
 		</button>
 	</article>
 
 	<article class="product-row product-row--diamond">
 		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-1.png', 'PANACEA Diamond у банці')" aria-label="Збільшити PANACEA Diamond у банці">
 			<img ngSrc="products/diamond-1.png" alt="PANACEA Diamond у банці" fill />
+			<span class="product-row__badges" aria-label="Логістичні дані: 8, 27, 5">
+				<span><img src="/interface/logistics-bottle-crate.png" alt="" /><b>×8</b><small>в упаковці</small></span><span><img src="/interface/logistics-pallet-layer.png" alt="" /><b>×27</b><small>упаковок</small></span><span><img src="/interface/logistics-pallet-stack.png" alt="" /><b>×5</b><small>палет</small></span>
+			</span>
 		</button>
 		<div class="product-row__copy">
 			<p class="eyebrow">Природна вода</p>
@@ -109,6 +129,7 @@
 			<ul class="product-variants">
 				<li><strong>Ж/б 0,5 л</strong></li>
 			</ul>
+			<a class="button button--light product-row__order" href="#contacts">Замовити</a>
 		</div>
 	</article>
 
@@ -120,9 +141,13 @@
 			<ul class="product-variants">
 				<li><strong>Ж/б 0,5 л</strong></li>
 			</ul>
+			<a class="button button--light product-row__order" href="#contacts">Замовити</a>
 		</div>
 		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-2.png', 'PANACEA Diamond у банці')" aria-label="Збільшити PANACEA Diamond у банці">
 			<img ngSrc="products/diamond-2.png" alt="PANACEA Diamond у банці" fill />
+			<span class="product-row__badges" aria-label="Логістичні дані: 8, 27, 5">
+				<span><img src="/interface/logistics-bottle-crate.png" alt="" /><b>×8</b><small>в упаковці</small></span><span><img src="/interface/logistics-pallet-layer.png" alt="" /><b>×27</b><small>упаковок</small></span><span><img src="/interface/logistics-pallet-stack.png" alt="" /><b>×5</b><small>палет</small></span>
+			</span>
 		</button>
 	</article>
 </section>
@@ -153,7 +178,7 @@
 	<img ngSrc="interface/bottling-facility.png" alt="Лінія розливу води PANACEA" fill />
 </section>
 
-<section class="process-section reveal topo-bg">
+<section class="process-section reveal topo-bg topo-bg--droplet">
 	<h2>Від джерела<br />до вашого столу</h2>
 	<div class="process-line"><span>Джерело</span><i>01</i><span>Контроль</span><i>02</i><span>Розлив</span></div>
 </section>
