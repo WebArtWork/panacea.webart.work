@@ -20,6 +20,7 @@ type ContactSubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 })
 export class LandingComponent {
 	readonly heroEntranceReady = signal(false);
+	readonly heroPosterSrc = signal('/interface/hero-video-poster.webp');
 	readonly contact: ContactFormValue = { name: '', phone: '', email: '', country: 'UA', message: '' };
 	readonly contactSubmitStatus = signal<ContactSubmitStatus>('idle');
 	private readonly document = inject(DOCUMENT);
@@ -61,6 +62,9 @@ export class LandingComponent {
 			// hydration has touched the element, so trigger playback ourselves;
 			// swallow rejections (e.g. stricter autoplay policies) and just
 			// leave the poster frame showing
+			if (window.matchMedia('(max-width: 767px)').matches) {
+				this.heroPosterSrc.set('/interface/hero-video-mobile-poster.webp');
+			}
 			setTimeout(() => {
 				const videos = this.document.querySelectorAll<HTMLVideoElement>('.hero__video');
 				const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

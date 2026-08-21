@@ -1,5 +1,7 @@
 <section class="hero" aria-label="Природна вода PANACEA">
-	<video class="hero__video" autoplay muted loop playsinline disablepictureinpicture poster="/interface/hero-video-poster.webp" aria-hidden="true">
+	<video class="hero__video" autoplay muted loop playsinline disablepictureinpicture [attr.poster]="heroPosterSrc()" aria-hidden="true">
+		<source media="(max-width: 767px)" src="/interface/hero-video-mobile.webm" type="video/webm" />
+		<source media="(max-width: 767px)" src="/interface/hero-video-mobile.mp4" type="video/mp4" />
 		<source src="/interface/hero-video.webm" type="video/webm" />
 		<source src="/interface/hero-video.mp4" type="video/mp4" />
 		<img ngSrc="interface/hero-tovtry.webp" alt="Пагорби та ліси Подільських Товтр" fill priority />
@@ -13,10 +15,11 @@
 	</div>
 </section>
 
-<section id="source" class="statement reveal topo-bg">
+<section id="source" class="statement reveal">
 	<p class="eyebrow">Подільські Товтри</p>
 	<h2>Вода з місцем<br />свого походження</h2>
-	<p>Природа створила. Ми зберегли. Власне родовище, сучасне виробництво та багаторівневий контроль якості, щоб природна сила води залишалась незмінною від джерела до кожної пляшки.</p>
+	<p class="statement__lead">Природа створила. Ми зберегли.</p>
+	<p>Власне родовище, сучасне виробництво та багаторівневий контроль якості, щоб природна сила води залишалась незмінною від джерела до кожної пляшки.</p>
 </section>
 
 <section id="products" class="products" aria-label="Продукція PANACEA">
