@@ -50,15 +50,9 @@
 								"glob": "**/*",
 								"input": "src/assets",
 								"output": "/"
-							},
-							{
-								"glob": "**/*.json",
-								"input": "src/i18n",
-								"output": "/i18n/"
 							}
 						],
-						"styles": ["node_modules/@wawjs/ngx-ui/styles.css",
-					"src/styles.scss"],
+						"styles": ["src/styles.scss"],
 						"server": "src/main.server.ts",
 						"outputMode": "server",
 						"security": {
@@ -84,8 +78,8 @@
 								},
 								{
 									"type": "anyComponentStyle",
-									"maximumWarning": "8kB",
-									"maximumError": "15kB"
+									"maximumWarning": "12kB",
+									"maximumError": "18kB"
 								}
 							],
 							"outputHashing": "all"

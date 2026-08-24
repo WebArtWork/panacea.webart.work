@@ -10,8 +10,6 @@ import {
 	stripTitleSuffix,
 } from '@wawjs/ngx-default';
 import { provideNgxCore } from '@wawjs/ngx-core';
-import { provideTranslate } from '@wawjs/ngx-translate';
-import { provideNgxUi } from '@wawjs/ngx-ui';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { companyProfile } from './feature/company/company.data';
@@ -40,13 +38,7 @@ export const appConfig: ApplicationConfig = {
 		provideNgxDefaultSeo({
 			siteUrl: companyProfile.siteUrl,
 		}),
-		provideNgxUi(),
 		provideRouter(routes),
 		provideClientHydration(withEventReplay()),
-		provideTranslate({
-			defaultLanguage: environment.defaultLanguage,
-			languages: environment.languages,
-			folder: '/i18n/',
-		}),
 	],
 };

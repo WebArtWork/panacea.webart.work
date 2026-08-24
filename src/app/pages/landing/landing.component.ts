@@ -39,6 +39,7 @@ export class LandingComponent {
 		this.contactSubmitStatus.set('sending');
 		const { name, phone, email, country, message } = this.contact;
 		const text = [
+			'Сайт: Panacea',
 			name ? `Ім'я: ${name}` : null,
 			`Телефон: ${phone}`,
 			email ? `E-mail: ${email}` : null,

@@ -14,27 +14,23 @@
 		"@angular/platform-server": "22.1.0",
 		"@angular/router": "22.1.0",
 		"@angular/ssr": "22.1.2",
-		"@wawjs/ngx-default": "22.0.2",
 		"@wawjs/ngx-core": "22.0.3",
-		"@wawjs/ngx-translate": "22.0.3",
-		"@wawjs/ngx-ui": "22.0.3",
+		"@wawjs/ngx-default": "22.0.2",
 		"express": "5.1.0",
 		"rxjs": "7.8.0",
 		"tslib": "2.3.0"
 	},
 	"devDependencies": {
-		"@angular/compiler-cli": "22.1.0",
 		"@angular/build": "22.1.2",
 		"@angular/cli": "22.1.2",
+		"@angular/compiler-cli": "22.1.0",
 		"@tailwindcss/postcss": "4.1.12",
 		"@types/express": "5.0.1",
 		"@types/node": "25.9.3",
-		"ng-packagr": "22.0.0",
 		"postcss": "8.5.26",
 		"prettier": "3.8.1",
 		"tailwindcss": "4.1.12",
-		"typescript": "6.0.3",
-		"vitest": "4.1.8"
+		"typescript": "6.0.3"
 	},
 	"overrides": {
 		"esbuild": "0.28.1",
