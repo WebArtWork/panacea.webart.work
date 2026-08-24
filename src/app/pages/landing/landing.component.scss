@@ -15,6 +15,7 @@
 .statement { max-width: 44rem; margin: auto; padding: clamp(5.5rem, 11vw, 10rem) 1.5rem; text-align: center; }
 .statement__mark { display: block; width: clamp(2.75rem, 5vw, 4.25rem); height: auto; margin: 0 auto 1rem; }
 .statement h2, .process-section h2, .partner-section h2, .quality-section h2 { font-size: clamp(3.3rem, 6.2vw, 6.2rem); line-height: .8; }
+.statement h2 { line-height: 1.05; }
 .statement > p:last-child { max-width: 25rem; margin: 1.35rem auto 0; color: #405a4e; font-size: .7rem; line-height: 1.8; }
 .products { display: grid; max-width: 1400px; gap: clamp(1.5rem, 3vw, 3rem); margin: 0 auto clamp(6rem, 12vw, 11rem); }
 .product-row { display: grid; min-height: 22rem; --enter-x: -4rem; }
@@ -83,7 +84,7 @@
 .topo-bg::before { position: absolute; z-index: -1; top: -2rem; bottom: -2rem; left: 50%; width: 100vw; background: center 100% / contain no-repeat; content: ''; opacity: .1; pointer-events: none; transform: translateX(-50%); }
 .topo-bg--wide::before { background-image: url('/interface/water-splash-wide.png'); }
 .topo-bg--composition::before { background-image: url('/interface/water-splash-wide.png'); }
-.topo-bg--droplet::before { background-image: url('/interface/water-splash-wide.png'); }
+.topo-bg--droplet::before { background-image: url('/interface/water-splash-wave.png'); }
 .reveal { transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1); }
 .reveal.pre-enter { opacity: 0; transform: translateY(1.75rem); }
 .reveal--delay { transition-delay: .12s; }
@@ -98,13 +99,17 @@
 
 @media (min-width: 768px) {
 	.products__intro + .product-row { margin-top: clamp(1.5rem, 3vw, 3rem); }
+	.topo-bg::before { background-size: 60% auto; }
 	.hero__content { align-items: flex-end; justify-content: flex-start; padding: clamp(2rem, 5vw, 5rem) clamp(1.75rem, 3vw, 3rem); text-align: right; }
-	.hero h1 { max-width: 48rem; font-size: clamp(2.6rem, 5.2vw, 5.35rem); line-height: .84; }
-	.hero .button { position: absolute; right: clamp(1.75rem, 3vw, 3rem); bottom: clamp(2rem, 5vw, 5rem); margin: 0; padding: .75rem 1.3rem; font-size: .6rem; }
+	.hero h1 { max-width: 48rem; font-size: clamp(2.6rem, 5.2vw, 5.35rem); line-height: .84; letter-spacing: .015em; }
+	.hero .button { position: absolute; right: clamp(1.75rem, 3vw, 3rem); bottom: clamp(2rem, 5vw, 5rem); margin: 0; padding: 1.5rem 2.6rem; font-size: 1.2rem; }
 	.eyebrow { font-size: .63rem; }
 	.button { font-size: .6rem; }
-	.statement > p:last-child { font-size: .85rem; }
-	.product-row__copy > p:not(.eyebrow) { font-size: .82rem; }
+	.statement { padding-top: clamp(3.5rem, 7vw, 6rem); }
+	.statement__mark { width: clamp(4rem, 7vw, 6rem); }
+	.statement h2 { margin-bottom: 1rem; }
+	.statement > p:last-child { font-size: 1.05rem; }
+	.product-row__copy > p:not(.eyebrow) { font-size: 1.64rem; }
 	.product-variants strong { font-size: .68rem; }
 	.origin-section__content > p:not(.eyebrow) { font-size: .9rem; }
 	.products__intro p { font-size: .95rem; }
