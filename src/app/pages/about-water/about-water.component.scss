@@ -1,0 +1,13 @@
+:host { display: block; background: #fff; color: #163b2d; }
+.eyebrow { margin-bottom: .8rem; font-size: .52rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.about-section { padding-top: clamp(2rem, 4vw, 3rem); padding-bottom: clamp(2rem, 4vw, 3rem); }
+.about-section__media { min-height: 0; }
+.about-section__media img { width: 100%; height: auto; object-fit: initial; }
+
+@media (min-width: 768px) {
+	.about-section { align-items: center; }
+}
+
+@media (max-width: 767px) {
+	.eyebrow { margin-bottom: .55rem; font-size: .46rem; }
+}

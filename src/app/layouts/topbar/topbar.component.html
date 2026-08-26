@@ -4,22 +4,21 @@
 	</button>
 
 	<nav class="hidden items-center gap-7 md:flex" aria-label="Основна навігація">
-		<a class="nav-button" href="#about">Про компанію</a>
-		<a href="#source">Про воду</a>
-		<a href="#our-source">Наше джерело</a>
-		<a href="#products">Продукція</a>
+		<a class="nav-button" routerLink="/about-company">Про компанію</a>
+		<a routerLink="/about-water">Про воду</a>
+		<a routerLink="/" fragment="products">Продукція</a>
 	</nav>
 
 	<a class="brand-link" routerLink="/" aria-label="PANACEA — головна сторінка">
-		<img class="brand-mark-icon" ngSrc="interface/brand-mark-dark.png" width="365" height="323" priority alt="" />
+		<img class="brand-mark-icon" ngSrc="interface/brand-mark-gold.webp" width="651" height="622" priority alt="" />
 		<img class="brand-wordmark" ngSrc="logo-panacea.svg" width="144" height="22" priority alt="PANACEA" />
 	</a>
 
 	<div class="topbar__right">
 		<nav class="hidden items-center justify-end gap-7 md:flex" aria-label="Додаткова навігація">
-			<a href="#quality" (click)="openCertificates($event)">Якість</a>
-			<a href="#partnership">Партнерам</a>
-			<a class="nav-cta" href="#contacts">Контакти</a>
+			<a href="/#quality" (click)="openCertificates($event)">Якість</a>
+			<a routerLink="/" fragment="partnership">Партнери</a>
+			<a class="nav-cta" routerLink="/" fragment="contacts">Контакти</a>
 		</nav>
 		<div class="topbar__contacts" aria-label="Контакти PANACEA">
 			<a href="tel:+380977111077" aria-label="Зателефонувати у відділ збуту"><span class="material-symbols-outlined" aria-hidden="true">call</span></a>
@@ -36,13 +35,12 @@
 
 @if (menuOpen()) {
 	<nav class="mobile-menu md:hidden" aria-label="Mobile navigation">
-		<a class="nav-button" href="#about" (click)="closeMenu()">Про компанію</a>
-		<a href="#source" (click)="closeMenu()">Про воду</a>
-		<a href="#our-source" (click)="closeMenu()">Наше джерело</a>
-		<a href="#products" (click)="closeMenu()">Продукція</a>
-		<a href="#quality" (click)="openCertificates($event)">Якість</a>
-		<a href="#partnership" (click)="closeMenu()">Партнерам</a>
-		<a href="#contacts" (click)="closeMenu()">Контакти</a>
+		<a class="nav-button" routerLink="/about-company" (click)="closeMenu()">Про компанію</a>
+		<a routerLink="/about-water" (click)="closeMenu()">Про воду</a>
+		<a routerLink="/" fragment="products" (click)="closeMenu()">Продукція</a>
+		<a href="/#quality" (click)="openCertificates($event)">Якість</a>
+		<a routerLink="/" fragment="partnership" (click)="closeMenu()">Партнери</a>
+		<a routerLink="/" fragment="contacts" (click)="closeMenu()">Контакти</a>
 	</nav>
 }
 

@@ -6,7 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '../..');
 const outputDirs = [path.join(rootDir, 'src/assets'), path.join(rootDir, 'dist/app/browser')];
 
-const staticRoutes = ['/'];
+const staticRoutes = ['/', '/about-company', '/about-water'];
 
 const company = await readJson('src/data/company/company.json');
 const siteUrl = trimTrailingSlash(company.siteUrl || 'https://example.com');

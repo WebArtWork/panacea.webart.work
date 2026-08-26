@@ -16,7 +16,7 @@
 .icon-button { color: #163b2d; font-size: 1.4rem; }
 .brand-mark { display: block; font-family: var(--ff-display); font-size: 1.35rem; font-weight: 700; letter-spacing: -.06em; }
 .brand-link { display: flex; align-items: center; gap: .5rem; }
-.brand-mark-icon { width: 1.9rem; height: auto; }
+.brand-mark-icon { width: 2.8rem; height: auto; }
 .brand-wordmark { width: 144px; height: auto; }
 .mobile-menu { display: grid; gap: 1.1rem; border-bottom: 1px solid #e8ebe8; padding: 1.5rem; background: white; color: #163b2d; }
 .certificates { position: fixed; z-index: 100; inset: 0; display: grid; width: 100vw; height: 100vh; place-items: center; background: rgb(8 31 23 / .82); padding: clamp(1rem, 5vw, 3rem); overflow-y: auto; }
@@ -27,4 +27,4 @@
 .certificates__grid figcaption { margin-top: .6rem; color: #163b2d; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
 @media (min-width: 768px) { .certificates__grid { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 768px) { .topbar nav a { font-size: .78rem; } }
-@media (max-width: 767px) { .topbar { min-height: 3.5rem; gap: .5rem; padding: .35rem .75rem; } .topbar__right { gap: .4rem; } .topbar__contacts { gap: .35rem; } .topbar__contacts a { width: 1.8rem; height: 1.8rem; } .topbar__contacts .material-symbols-outlined { font-size: .92rem; } .topbar__contacts .icon-instagram { width: .92rem; height: .92rem; } .icon-button { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; font-size: 1.75rem; line-height: 1; } .brand-mark-icon { width: 1.7rem; } .brand-wordmark { width: 108px; } }
+@media (max-width: 767px) { .topbar { min-height: 3.5rem; gap: .5rem; padding: .35rem .75rem; } .topbar__right { gap: .4rem; } .topbar__contacts { gap: .35rem; } .topbar__contacts a { width: 1.8rem; height: 1.8rem; } .topbar__contacts .material-symbols-outlined { font-size: .92rem; } .topbar__contacts .icon-instagram { width: .92rem; height: .92rem; } .icon-button { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; font-size: 1.75rem; line-height: 1; } .brand-mark-icon { width: 2.4rem; } .brand-wordmark { width: 108px; } }

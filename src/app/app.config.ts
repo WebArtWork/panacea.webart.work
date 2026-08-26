@@ -2,7 +2,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessC
 
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import {
 	buildAbsoluteUrl,
 	buildSeoTitleSuffix,
@@ -38,7 +38,10 @@ export const appConfig: ApplicationConfig = {
 		provideNgxDefaultSeo({
 			siteUrl: companyProfile.siteUrl,
 		}),
-		provideRouter(routes),
+		provideRouter(
+			routes,
+			withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' }),
+		),
 		provideClientHydration(withEventReplay()),
 	],
 };

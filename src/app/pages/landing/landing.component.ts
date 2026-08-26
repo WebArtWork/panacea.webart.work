@@ -1,6 +1,8 @@
 import { DOCUMENT, NgOptimizedImage } from '@angular/common';
 import { afterNextRender, Component, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule, NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ContactService } from '../../feature/contact/contact.service';
 
 interface ContactFormValue {
@@ -52,6 +54,7 @@ export class LandingComponent {
 	readonly activeProductSpecs = signal<ProductSpecs | null>(null);
 	private readonly document = inject(DOCUMENT);
 	private readonly contactService = inject(ContactService);
+	private readonly route = inject(ActivatedRoute);
 
 	readonly ardenGlassSpecs: ProductSpecs = {
 		title: '"PANACEA Arden" С/б 0,5 л мінеральна природна лікувальна-столова вода "ЗБРУЧАНСЬКА" Сильногазована',
@@ -241,6 +244,19 @@ export class LandingComponent {
 				this.heroPosterSrc.set('/interface/hero-video-mobile-poster.webp');
 			}
 			this.setupHeroPlayback();
+		});
+
+		// the router's built-in anchorScrolling relies on NgZone stability,
+		// which never fires in a zoneless app, so fragment links (including
+		// cross-route ones like /about-water -> /#products) silently fail to
+		// scroll without this manual fallback
+		this.route.fragment.pipe(takeUntilDestroyed()).subscribe((fragment) => {
+			if (!fragment) return;
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => {
+					this.document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				});
+			});
 		});
 	}
 

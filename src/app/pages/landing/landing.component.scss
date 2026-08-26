@@ -1,5 +1,6 @@
 :host { display: block; overflow: hidden; background: #fff; color: #163b2d; }
-.hero { position: relative; min-height: clamp(24rem, 42vw, 38rem); margin: clamp(1rem, 3vw, 3.5rem) auto 0; overflow: hidden; }
+#source, #products, #partnership, #contacts { scroll-margin-top: 4.75rem; }
+.hero { position: relative; min-height: clamp(24rem, 42vw, 38rem); margin: 0 auto; overflow: hidden; }
 .landscape-break > img, .partner-section__photo img { object-fit: cover; }
 .hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(8 31 23 / .68), rgb(8 31 23 / .2) 58%, transparent); }
@@ -12,21 +13,11 @@
 .button--light { border-color: var(--c-primary); background: linear-gradient(135deg, var(--c-primary), var(--c-primary-hover)); box-shadow: 0 .4rem 1.2rem rgb(0 0 0 / .22); color: white; transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease, letter-spacing .25s ease, transform .25s ease; }
 .button--light:hover, .button--light:focus-visible { border-color: var(--c-primary); background: linear-gradient(135deg, #f5fbf8, #cfe6dc); box-shadow: 0 .55rem 1.5rem rgb(0 0 0 / .32); color: var(--c-primary); letter-spacing: .14em; transform: translateY(-2px); }
 .hero .button--light, .origin-section .button--light { border-color: #2563eb; background: linear-gradient(135deg, #3b82f6, #1d4ed8); box-shadow: 0 0 1.4rem rgb(56 130 246 / .65), 0 0 2.8rem rgb(56 130 246 / .4); }
-.about-section { display: grid; gap: 2rem; max-width: 68rem; margin: 0 auto; padding: clamp(2.5rem, 6vw, 5rem) 1.5rem; }
-.about-section__media { position: relative; min-height: 16rem; border-radius: .5rem; overflow: hidden; }
-.about-section__media img { object-fit: cover; }
-.about-section__copy p { margin-top: .9rem; color: #405a4e; font-size: .78rem; line-height: 1.8; }
-.about-section__copy p:first-of-type { margin-top: .3rem; }
-.about-section__copy strong { color: #163b2d; }
 .statement { max-width: 44rem; margin: auto; padding: clamp(5.5rem, 11vw, 10rem) 1.5rem; text-align: center; }
 .statement__mark { display: block; width: clamp(2.75rem, 5vw, 4.25rem); height: auto; margin: 0 auto 1rem; }
 .statement h2, .process-section h2, .partner-section h2, .quality-section h2 { font-size: clamp(3.3rem, 6.2vw, 6.2rem); line-height: .8; }
 .statement h2 { line-height: 1.05; }
 .statement__intro { max-width: 25rem; margin: 1.35rem auto 0; color: #405a4e; font-size: .7rem; line-height: 1.8; }
-.statement__details { max-width: 34rem; margin: 2rem auto 0; text-align: left; }
-.statement__details p { margin-top: .9rem; color: #405a4e; font-size: .78rem; line-height: 1.8; }
-.statement__details p:first-child { margin-top: 0; }
-.statement__details strong { color: #163b2d; }
 .products { display: grid; max-width: 1400px; gap: clamp(1.5rem, 3vw, 3rem); margin: 0 auto clamp(6rem, 12vw, 11rem); }
 .product-row { display: grid; min-height: 22rem; --enter-x: -4rem; }
 .product-row--reverse { --enter-x: 4rem; }
@@ -34,7 +25,6 @@
 .product-row--arden .product-row__image { background: #2c5940; }
 .product-row__image > img { --product-scale: 1; object-fit: contain; padding: clamp(1.5rem, 4vw, 3rem); will-change: transform; }
 .product-row--can .product-row__image > img { --product-scale: .76; transform: scale(var(--product-scale)); }
-.product-row--diamond.product-row--can .product-row__image { background: #050608; }
 .product-row__badges { position: absolute; top: 50%; left: clamp(1rem, 3vw, 2.5rem); z-index: 1; display: grid; gap: .55rem; transform: translateY(-50%); color: currentColor; text-align: left; }
 .product-row__badges > span { position: relative; display: flex; min-width: 7rem; flex-direction: column; justify-content: center; border: 1px solid currentColor; background: rgb(255 255 255 / .94); padding: .5rem .65rem .5rem 3.3rem; color: #163b2d; box-shadow: 0 .35rem .9rem rgb(0 0 0 / .12); }
 .product-row__badges img { position: absolute; top: 50%; left: .55rem; display: block !important; width: 2.4rem !important; height: 2.4rem !important; max-width: none; padding: 0 !important; transform: translateY(-50%) !important; object-fit: contain; }
@@ -127,11 +117,6 @@
 
 @media (min-width: 768px) {
 	.hero { min-height: clamp(28rem, 65vw, 52rem); }
-	.about-section { grid-template-columns: minmax(16rem, .9fr) minmax(0, 1.4fr); align-items: stretch; gap: 3rem; }
-	.about-section__media { min-height: 100%; }
-	.about-section__copy p { font-size: .85rem; }
-	.about-section--reverse .about-section__media { order: 2; }
-	.about-section--reverse .about-section__copy { order: 1; }
 	.products__intro + .product-row { margin-top: clamp(1.5rem, 3vw, 3rem); }
 	.topo-bg::before { background-size: 100% auto; }
 	.products__intro h3 { font-size: clamp(2.6rem, 4.5vw, 3.4rem); }
@@ -145,7 +130,6 @@
 	.statement__mark { width: clamp(4rem, 7vw, 6rem); }
 	.statement h2 { margin-bottom: 1rem; }
 	.statement__intro { font-size: 1.05rem; }
-	.statement__details p { font-size: .85rem; }
 	.product-row__copy > p:not(.eyebrow) { font-size: 1.64rem; }
 	.product-variants strong { font-size: .68rem; }
 	.origin-section__content > p:not(.eyebrow) { font-size: .9rem; }
@@ -175,6 +159,7 @@
 }
 
 @media (max-width: 767px) {
+	#source, #products, #partnership, #contacts { scroll-margin-top: 3.5rem; }
 	.hero { min-height: calc(100dvh - 3.5rem); margin: 0; }
 	.hero__content { padding: 1.5rem 1.15rem 5rem; }
 	.hero h1 { max-width: 100%; font-size: clamp(2rem, 9.5vw, 2.8rem); letter-spacing: .015em; white-space: nowrap; }
@@ -189,8 +174,6 @@
 	.statement h2, .process-section h2, .partner-section h2, .quality-section h2 { font-size: 3.05rem; }
 	.statement h2 { margin-bottom: .5rem; font-size: clamp(2.1rem, 9vw, 3.05rem); line-height: 1.05; white-space: nowrap; }
 	.statement__intro { max-width: 22rem; margin-top: 1.5rem; font-size: .992rem; line-height: 1.65; }
-	.statement__details { max-width: 22rem; }
-	.statement__details p { font-size: .8rem; }
 	.products { gap: 2.5rem; margin: 0 .5rem 4.5rem; }
 	.products__intro { padding: 2.5rem 1.15rem; }
 	.products__intro h3 { font-size: clamp(2.1rem, 9vw, 3.05rem); }
