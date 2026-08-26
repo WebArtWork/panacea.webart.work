@@ -10,6 +10,9 @@
 .topbar nav a, .mobile-menu a { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color .2s ease; }
 .topbar nav a:hover, .mobile-menu a:hover { color: #8d4230; }
 .nav-cta { border-bottom: 1px solid currentColor; padding-bottom: .25rem; }
+.nav-button { border: 1px solid #163b2d; border-radius: 999px; padding: .45rem .9rem; transition: background .2s ease, color .2s ease; }
+.nav-button:hover { background: #163b2d; color: white; }
+.mobile-menu .nav-button { justify-self: start; }
 .icon-button { color: #163b2d; font-size: 1.4rem; }
 .brand-mark { display: block; font-family: var(--ff-display); font-size: 1.35rem; font-weight: 700; letter-spacing: -.06em; }
 .brand-link { display: flex; align-items: center; gap: .5rem; }

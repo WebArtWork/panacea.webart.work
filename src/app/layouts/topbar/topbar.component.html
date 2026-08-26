@@ -4,7 +4,7 @@
 	</button>
 
 	<nav class="hidden items-center gap-7 md:flex" aria-label="Основна навігація">
-		<a href="#about">Про компанію</a>
+		<a class="nav-button" href="#about">Про компанію</a>
 		<a href="#source">Про воду</a>
 		<a href="#our-source">Наше джерело</a>
 		<a href="#products">Продукція</a>
@@ -36,7 +36,7 @@
 
 @if (menuOpen()) {
 	<nav class="mobile-menu md:hidden" aria-label="Mobile navigation">
-		<a href="#about" (click)="closeMenu()">Про компанію</a>
+		<a class="nav-button" href="#about" (click)="closeMenu()">Про компанію</a>
 		<a href="#source" (click)="closeMenu()">Про воду</a>
 		<a href="#our-source" (click)="closeMenu()">Наше джерело</a>
 		<a href="#products" (click)="closeMenu()">Продукція</a>

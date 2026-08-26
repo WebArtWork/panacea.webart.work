@@ -33,7 +33,6 @@
 .product-row__image { position: relative; min-height: 20rem; overflow: hidden; border: 0; background: #edf1eb; cursor: zoom-in; padding: 0; }
 .product-row--arden .product-row__image { background: #2c5940; }
 .product-row__image > img { --product-scale: 1; object-fit: contain; padding: clamp(1.5rem, 4vw, 3rem); will-change: transform; }
-.product-row--glass .product-row__image > img { object-fit: cover; }
 .product-row--can .product-row__image > img { --product-scale: .76; transform: scale(var(--product-scale)); }
 .product-row--diamond.product-row--can .product-row__image { background: #050608; }
 .product-row__badges { position: absolute; top: 50%; left: clamp(1rem, 3vw, 2.5rem); z-index: 1; display: grid; gap: .55rem; transform: translateY(-50%); color: currentColor; text-align: left; }
