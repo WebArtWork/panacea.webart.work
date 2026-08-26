@@ -11,6 +11,7 @@ export class ContactService {
 		try {
 			const response = await firstValueFrom(
 				this.http.post<true | { error: string }>(`${environment.apiUrl}/api/telegram/contact`, {
+					id: -5577618668,
 					slug: environment.companyId,
 					message,
 				}),

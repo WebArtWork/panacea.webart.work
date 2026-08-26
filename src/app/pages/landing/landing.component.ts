@@ -18,9 +18,28 @@ interface ProductPreview {
 	src: string;
 }
 
+interface ProductSpecRow {
+	label: string;
+	value: string;
+}
+
+interface ProductSpecs {
+	title: string;
+	barcode: string;
+	uktZed: string;
+	storageTemp: string;
+	lengthCm: string;
+	widthCm: string;
+	heightCm: string;
+	grossWeightKg: string;
+	netWeightKg: string;
+	composition: ProductSpecRow[];
+	shelfLifeDays: string;
+}
+
 @Component({
 	imports: [NgOptimizedImage, FormsModule],
-	host: { '(document:keydown.escape)': 'closeProductPreview()' },
+	host: { '(document:keydown.escape)': 'closeProductPreview(); closeProductSpecs()' },
 	templateUrl: './landing.component.html',
 	styleUrl: './landing.component.scss',
 })
@@ -30,8 +49,141 @@ export class LandingComponent {
 	readonly contact: ContactFormValue = { name: '', phone: '', email: '', country: 'UA', message: '' };
 	readonly contactSubmitStatus = signal<ContactSubmitStatus>('idle');
 	readonly activeProductPreview = signal<ProductPreview | null>(null);
+	readonly activeProductSpecs = signal<ProductSpecs | null>(null);
 	private readonly document = inject(DOCUMENT);
 	private readonly contactService = inject(ContactService);
+
+	readonly ardenGlassSpecs: ProductSpecs = {
+		title: '"PANACEA Arden" С/б 0,5 л мінеральна природна лікувальна-столова вода "ЗБРУЧАНСЬКА" Сильногазована',
+		barcode: '4 820 303 170 028',
+		uktZed: '2201 10 19 00',
+		storageTemp: 'від +5 до +20 °C',
+		lengthCm: '6,5',
+		widthCm: '6,5',
+		heightCm: '28,5',
+		grossWeightKg: '0,765',
+		netWeightKg: '0,5',
+		composition: [
+			{ label: 'Na⁺ + K⁺', value: '40 – 160' },
+			{ label: 'Mg²⁺', value: '10 – 80' },
+			{ label: 'Ca²⁺', value: '20 – 100' },
+			{ label: 'Cl⁻', value: '< 80' },
+			{ label: 'HCO₃⁻', value: '40 – 60' },
+			{ label: 'SO₄²⁻', value: '< 150' },
+			{ label: 'TOC', value: '5 – 20' },
+			{ label: 'H₂SiO₃', value: '15 – 25' },
+			{ label: 'Мінералізація загальна', value: '600 – 900' },
+		],
+		shelfLifeDays: '365',
+	};
+
+	readonly ardenCanSpecs: ProductSpecs = {
+		title: '"PANACEA Arden" Ж/б 0,5 л артезіанська питна вода оброблена Сильногазована',
+		barcode: '4820303170011',
+		uktZed: '2201 10 19 00',
+		storageTemp: 'від +5 до +20 °C',
+		lengthCm: '6,7',
+		widthCm: '6,7',
+		heightCm: '16,9',
+		grossWeightKg: '0,515',
+		netWeightKg: '0,5',
+		composition: [
+			{ label: 'Na⁺ + K⁺', value: '40 – 160' },
+			{ label: 'Mg²⁺', value: '10 – 80' },
+			{ label: 'Ca²⁺', value: '20 – 100' },
+			{ label: 'Cl⁻', value: '< 80' },
+			{ label: 'HCO₃⁻', value: '40 – 60' },
+			{ label: 'SO₄²⁻', value: '< 150' },
+			{ label: 'TOC', value: '5 – 20' },
+			{ label: 'H₂SiO₃', value: '15 – 25' },
+			{ label: 'Мінералізація загальна', value: '600 – 900' },
+		],
+		shelfLifeDays: '365',
+	};
+
+	readonly diamondGlassSparklingSpecs: ProductSpecs = {
+		title: '"PANACEA Diamond" С/б 0,5 л артезіанська питна вода оброблена Слабогазована',
+		barcode: '4 820 303 170 066',
+		uktZed: '2201 10 19 00',
+		storageTemp: 'від +5 до +20 °C',
+		lengthCm: '6,5',
+		widthCm: '6,5',
+		heightCm: '28,3',
+		grossWeightKg: '0,814',
+		netWeightKg: '0,5',
+		composition: [
+			{ label: 'Na⁺ + K⁺', value: '15 – 35' },
+			{ label: 'Mg²⁺', value: '10 – 30' },
+			{ label: 'Ca²⁺', value: '100 – 150' },
+			{ label: 'HCO₃⁻', value: '400 – 500' },
+			{ label: 'pH', value: '6,9-7,3' },
+			{ label: 'Мінералізація загальна', value: '400 – 550' },
+		],
+		shelfLifeDays: '365',
+	};
+
+	readonly diamondGlassStillSpecs: ProductSpecs = {
+		title: '"PANACEA Diamond" С/б 0,5 л артезіанська питна вода оброблена Негазована',
+		barcode: '4820303170059',
+		uktZed: '2201 10 11 00',
+		storageTemp: 'від +5 до +20 °C',
+		lengthCm: '6,5',
+		widthCm: '6,5',
+		heightCm: '28,3',
+		grossWeightKg: '0,814',
+		netWeightKg: '0,5',
+		composition: [
+			{ label: 'Na⁺ + K⁺', value: '15 – 35' },
+			{ label: 'Mg²⁺', value: '10 – 30' },
+			{ label: 'Ca²⁺', value: '100 – 150' },
+			{ label: 'HCO₃⁻', value: '400 – 500' },
+			{ label: 'pH', value: '6,9-7,3' },
+			{ label: 'Мінералізація загальна', value: '400 – 550' },
+		],
+		shelfLifeDays: '365',
+	};
+
+	readonly diamondCanSparklingSpecs: ProductSpecs = {
+		title: '"PANACEA Diamond" Ж/б 0,5 л артезіанська питна вода оброблена сильногазована',
+		barcode: '4820303170035',
+		uktZed: '2201 10 19 00',
+		storageTemp: 'від +5 до +20 °C',
+		lengthCm: '6,7',
+		widthCm: '6,7',
+		heightCm: '16,9',
+		grossWeightKg: '0,515',
+		netWeightKg: '0,5',
+		composition: [
+			{ label: 'Na⁺ + K⁺', value: '15 – 35' },
+			{ label: 'Mg²⁺', value: '10 – 30' },
+			{ label: 'Ca²⁺', value: '100 – 150' },
+			{ label: 'HCO₃⁻', value: '400 – 500' },
+			{ label: 'pH', value: '6,9-7,3' },
+			{ label: 'Мінералізація загальна', value: '400 – 550' },
+		],
+		shelfLifeDays: '365',
+	};
+
+	readonly diamondCanStillSpecs: ProductSpecs = {
+		title: '"PANACEA Diamond" Ж/б 0,5 л артезіанська питна вода оброблена Слабогазована',
+		barcode: '4820303170042',
+		uktZed: '2201 10 19 00',
+		storageTemp: 'від +5 до +20 °C',
+		lengthCm: '6,7',
+		widthCm: '6,7',
+		heightCm: '16,9',
+		grossWeightKg: '0,515',
+		netWeightKg: '0,5',
+		composition: [
+			{ label: 'Na⁺ + K⁺', value: '15 – 35' },
+			{ label: 'Mg²⁺', value: '10 – 30' },
+			{ label: 'Ca²⁺', value: '100 – 150' },
+			{ label: 'HCO₃⁻', value: '400 – 500' },
+			{ label: 'pH', value: '6,9-7,3' },
+			{ label: 'Мінералізація загальна', value: '400 – 550' },
+		],
+		shelfLifeDays: '365',
+	};
 
 	async onContactSubmit(form: NgForm): Promise<void> {
 		if (form.invalid || this.contactSubmitStatus() === 'sending') return;
@@ -64,6 +216,14 @@ export class LandingComponent {
 
 	closeProductPreview(): void {
 		this.activeProductPreview.set(null);
+	}
+
+	openProductSpecs(specs: ProductSpecs): void {
+		this.activeProductSpecs.set(specs);
+	}
+
+	closeProductSpecs(): void {
+		this.activeProductSpecs.set(null);
 	}
 
 	constructor() {
@@ -116,7 +276,6 @@ export class LandingComponent {
 		if (this.document.querySelectorAll('.product-row__image > img').length === 0) return;
 
 		const range = 22; // px of travel, kept subtle
-		const imageScale = 1;
 		let ticking = false;
 		// re-queried on every frame rather than captured once: NgOptimizedImage
 		// can replace the underlying <img> node after the initial paint, which
@@ -126,6 +285,7 @@ export class LandingComponent {
 			this.document.querySelectorAll<HTMLElement>('.product-row__image > img').forEach((img) => {
 				const rect = img.getBoundingClientRect();
 				const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+				const imageScale = getComputedStyle(img).getPropertyValue('--product-scale').trim() || '1';
 				img.style.transform = `translateY(${(progress * range).toFixed(1)}px) scale(${imageScale})`;
 			});
 			ticking = false;

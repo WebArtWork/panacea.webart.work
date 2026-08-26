@@ -4,18 +4,20 @@
 	</button>
 
 	<nav class="hidden items-center gap-7 md:flex" aria-label="Основна навігація">
+		<a href="#about">Про компанію</a>
 		<a href="#source">Про воду</a>
-		<a href="#source">Наше джерело</a>
+		<a href="#our-source">Наше джерело</a>
 		<a href="#products">Продукція</a>
 	</nav>
 
-	<a routerLink="/" aria-label="PANACEA — головна сторінка">
-		<img ngSrc="logo-panacea.svg" width="144" height="22" priority alt="PANACEA" />
+	<a class="brand-link" routerLink="/" aria-label="PANACEA — головна сторінка">
+		<img class="brand-mark-icon" ngSrc="interface/brand-mark-dark.png" width="365" height="323" priority alt="" />
+		<img class="brand-wordmark" ngSrc="logo-panacea.svg" width="144" height="22" priority alt="PANACEA" />
 	</a>
 
 	<div class="topbar__right">
 		<nav class="hidden items-center justify-end gap-7 md:flex" aria-label="Додаткова навігація">
-			<a href="#quality">Якість</a>
+			<a href="#quality" (click)="openCertificates($event)">Якість</a>
 			<a href="#partnership">Партнерам</a>
 			<a class="nav-cta" href="#contacts">Контакти</a>
 		</nav>
@@ -34,11 +36,30 @@
 
 @if (menuOpen()) {
 	<nav class="mobile-menu md:hidden" aria-label="Mobile navigation">
+		<a href="#about" (click)="closeMenu()">Про компанію</a>
 		<a href="#source" (click)="closeMenu()">Про воду</a>
-		<a href="#source" (click)="closeMenu()">Наше джерело</a>
+		<a href="#our-source" (click)="closeMenu()">Наше джерело</a>
 		<a href="#products" (click)="closeMenu()">Продукція</a>
-		<a href="#quality" (click)="closeMenu()">Якість</a>
+		<a href="#quality" (click)="openCertificates($event)">Якість</a>
 		<a href="#partnership" (click)="closeMenu()">Партнерам</a>
 		<a href="#contacts" (click)="closeMenu()">Контакти</a>
 	</nav>
+}
+
+@if (certificatesOpen()) {
+	<div class="certificates" role="dialog" aria-modal="true" aria-label="Сертифікати якості PANACEA" (click)="closeCertificates()">
+		<div class="certificates__panel" (click)="$event.stopPropagation()">
+			<button class="certificates__close" type="button" (click)="closeCertificates()" aria-label="Закрити сертифікати">✕</button>
+			<div class="certificates__grid">
+				<figure>
+					<img ngSrc="certificates/certificate-arden.jpg" width="2480" height="3508" alt="Сертифікат відповідності PANACEA Arden" />
+					<figcaption>PANACEA Arden</figcaption>
+				</figure>
+				<figure>
+					<img ngSrc="certificates/certificate-diamond.jpg" width="2480" height="3508" alt="Сертифікат відповідності PANACEA Diamond" />
+					<figcaption>PANACEA Diamond</figcaption>
+				</figure>
+			</div>
+		</div>
+	</div>
 }
