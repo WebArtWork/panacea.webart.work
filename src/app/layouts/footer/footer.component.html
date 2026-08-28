@@ -2,19 +2,23 @@
 	<div class="mx-auto grid max-w-[1440px] gap-14 px-6 py-16 md:grid-cols-[1.1fr_.7fr_.9fr_1.5fr] md:px-10 md:py-24">
 		<div>
 			<img class="brightness-0 invert" ngSrc="logo-panacea.svg" width="170" height="26" alt="PANACEA" />
-			<p class="mt-8 max-w-md font-display text-2xl leading-snug">Природне походження. Власне джерело. Справжній характер Поділля.</p>
+			<div class="mt-8 grid max-w-md gap-1 font-display text-2xl leading-snug">
+				<p>Природне походження.</p>
+				<p>Власне джерело.</p>
+				<p>Справжній характер Поділля.</p>
+			</div>
 			<p class="mt-5 text-sm text-white/65">ТОВ «Збручанські джерела»</p>
 		</div>
 		<div>
 			<p class="footer-title">Наша вода</p>
 			<nav class="mt-6 grid gap-3 text-sm text-white/75" aria-label="Продукція">
-				<a href="#water">Panacea Diamond</a><a href="#water">Panacea Arden</a>
+				<a routerLink="/" fragment="diamond">Panacea Diamond</a><a routerLink="/" fragment="arden">Panacea Arden</a>
 			</nav>
 		</div>
 		<div>
 			<p class="footer-title">Навігація</p>
 			<nav class="mt-6 grid grid-cols-2 gap-3 text-sm text-white/75" aria-label="Навігація у футері">
-				<a href="#source">Про воду</a><a href="#source">Наше джерело</a><a href="#products">Продукція</a><a href="#quality">Якість</a><a href="#partnership">Партнерам</a><a href="#contacts">Контакти</a>
+				<a routerLink="/about-company">Про компанію</a><a routerLink="/about-water">Про воду</a><a routerLink="/" fragment="products">Продукція</a><a routerLink="/" fragment="quality">Якість</a><a routerLink="/" fragment="partnership">Партнери</a><a routerLink="/" fragment="contacts">Контакти</a>
 			</nav>
 		</div>
 		<div>

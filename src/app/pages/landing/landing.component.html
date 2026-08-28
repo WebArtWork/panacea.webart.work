@@ -17,11 +17,12 @@
 	<img class="statement__mark" ngSrc="interface/brand-mark-dark.png" alt="" width="365" height="323" />
 	<p class="eyebrow">ТОВ «Збручанські джерела» ТМ PANACEA</p>
 	<h2>Природа створила.<br />Ми зберегли.</h2>
-	<p class="statement__intro">Власне родовище, сучасне виробництво та багаторівневий контроль якості, щоб природна сила води залишалась незмінною від джерела до кожної пляшки.</p>
+	<p class="statement__intro">Власне родовище, сучасне виробництво та багаторівневий контроль якості,<br />щоб природна сила води залишалась незмінною<br />від джерела до кожної пляшки.</p>
+	<img class="statement__droplets" ngSrc="interface/water-droplets-diagonal.webp" alt="" width="1325" height="1326" aria-hidden="true" />
 </section>
 
 <section id="products" class="products" aria-label="Продукція PANACEA">
-	<div class="products__intro reveal topo-bg topo-bg--wide">
+	<div id="arden" class="products__intro reveal topo-bg topo-bg--wide">
 		<h3>Лікувальна-столова Arden</h3>
 		<p>Мінеральна вода Збручанського родовища з унікальним мінеральним складом, використовується у програмах питного лікування.</p>
 		<div class="ticker" aria-hidden="true">
@@ -68,7 +69,7 @@
 		</button>
 	</article>
 
-	<div class="products__intro reveal topo-bg topo-bg--composition">
+	<div id="diamond" class="products__intro reveal topo-bg topo-bg--composition">
 		<h3>Столова Diamond</h3>
 		<p>Природна вода для щоденного вживання. Чистота, збалансований склад і якість у кожній пляшці.</p>
 		<div class="ticker" aria-hidden="true">
@@ -107,8 +108,8 @@
 			</ul>
 			<a class="button button--light product-row__order" href="#contacts" (click)="$event.stopPropagation()">Замовити</a>
 		</div>
-		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-5.png', 'PANACEA Diamond у скляній пляшці')" aria-label="Збільшити PANACEA Diamond у скляній пляшці">
-			<img ngSrc="products/diamond-5.png" alt="PANACEA Diamond у скляній пляшці" fill />
+		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-5.webp', 'PANACEA Diamond у скляній пляшці')" aria-label="Збільшити PANACEA Diamond у скляній пляшці">
+			<img ngSrc="products/diamond-5.webp" alt="PANACEA Diamond у скляній пляшці" fill />
 			<span class="product-row__badges" aria-label="Логістичні дані: 8, 27, 4">
 				<span><img src="/interface/logistics-bottle-crate.png" alt="" /><b>×8</b><small>в упаковці</small></span><span><img src="/interface/logistics-pallet-layer.png" alt="" /><b>×27</b><small>упаковок</small></span><span><img src="/interface/logistics-pallet-stack.png" alt="" /><b>×4</b><small>палети</small></span>
 			</span>
@@ -116,8 +117,8 @@
 	</article>
 
 	<article class="product-row product-row--diamond product-row--can">
-		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-1.png', 'PANACEA Diamond у банці')" aria-label="Збільшити PANACEA Diamond у банці">
-			<img ngSrc="products/diamond-1.png" alt="PANACEA Diamond у банці" fill />
+		<button class="product-row__image" type="button" (click)="openProductPreview('products/diamond-1.webp', 'PANACEA Diamond у банці')" aria-label="Збільшити PANACEA Diamond у банці">
+			<img ngSrc="products/diamond-1.webp" alt="PANACEA Diamond у банці" fill />
 			<span class="product-row__badges" aria-label="Логістичні дані: 8, 27, 5">
 				<span><img src="/interface/logistics-bottle-crate.png" alt="" /><b>×8</b><small>в упаковці</small></span><span><img src="/interface/logistics-pallet-layer.png" alt="" /><b>×27</b><small>упаковок</small></span><span><img src="/interface/logistics-pallet-stack.png" alt="" /><b>×5</b><small>палет</small></span>
 			</span>
@@ -193,21 +194,33 @@
 	<div class="origin-section__shade"></div>
 	<div class="origin-section__content reveal">
 		<p class="eyebrow">Природна мінеральна вода</p>
-		<h2>Вода, що<br />йде з глибини</h2>
-		<p>Вода PANACEA народжується в глибині Подільських Товтр — там, де час, камінь і природа створюють її особливий характер.</p>
+		<h2>Вода, створена природою</h2>
+		<p>Природна мінеральна вода <strong>PANACEA</strong> формується в унікальному природному середовищі Подільських Товтр.</p>
 		<a class="button button--light" href="#source">Відкрити джерело</a>
 	</div>
 </section>
 
 <section id="quality" class="quality-section">
 	<div class="reveal"><p class="eyebrow">Від родовища до пляшки</p><h2>Турбота<br />в кожній краплині</h2></div>
-	<p class="reveal reveal--delay">Panacea виробляється на потужностях ТОВ «Збручанські джерела». Власне виробництво та багаторівневий контроль дозволяють стежити за якістю на кожному етапі від видобутку води до розливу. Наше завдання зберегти природні властивості води від джерела до кожної пляшки.</p>
+	<div class="quality-section__column">
+		<div class="quality-section__badges reveal reveal--delay">
+			<img ngSrc="interface/icon-natural-water.webp" alt="Природна вода" width="124" height="170" />
+			<img ngSrc="interface/icon-natural-composition.webp" alt="Натуральний склад" width="159" height="170" />
+			<img ngSrc="interface/icon-clean-ecology.webp" alt="Чиста екологія національного парку" width="199" height="195" />
+			<img ngSrc="interface/icon-therapeutic-factors.webp" alt="Множинні лікувальні фактори" width="131" height="195" />
+		</div>
+		<div class="quality-section__lead reveal reveal--delay">
+			<p><strong>Panacea</strong> виробляється на потужностях ТОВ «<strong>Збручанські джерела</strong>».</p>
+			<p>Власне виробництво та багаторівневий контроль дозволяють стежити за якістю на кожному етапі від видобутку води до розливу.</p>
+			<p>Наше завдання зберегти природні властивості води від джерела до кожної пляшки.</p>
+		</div>
+	</div>
 	<div class="quality-section__history reveal reveal--delay">
 		<p><strong>Історія заводу</strong></p>
-		<p><strong>2012</strong> — створено ТОВ «Збручанські джерела».</p>
-		<p><strong>2026</strong> — завод пройшов етап модернізації та оснащений новітнім обладнанням чеського виробництва <strong>ALTEC</strong>, що забезпечує сучасний рівень виробництва та контролю якості.</p>
-		<p><strong>Червень 2026</strong> — здійснено випуск першого продукту — мінеральної води Panacea.</p>
-		<p>Так розпочалася нова історія заводу та бренду <strong>Panacea</strong> — води, народженої в серці Подільських Товтр.</p>
+		<p><strong>2012</strong> - створено ТОВ «Збручанські джерела».</p>
+		<p><strong>2026</strong> - завод пройшов етап модернізації та оснащений новітнім обладнанням чеського виробництва <strong>ALTEC</strong>, що забезпечує сучасний рівень виробництва та контролю якості.</p>
+		<p><strong>Червень 2026</strong> - здійснено випуск першого продукту - мінеральної води Panacea.</p>
+		<p>Так розпочалася нова історія заводу та бренду <strong>Panacea</strong> - води, народженої в серці Подільських Товтр.</p>
 	</div>
 </section>
 
@@ -225,8 +238,9 @@
 	<div class="partner-section__copy reveal">
 	<p class="eyebrow">Для бізнесу</p>
 	<h2>Вода, що доповнює<br />ваш простір</h2>
-	<p>Співпрацюємо з готелями, ресторанами, торговельними мережами та дистриб'юторами. PANACEA додає асортименту природне походження і впізнаваний характер.</p>
-	<a class="button" href="mailto:partners@panacea.ua">Стати партнером</a>
+	<p>Співпрацюємо з готелями, ресторанами, торговельними мережами та дистриб'юторами.</p>
+	<p><strong>PANACEA</strong> додає асортименту природне походження і впізнаваний характер.</p>
+	<a class="button button--light" href="mailto:partners@panacea.ua">Стати партнером</a>
 	</div>
 </section>
 

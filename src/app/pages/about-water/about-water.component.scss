@@ -6,6 +6,7 @@
 
 @media (min-width: 768px) {
 	.about-section { align-items: center; }
+	.about-section__media img { width: auto; max-width: 100%; height: auto; max-height: 22rem; margin: 0 auto; display: block; }
 }
 
 @media (max-width: 767px) {
