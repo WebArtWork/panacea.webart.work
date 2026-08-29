@@ -125,6 +125,7 @@
 	.hero { min-height: clamp(28rem, 65vw, 52rem); }
 	.products__intro + .product-row { margin-top: clamp(1.5rem, 3vw, 3rem); }
 	.topo-bg::before { background-size: cover; background-position: center; }
+	.topo-bg--droplet::before { background-size: 100% auto; background-position: center 100%; }
 	.products__intro h3 { font-size: clamp(1.5rem, 3.6vw, 3rem); }
 	.ticker__track span { font-size: 1.5rem; }
 	.hero__content { align-items: flex-end; justify-content: flex-start; padding: clamp(2rem, 5vw, 5rem) clamp(1.75rem, 3vw, 3rem); text-align: right; }
@@ -175,12 +176,12 @@
 	.hero__content > p:not(.eyebrow) { max-width: 17rem; margin-top: 1rem; font-size: .85rem; line-height: 1.65; }
 	.eyebrow { margin-bottom: .55rem; font-size: .46rem; }
 	.button { margin-top: 1.15rem; padding: .6rem .85rem; font-size: .45rem; }
-	.statement { max-width: 21rem; padding: 1.5rem 1.2rem 4.5rem; }
+	.statement { max-width: 22.5rem; padding: 1.5rem 1.2rem 4.5rem; }
 	.statement__mark { width: clamp(5.5rem, 10vw, 8.5rem); margin-bottom: .5rem; }
 	.statement .eyebrow { margin-bottom: 1.2rem; }
 	.statement h2, .process-section h2, .partner-section h2, .quality-section h2 { font-size: 3.05rem; }
 	.statement h2 { margin-bottom: .5rem; font-size: clamp(2.1rem, 9vw, 3.05rem); line-height: 1.05; white-space: nowrap; }
-	.statement__intro { max-width: 22rem; margin-top: 1.5rem; font-size: .992rem; line-height: 1.65; }
+	.statement__intro { max-width: 22rem; margin-top: 1.5rem; font-size: .88rem; line-height: 1.65; }
 	.products { gap: 2.5rem; margin: 0 .5rem 4.5rem; }
 	.products__intro { padding: 2.5rem 1.15rem; }
 	.products__intro h3 { font-size: clamp(2.1rem, 9vw, 3.05rem); }
@@ -192,7 +193,7 @@
 	.product-row__image { min-height: 18rem; }
 	.product-row--can .product-row__image { min-height: 26rem; }
 	.product-row--glass .product-row__image { min-height: 36rem; }
-	.product-row__image > img { padding: 0; }
+	.product-row__image > img { padding: 0 0 1.5rem; }
 	.product-row__badges { left: 1rem; gap: .5rem; }
 	.product-row__badges > span { min-width: 6.85rem; padding: .5rem .52rem .5rem 3.05rem; }
 	.product-row__badges img { width: 2.18rem !important; height: 2.18rem !important; }
