@@ -16,6 +16,13 @@
 .statement { max-width: 44rem; margin: auto; padding: clamp(5.5rem, 11vw, 10rem) 1.5rem; text-align: center; }
 .statement__mark { display: block; width: clamp(2.75rem, 5vw, 4.25rem); height: auto; margin: 0 auto 1rem; }
 .statement__droplets { display: block; width: clamp(10rem, 30vw, 16rem); height: auto; margin: 2.5rem auto -1.5rem; opacity: .8; }
+
+@media (min-width: 768px) {
+	.statement { max-width: 64rem; }
+	.statement h2 { font-size: clamp(1.8rem, 3.6vw, 3.6rem); white-space: nowrap; }
+	.statement h2 .statement__break { display: none; }
+	.statement__droplets { width: clamp(14rem, 20vw, 22rem); margin: -2rem -3rem -1.5rem auto; }
+}
 .statement h2, .process-section h2, .partner-section h2, .quality-section h2 { font-size: clamp(3.3rem, 6.2vw, 6.2rem); line-height: .8; }
 .statement h2 { line-height: 1.05; }
 .statement__intro { max-width: 25rem; margin: 1.35rem auto 0; color: #405a4e; font-size: .85rem; line-height: 1.8; }
@@ -159,6 +166,7 @@
 	.product-row__copy { height: 90%; align-self: center; margin: 1.5rem 0 0 -3rem; }
 	.product-row--reverse .product-row__copy { margin: 1.5rem -3rem 0 0; }
 	.quality-section { grid-template-columns: 1.1fr .9fr; }
+	.quality-section__column { gap: 3.5rem; }
 	.quality-section__history { grid-column: 1 / -1; }
 	.partner-section { grid-template-columns: 1fr 1fr; }
 	.partner-section__photo { min-height: 100%; }
