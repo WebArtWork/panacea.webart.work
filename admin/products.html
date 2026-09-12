@@ -11,12 +11,23 @@
  </nav>
  <main class="admin-main">
   <div class="admin-header"><div><h1>Товари</h1><p>Каталог PANACEA, який показується в магазині</p></div></div>
-  <div class="mock-notice">Список читається з того ж каталогу, що й магазин. Редагування тут не зберігається — потрібен бекенд.</div>
+  <div class="mock-notice">Список читається з того ж каталогу, що й магазин. Зміни зберігаються лише в цьому браузері (localStorage) — для реальної CRM потрібен бекенд.</div>
   <div class="panel">
-   <table class="data-table"><thead><tr><th>Товар</th><th>Газованість</th><th>Паковання</th><th>Ціна</th><th>Залишок</th><th>Статус</th></tr></thead><tbody id="products-body"></tbody></table>
+   <table class="data-table"><thead><tr><th>Товар</th><th>Газованість</th><th>Паковання</th><th>Ціна</th><th>Залишок</th><th>Статус</th><th></th></tr></thead><tbody id="products-body"></tbody></table>
   </div>
  </main>
 </div>
+<dialog id="edit-dialog" class="admin-dialog"><form id="edit-form" method="dialog">
+ <h2>Редагувати товар</h2>
+ <input type="hidden" id="edit-id">
+ <div class="form-row"><label>Товар</label><input id="edit-name" disabled></div>
+ <div class="form-row"><label for="edit-gas">Газованість</label><select id="edit-gas"><option>Негазована</option><option>Слабогазована</option><option>Сильногазована</option></select></div>
+ <div class="form-row"><label for="edit-material">Паковання</label><select id="edit-material"><option>Скло</option><option>Банка</option></select></div>
+ <div class="form-row"><label for="edit-price">Ціна, ₴</label><input id="edit-price" type="number" min="0" step="1" required></div>
+ <div class="form-row"><label for="edit-stock">Залишок, шт.</label><input id="edit-stock" type="number" min="0" step="1" required></div>
+ <div class="dialog-actions"><button type="button" class="cancel" id="cancel-edit">Скасувати</button><button type="submit" class="save">Зберегти</button></div>
+</form></dialog>
 <script src="../products.js"></script>
+<script src="admin-data.js"></script>
 <script src="products-page.js" defer></script>
 </body></html>

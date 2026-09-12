@@ -28,4 +28,18 @@
 .badge.low{background:#fbe6e6;color:#a32b2b}
 .badge.ok{background:#e2f2e6;color:#1f7a3f}
 .mock-notice{background:var(--pale);border:1px dashed var(--line);border-radius:8px;padding:12px 16px;font-size:12px;color:var(--muted);margin-bottom:20px}
+.icon-btn{border:1px solid var(--line);background:white;border-radius:6px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--green)}
+.icon-btn:hover{background:var(--pale)}
+.icon-btn svg{width:16px;height:16px}
+.status-select{border:1px solid var(--line);border-radius:20px;padding:5px 10px;font-size:12px;font-weight:600;color:var(--green);background:white}
+dialog.admin-dialog{border:0;border-radius:10px;padding:0;width:min(420px,92vw);color:var(--green)}
+dialog.admin-dialog::backdrop{background:#09231980}
+.admin-dialog form{padding:24px}
+.admin-dialog h2{font-size:18px;margin:0 0 18px}
+.admin-dialog .form-row{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
+.admin-dialog .form-row label{font-size:12px;font-weight:600;color:var(--muted)}
+.admin-dialog input,.admin-dialog select{border:1px solid #ccd8cd;border-radius:6px;padding:9px 10px;font-size:14px;color:var(--green);width:100%}
+.admin-dialog .dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
+.admin-dialog .cancel{border:1px solid var(--line);background:white;border-radius:6px;padding:9px 16px;font-size:13px}
+.admin-dialog .save{border:0;background:var(--green);color:white;border-radius:6px;padding:9px 16px;font-size:13px}
 @media(max-width:850px){.admin-layout{grid-template-columns:1fr}.admin-nav{display:flex;overflow-x:auto;padding:12px}.admin-nav .brand{display:none}.admin-nav a{padding:10px 14px;white-space:nowrap}.admin-nav .back{display:none}.stat-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-main{padding:18px}}

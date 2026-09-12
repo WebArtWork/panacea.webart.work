@@ -1,6 +1,6 @@
 const money = v => new Intl.NumberFormat('uk-UA').format(v) + ' ₴';
-const orders = window.PANACEA_MOCK_ORDERS;
-const products = window.PANACEA_PRODUCTS;
+const orders = getOrders();
+const products = getProducts();
 const statusLabel = { new: 'Нове', processing: 'В обробці', done: 'Виконано' };
 
 document.querySelector('#stat-cards').innerHTML = `
