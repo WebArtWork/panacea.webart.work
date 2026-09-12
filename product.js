@@ -7,7 +7,20 @@ if (!product) {
  document.querySelector('#not-found').hidden = false;
 } else {
  document.querySelector('#crumb-name').textContent = `PANACEA ${product.brand}`;
- document.title = `PANACEA ${product.brand}, ${product.gas}, ${product.material.toLowerCase()} | PANACEA`;
+ const pageTitle = `PANACEA ${product.brand}, ${product.gas}, ${product.material.toLowerCase()} 0,5 л`;
+ const pageDescription = `PANACEA ${product.brand}: ${product.gas.toLowerCase()}, ${product.material.toLowerCase()}, 0,5 л. Ціна ${money(product.price)}. ${product.stock > 0 ? 'В наявності, замовляйте від однієї пляшки.' : 'Тимчасово немає в наявності.'}`;
+ const pageUrl = `https://panacea.webart.work/product/?id=${product.id}`;
+ const pageImage = `https://panacea.webart.work/assets/products/${product.image}`;
+ document.title = `${pageTitle} | PANACEA`;
+ document.querySelector('#page-description').content = pageDescription;
+ document.querySelector('#page-canonical').href = pageUrl;
+ document.querySelector('#og-url').content = pageUrl;
+ document.querySelector('#og-title').content = `${pageTitle} | PANACEA`;
+ document.querySelector('#og-description').content = pageDescription;
+ document.querySelector('#og-image').content = pageImage;
+ document.querySelector('#twitter-title').content = `${pageTitle} | PANACEA`;
+ document.querySelector('#twitter-description').content = pageDescription;
+ document.querySelector('#twitter-image').content = pageImage;
  document.querySelector('#product-detail').innerHTML = `
   <div class="product-detail-photo"><img src="/assets/products/${product.image}" alt="PANACEA ${product.brand}, ${product.gas.toLowerCase()}, ${product.material.toLowerCase()}, 0,5 л"></div>
   <div class="product-detail-info">

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /order/
+Disallow: /admin/
+
+Sitemap: https://panacea.webart.work/sitemap.xml
