@@ -7,7 +7,7 @@ if (!product) {
  document.querySelector('#not-found').hidden = false;
 } else {
  document.querySelector('#crumb-name').textContent = `PANACEA ${product.brand}`;
- document.title = `PANACEA ${product.brand} — ${product.gas}, ${product.material.toLowerCase()} | PANACEA`;
+ document.title = `PANACEA ${product.brand}, ${product.gas}, ${product.material.toLowerCase()} | PANACEA`;
  document.querySelector('#product-detail').innerHTML = `
   <div class="product-detail-photo"><img src="/assets/products/${product.image}" alt="PANACEA ${product.brand}, ${product.gas.toLowerCase()}, ${product.material.toLowerCase()}, 0,5 л"></div>
   <div class="product-detail-info">
