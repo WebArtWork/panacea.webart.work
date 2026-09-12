@@ -4,6 +4,11 @@ const quantityHTML = (id, value) => `<div class="quantity"><button data-step="-1
 function render() {
  renderCartBadge(cart);
  const selected = window.PANACEA_PRODUCTS.filter(p => cart[p.id]);
+ const layout = document.querySelector('.cart-page-layout');
+ const summary = document.querySelector('#cart-summary');
+ layout.classList.toggle('cart-page-layout-empty', !selected.length);
+ summary.hidden = !selected.length;
+
  document.querySelector('#cart-items').innerHTML = selected.length ? selected.map(p => `
   <article class="cart-item">
    <img src="assets/products/${p.image}" alt="PANACEA ${p.brand}">
@@ -15,7 +20,7 @@ function render() {
    </div>
   </article>`).join('') : `<div class="empty"><h3>Кошик порожній.</h3><p>Додайте улюблену воду до кошика.</p><a class="button" href="/#products">Обрати воду ↗</a></div>`;
 
- document.querySelector('#cart-summary').innerHTML = selected.length ? `
+ summary.innerHTML = selected.length ? `
   <h2>Разом</h2>
   <div class="total"><span>Сума</span><strong>${money(selected.reduce((sum, p) => sum + p.price * cart[p.id], 0))}</strong></div>
   <a class="button" style="width:100%;display:flex" href="/checkout">Оформити замовлення</a>
