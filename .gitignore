@@ -10,3 +10,4 @@ Thumbs.db
 # Runtime / tooling artifacts
 .sites-runtime/
 node_modules/
+.openai/
