@@ -11,9 +11,9 @@ function render() {
 
  document.querySelector('#cart-items').innerHTML = selected.length ? selected.map(p => `
   <article class="cart-item">
-   <img src="assets/products/${p.image}" alt="PANACEA ${p.brand}">
+   <img src="/assets/products/${p.image}" alt="PANACEA ${p.brand}">
    <div>
-    <h3><a href="/product?id=${p.id}">PANACEA ${p.brand}</a></h3>
+    <h3><a href="/product/?id=${p.id}">PANACEA ${p.brand}</a></h3>
     <p>${p.gas} · ${p.material} · 0,5 л</p>
     <div class="buy-row">${quantityHTML(p.id, cart[p.id])}<span>${money(p.price * cart[p.id])}</span></div>
     <button class="remove" data-remove="${p.id}">Видалити</button>
@@ -23,7 +23,7 @@ function render() {
  summary.innerHTML = selected.length ? `
   <h2>Разом</h2>
   <div class="total"><span>Сума</span><strong>${money(selected.reduce((sum, p) => sum + p.price * cart[p.id], 0))}</strong></div>
-  <a class="button" style="width:100%;display:flex" href="/checkout">Оформити замовлення</a>
+  <a class="button" style="width:100%;display:flex" href="/checkout/">Оформити замовлення</a>
   <p class="cart-notice" style="margin-top:16px">Онлайн-оплата поки недоступна.<br>Замовити воду можна за телефоном <a href="tel:+380977111077"><u>+38 097 711 10 77</u></a>.<br><small>Ціни попередні. Кошик зберігається на цьому пристрої.</small></p>` : '';
 }
 

@@ -9,7 +9,7 @@ if (!product) {
  document.querySelector('#crumb-name').textContent = `PANACEA ${product.brand}`;
  document.title = `PANACEA ${product.brand} — ${product.gas}, ${product.material.toLowerCase()} | PANACEA`;
  document.querySelector('#product-detail').innerHTML = `
-  <div class="product-detail-photo"><img src="assets/products/${product.image}" alt="PANACEA ${product.brand}, ${product.gas.toLowerCase()}, ${product.material.toLowerCase()}, 0,5 л"></div>
+  <div class="product-detail-photo"><img src="/assets/products/${product.image}" alt="PANACEA ${product.brand}, ${product.gas.toLowerCase()}, ${product.material.toLowerCase()}, 0,5 л"></div>
   <div class="product-detail-info">
    <p class="product-type">${product.brand === 'Arden' ? 'Мінеральна лікувально-столова' : 'Артезіанська питна вода'}</p>
    <h1>PANACEA ${product.brand}</h1>
