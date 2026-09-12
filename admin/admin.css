@@ -42,7 +42,7 @@ dialog.admin-dialog::backdrop{background:#09231980}
 .admin-dialog .dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
 .admin-dialog .cancel{border:1px solid var(--line);background:white;border-radius:6px;padding:9px 16px;font-size:13px}
 .admin-dialog .save{border:0;background:var(--green);color:white;border-radius:6px;padding:9px 16px;font-size:13px}
-@media(max-width:850px){.admin-layout{grid-template-columns:1fr}.admin-nav{display:flex;flex-wrap:wrap;gap:4px;padding:12px}.admin-nav .brand{display:none}.admin-nav a{padding:8px 12px;border-radius:6px}.admin-nav a.active{border-left:0}.admin-nav .back{display:none}.stat-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-main{padding:18px;min-width:0}.admin-header{flex-direction:column;align-items:flex-start;gap:4px}}
+@media(max-width:850px){.admin-layout{display:block;min-height:0}.admin-nav{display:flex;flex-wrap:wrap;gap:4px;padding:12px}.admin-nav .brand{display:none}.admin-nav a{padding:8px 12px;border-radius:6px}.admin-nav a.active{border-left:0}.admin-nav .back{display:none}.stat-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-main{padding:18px;min-width:0}.admin-header{flex-direction:column;align-items:flex-start;gap:4px}}
 @media(max-width:480px){.stat-cards{grid-template-columns:1fr}.admin-header h1{font-size:20px}.panel{padding:16px}}
 .auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .auth-card{width:min(380px,100%);background:white;border:1px solid var(--line);border-radius:10px;padding:32px}
