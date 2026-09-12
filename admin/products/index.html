@@ -10,16 +10,16 @@
   <a class="back" href="/">← До магазину</a>
  </nav>
  <main class="admin-main">
-  <div class="admin-header"><div><h1>Товари</h1><p>Каталог PANACEA, який показується в магазині</p></div></div>
+  <div class="admin-header"><div><h1>Товари</h1><p>Каталог PANACEA, який показується в магазині</p></div><button class="save" id="add-product">+ Додати товар</button></div>
   <div class="panel">
    <div class="table-scroll"><table class="data-table"><thead><tr><th>Товар</th><th>Газованість</th><th>Паковання</th><th>Ціна</th><th>Залишок</th><th>Статус</th><th></th></tr></thead><tbody id="products-body"></tbody></table></div>
   </div>
  </main>
 </div>
 <dialog id="edit-dialog" class="admin-dialog"><form id="edit-form" method="dialog">
- <h2>Редагувати товар</h2>
+ <h2 id="dialog-title">Редагувати товар</h2>
  <input type="hidden" id="edit-id">
- <div class="form-row"><label>Товар</label><input id="edit-name" disabled></div>
+ <div class="form-row"><label for="edit-brand">Бренд</label><input id="edit-brand" required placeholder="Arden"></div>
  <div class="form-row"><label for="edit-gas">Газованість</label><select id="edit-gas"><option>Негазована</option><option>Слабогазована</option><option>Сильногазована</option></select></div>
  <div class="form-row"><label for="edit-material">Паковання</label><select id="edit-material"><option>Скло</option><option>Банка</option></select></div>
  <div class="form-row"><label for="edit-price">Ціна, ₴</label><input id="edit-price" type="number" min="0" step="1" required></div>

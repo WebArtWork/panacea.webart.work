@@ -8,7 +8,8 @@
 .admin-nav a:hover{background:#20493a}
 .admin-nav .back{margin-top:20px;border-top:1px solid #2c5646;padding-top:18px;color:#a9c2b0;font-size:12px;text-decoration:underline}
 .admin-main{padding:28px 36px 60px}
-.admin-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
+.admin-header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
+.admin-header .save{border:0;background:var(--green);color:white;border-radius:6px;padding:10px 18px;font-size:13px;white-space:nowrap;cursor:pointer}
 .admin-header h1{margin:0;font-size:24px;font-weight:600}
 .admin-header p{margin:4px 0 0;color:var(--muted);font-size:13px}
 .stat-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:28px}
@@ -31,6 +32,9 @@
 .icon-btn{border:1px solid var(--line);background:white;border-radius:6px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--green)}
 .icon-btn:hover{background:var(--pale)}
 .icon-btn svg{width:16px;height:16px}
+.icon-btn.danger{color:#a32b2b}
+.icon-btn.danger:hover{background:#fbe6e6}
+.row-actions{display:flex;gap:6px}
 .status-select{border:1px solid var(--line);border-radius:20px;padding:5px 10px;font-size:12px;font-weight:600;color:var(--green);background:white}
 dialog.admin-dialog{border:0;border-radius:10px;padding:0;width:min(420px,92vw);color:var(--green)}
 dialog.admin-dialog::backdrop{background:#09231980}
