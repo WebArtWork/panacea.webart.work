@@ -1,0 +1,12 @@
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Runtime / tooling artifacts
+.sites-runtime/
+node_modules/

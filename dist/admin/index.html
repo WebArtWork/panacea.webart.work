@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Панель керування — PANACEA CRM</title><link rel="icon" href="../assets/favicon-gold.png"><link rel="stylesheet" href="admin.css"></head>
+<body>
+<div class="admin-layout">
+ <nav class="admin-nav"><div class="brand">PANACEA<span class="demo-tag">CRM · демо</span></div>
+  <a class="active" href="index.html">Дашборд</a>
+  <a href="products.html">Товари</a>
+  <a href="orders.html">Замовлення</a>
+  <a href="customers.html">Клієнти</a>
+  <a class="back" href="../index.html">← До магазину</a>
+ </nav>
+ <main class="admin-main">
+  <div class="admin-header"><div><h1>Дашборд</h1><p>Огляд каталогу, замовлень і клієнтів</p></div></div>
+  <div class="mock-notice">Демонстраційна панель: сайт статичний, дані замовлень і клієнтів — приклади, не зберігаються на сервері.</div>
+  <div class="stat-cards" id="stat-cards"></div>
+  <div class="panel">
+   <h2>Останні замовлення</h2>
+   <table class="data-table"><thead><tr><th>Номер</th><th>Клієнт</th><th>Товари</th><th>Сума</th><th>Статус</th></tr></thead><tbody id="recent-orders"></tbody></table>
+  </div>
+  <div class="panel">
+   <h2>Товари з низьким залишком</h2>
+   <table class="data-table"><thead><tr><th>Товар</th><th>Залишок</th><th>Статус</th></tr></thead><tbody id="low-stock"></tbody></table>
+  </div>
+ </main>
+</div>
+<script src="../products.js"></script>
+<script src="mock-data.js"></script>
+<script src="dashboard.js" defer></script>
+</body></html>
