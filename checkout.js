@@ -11,12 +11,28 @@ if (!selected.length) {
  ).join('');
  document.querySelector('#order-total').innerHTML = `<span>Разом</span><strong>${money(selected.reduce((sum, p) => sum + p.price * cart[p.id], 0))}</strong>`;
 
+ const paymentLabel = { cash: 'Готівкою при отриманні', transfer: 'Переказ на картку', card: 'Оплата карткою онлайн' };
+
  document.querySelector('#checkout-form').addEventListener('submit', e => {
   e.preventDefault();
-  const toast = document.querySelector('#toast');
-  toast.textContent = 'Дякуємо! Ми зателефонуємо для підтвердження замовлення.';
-  toast.classList.add('show');
-  clearTimeout(window.__toastTimer);
-  window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
+  const form = e.target;
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+
+  const order = {
+   id: 'ORD-' + Date.now().toString(36).toUpperCase(),
+   date: new Date().toISOString(),
+   status: 'new',
+   name: document.querySelector('#name').value.trim(),
+   phone: document.querySelector('#phone').value.trim(),
+   city: document.querySelector('#city').value.trim(),
+   address: document.querySelector('#address').value.trim(),
+   comment: document.querySelector('#comment').value.trim(),
+   payment: paymentLabel[form.payment.value] || form.payment.value,
+   items: selected.map(p => ({ brand: p.brand, gas: p.gas, material: p.material, quantity: cart[p.id], price: p.price })),
+   total: selected.reduce((sum, p) => sum + p.price * cart[p.id], 0)
+  };
+  try { localStorage.setItem('panacea-order', JSON.stringify(order)); } catch {}
+  clearCart();
+  location.href = '/order/';
  });
 }

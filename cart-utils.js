@@ -10,6 +10,9 @@ function loadCart() {
 function saveCart(cart) {
  try { localStorage.setItem('panacea-cart', JSON.stringify(cart)); } catch {}
 }
+function clearCart() {
+ try { localStorage.removeItem('panacea-cart'); } catch {}
+}
 function cartCount(cart) {
  return Object.values(cart).reduce((a, b) => a + b, 0);
 }
