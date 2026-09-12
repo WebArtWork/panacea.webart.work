@@ -8,17 +8,17 @@ function render() {
   <article class="cart-item">
    <img src="assets/products/${p.image}" alt="PANACEA ${p.brand}">
    <div>
-    <h3><a href="product.html?id=${p.id}">PANACEA ${p.brand}</a></h3>
+    <h3><a href="/product?id=${p.id}">PANACEA ${p.brand}</a></h3>
     <p>${p.gas} · ${p.material} · 0,5 л</p>
     <div class="buy-row">${quantityHTML(p.id, cart[p.id])}<span>${money(p.price * cart[p.id])}</span></div>
     <button class="remove" data-remove="${p.id}">Видалити</button>
    </div>
-  </article>`).join('') : `<div class="empty"><h3>Кошик порожній.</h3><p>Додайте улюблену воду до кошика.</p><a class="button" href="index.html#products">Обрати воду ↗</a></div>`;
+  </article>`).join('') : `<div class="empty"><h3>Кошик порожній.</h3><p>Додайте улюблену воду до кошика.</p><a class="button" href="/#products">Обрати воду ↗</a></div>`;
 
  document.querySelector('#cart-summary').innerHTML = selected.length ? `
   <h2>Разом</h2>
   <div class="total"><span>Сума</span><strong>${money(selected.reduce((sum, p) => sum + p.price * cart[p.id], 0))}</strong></div>
-  <a class="button" style="width:100%;display:flex" href="checkout.html">Оформити замовлення</a>
+  <a class="button" style="width:100%;display:flex" href="/checkout">Оформити замовлення</a>
   <p class="cart-notice" style="margin-top:16px">Онлайн-оплата поки недоступна.<br>Замовити воду можна за телефоном <a href="tel:+380977111077"><u>+38 097 711 10 77</u></a>.<br><small>Ціни попередні. Кошик зберігається на цьому пристрої.</small></p>` : '';
 }
 
