@@ -1,8 +1,10 @@
 let cart = loadCart();
+let isDemo = false;
+if (!Object.keys(cart).length) { cart = { ...DEMO_CART }; isDemo = true; }
 const quantityHTML = (id, value) => `<div class="quantity"><button data-step="-1" data-id="${id}" aria-label="Зменшити кількість">−</button><input aria-label="Кількість" inputmode="numeric" type="number" min="1" step="1" value="${value}" data-id="${id}"><button data-step="1" data-id="${id}" aria-label="Збільшити кількість">+</button></div>`;
 
 function render() {
- renderCartBadge(cart);
+ renderCartBadge(isDemo ? {} : cart);
  const selected = window.PANACEA_PRODUCTS.filter(p => cart[p.id]);
  const layout = document.querySelector('.cart-page-layout');
  const summary = document.querySelector('#cart-summary');
@@ -24,7 +26,7 @@ function render() {
   <h2>Разом</h2>
   <div class="total"><span>Сума</span><strong>${money(selected.reduce((sum, p) => sum + p.price * cart[p.id], 0))}</strong></div>
   <a class="button" style="width:100%;display:flex" href="/checkout/">Оформити замовлення</a>
-  <p class="cart-notice" style="margin-top:16px">Онлайн-оплата поки недоступна.<br>Замовити воду можна за телефоном <a href="tel:+380977111077"><u>+38 097 711 10 77</u></a>.<br><small>Ціни попередні. Кошик зберігається на цьому пристрої.</small></p>` : '';
+  <p class="cart-notice" style="margin-top:16px">${isDemo ? 'Це приклад наповненого кошика для демонстрації сторінки.<br>' : ''}Онлайн-оплата поки недоступна.<br>Замовити воду можна за телефоном <a href="tel:+380977111077"><u>+38 097 711 10 77</u></a>.<br><small>Ціни попередні. Кошик зберігається на цьому пристрої.</small></p>` : '';
 }
 
 document.addEventListener('click', e => {

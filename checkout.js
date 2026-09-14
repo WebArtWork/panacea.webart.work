@@ -1,11 +1,19 @@
-const cart = loadCart();
-renderCartBadge(cart);
+let cart = loadCart();
+let isDemo = false;
+if (!Object.keys(cart).length) { cart = { ...DEMO_CART }; isDemo = true; }
+renderCartBadge(isDemo ? {} : cart);
 const selected = window.PANACEA_PRODUCTS.filter(p => cart[p.id]);
 
 if (!selected.length) {
  document.querySelector('#empty-notice').hidden = false;
  document.querySelector('#checkout-form').hidden = true;
 } else {
+ if (isDemo) {
+  document.querySelector('#name').value = DEMO_CUSTOMER.name;
+  document.querySelector('#phone').value = DEMO_CUSTOMER.phone;
+  document.querySelector('#city').value = DEMO_CUSTOMER.city;
+  document.querySelector('#address').value = DEMO_CUSTOMER.address;
+ }
  document.querySelector('#order-lines').innerHTML = selected.map(p =>
   `<div class="checkout-line"><span>PANACEA ${p.brand} × ${cart[p.id]}</span><span>${money(p.price * cart[p.id])}</span></div>`
  ).join('');

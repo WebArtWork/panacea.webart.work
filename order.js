@@ -5,8 +5,22 @@ renderCartBadge(loadCart());
 const statusLabel = { new: 'Нове', processing: 'В обробці', done: 'Виконано' };
 
 if (!order) {
- document.querySelector('#no-order').hidden = false;
-} else {
+ const demoItems = window.PANACEA_PRODUCTS.filter(p => DEMO_CART[p.id]);
+ order = {
+  id: 'ORD-DEMO1234',
+  date: new Date().toISOString(),
+  status: 'processing',
+  name: DEMO_CUSTOMER.name,
+  phone: DEMO_CUSTOMER.phone,
+  city: DEMO_CUSTOMER.city,
+  address: DEMO_CUSTOMER.address,
+  comment: '',
+  payment: DEMO_CUSTOMER.payment,
+  items: demoItems.map(p => ({ brand: p.brand, gas: p.gas, material: p.material, quantity: DEMO_CART[p.id], price: p.price })),
+  total: demoItems.reduce((sum, p) => sum + p.price * DEMO_CART[p.id], 0)
+ };
+}
+{
  document.querySelector('#order-view').hidden = false;
  document.querySelector('#order-id').textContent = `Замовлення ${order.id}`;
  document.querySelector('#order-date').textContent = new Date(order.date).toLocaleString('uk-UA', { dateStyle: 'long', timeStyle: 'short' });

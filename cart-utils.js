@@ -1,4 +1,6 @@
 const money = value => new Intl.NumberFormat('uk-UA').format(value) + ' ₴';
+const DEMO_CART = { 'arden-glass': 2, 'diamond-light-glass': 1 };
+const DEMO_CUSTOMER = { name: 'Олена Ковальчук', phone: '+38 067 123 45 67', city: 'Київ', address: 'вул. Хрещатик, 22, кв. 5', comment: '', payment: 'Готівкою при отриманні' };
 function loadCart() {
  let cart = {};
  try {
