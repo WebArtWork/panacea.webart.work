@@ -14,6 +14,7 @@
  <url><loc>https://panacea.webart.work/delivery/</loc><priority>0.6</priority></url>
  <url><loc>https://panacea.webart.work/partner/</loc><priority>0.7</priority></url>
  <url><loc>https://panacea.webart.work/contacts/</loc><priority>0.6</priority></url>
+ <url><loc>https://panacea.webart.work/account/</loc><priority>0.4</priority></url>
  <url><loc>https://panacea.webart.work/privacy/</loc><priority>0.3</priority></url>
  <url><loc>https://panacea.webart.work/offer/</loc><priority>0.3</priority></url>
  <url><loc>https://panacea.webart.work/cookies/</loc><priority>0.3</priority></url>
