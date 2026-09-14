@@ -7,4 +7,14 @@
  <url><loc>https://panacea.webart.work/product/?id=diamond-still-glass</loc><priority>0.8</priority></url>
  <url><loc>https://panacea.webart.work/product/?id=diamond-sparkling-can</loc><priority>0.8</priority></url>
  <url><loc>https://panacea.webart.work/product/?id=diamond-light-can</loc><priority>0.8</priority></url>
+ <url><loc>https://panacea.webart.work/about/</loc><priority>0.7</priority></url>
+ <url><loc>https://panacea.webart.work/production/</loc><priority>0.7</priority></url>
+ <url><loc>https://panacea.webart.work/composition/</loc><priority>0.6</priority></url>
+ <url><loc>https://panacea.webart.work/certificates/</loc><priority>0.5</priority></url>
+ <url><loc>https://panacea.webart.work/delivery/</loc><priority>0.6</priority></url>
+ <url><loc>https://panacea.webart.work/partner/</loc><priority>0.7</priority></url>
+ <url><loc>https://panacea.webart.work/contacts/</loc><priority>0.6</priority></url>
+ <url><loc>https://panacea.webart.work/privacy/</loc><priority>0.3</priority></url>
+ <url><loc>https://panacea.webart.work/offer/</loc><priority>0.3</priority></url>
+ <url><loc>https://panacea.webart.work/cookies/</loc><priority>0.3</priority></url>
 </urlset>
