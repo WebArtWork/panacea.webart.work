@@ -1,0 +1,8 @@
+// Tailwind theme + utilities only. Preflight is left out on purpose: the PANACEA stylesheet
+// ships its own base rules, and preflight would restyle lists, headings, and images.
+@use 'tailwindcss/theme';
+@use 'tailwindcss/utilities';
+
+@use './styles/theme' as panaceaTheme;
+@use './styles/store' as panaceaStore;
+@use './styles/admin' as panaceaAdmin;

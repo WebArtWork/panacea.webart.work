@@ -1,0 +1,59 @@
+<div class="page-shell">
+	<div class="page-breadcrumb"><a routerLink="/">Головна</a><span>/</span> Доставка та оплата</div>
+	<div class="content-hero">
+		<p class="eyebrow">ЗАМОВЛЕННЯ</p>
+		<h1>Доставка та оплата</h1>
+		<p>
+			Плануємо доставку по всій Україні через Нову пошту та зручні способи оплати — з можливістю
+			додати інші служби доставки без зміни оформлення замовлення.
+		</p>
+	</div>
+
+	<section class="content-section">
+		<h2>Способи доставки</h2>
+		<div class="info-card-grid">
+			<div class="info-card">
+				<strong>Нова пошта — відділення</strong>
+				<p>Оберіть місто та відділення чи поштомат під час оформлення замовлення.</p>
+			</div>
+			<div class="info-card">
+				<strong>Нова пошта — адресна</strong>
+				<p>Кур'єрська доставка за вказаною адресою.</p>
+			</div>
+			<div class="info-card">
+				<strong>Самовивіз</strong>
+				<p>Отримання замовлення на власному складі за попередньою домовленістю.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="content-section">
+		<h2>Способи оплати</h2>
+		<div class="info-card-grid">
+			<div class="info-card">
+				<strong>Готівкою при отриманні</strong>
+				<p>Оплата кур'єру або у відділенні перевізника.</p>
+			</div>
+			<div class="info-card">
+				<strong>Переказ на картку</strong>
+				<p>Реквізити надсилаємо після підтвердження замовлення менеджером.</p>
+			</div>
+			<div class="info-card">
+				<strong>Оплата карткою онлайн</strong>
+				<p>Підключення платіжного провайдера — на етапі реалізації.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="content-section">
+		<h2>Питання, що часто виникають</h2>
+		<div class="faq-list">
+			@for (item of faqItems; track item.question) {
+				<details class="faq-item">
+					<summary>{{ item.question }}</summary>
+					<p>{{ item.answer }}</p>
+				</details>
+			}
+		</div>
+	</section>
+</div>

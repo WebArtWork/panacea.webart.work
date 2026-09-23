@@ -1,0 +1,92 @@
+<div class="page-shell">
+	<div class="page-breadcrumb"><a routerLink="/">Головна</a><span>/</span><a routerLink="/cart">Кошик</a><span>/</span> Оформлення</div>
+	<h1 style="font-size: 28px; margin-bottom: 20px">Оформлення замовлення</h1>
+
+	@if (!lines().length) {
+		<div class="no-results">
+			<h2>Кошик порожній</h2>
+			<p>Додайте товари, щоб оформити замовлення.</p>
+			<a class="button" routerLink="/" fragment="products">До каталогу</a>
+		</div>
+	} @else {
+		<form class="checkout-layout" (submit)="submit($event)">
+			<div class="checkout-form">
+				<h2>Дані для доставки</h2>
+				<div class="form-row">
+					<label for="name">Ім'я та прізвище</label>
+					<input id="name" name="name" required autocomplete="name" [value]="isDemo() ? demoCustomer.name : ''" />
+				</div>
+				<div class="form-row">
+					<label for="phone">Телефон</label>
+					<input
+						id="phone"
+						name="phone"
+						type="tel"
+						required
+						autocomplete="tel"
+						placeholder="+38 0__ ___ __ __"
+						[value]="isDemo() ? demoCustomer.phone : ''"
+					/>
+				</div>
+				<div class="form-row">
+					<label for="city">Місто</label>
+					<input id="city" name="city" required autocomplete="address-level2" [value]="isDemo() ? demoCustomer.city : ''" />
+				</div>
+				<div class="form-row">
+					<label for="address">Адреса доставки або відділення</label>
+					<textarea id="address" name="address" required autocomplete="street-address">{{ isDemo() ? demoCustomer.address : '' }}</textarea>
+				</div>
+				<div class="form-row">
+					<label for="comment">Коментар до замовлення (необов'язково)</label>
+					<textarea id="comment" name="comment"></textarea>
+				</div>
+
+				<h2>Спосіб оплати</h2>
+				<div class="payment-options">
+					<label class="payment-option">
+						<input type="radio" name="payment" value="cash" checked />
+						<span><strong>Готівкою при отриманні</strong><small>Кур'єру або у відділенні перевізника</small></span>
+					</label>
+					<label class="payment-option">
+						<input type="radio" name="payment" value="transfer" />
+						<span><strong>Переказ на картку</strong><small>Реквізити надішлемо після підтвердження замовлення</small></span>
+					</label>
+					<label class="payment-option payment-option-disabled">
+						<input type="radio" name="payment" value="card" disabled />
+						<span><strong>Оплата карткою онлайн</strong><small>Незабаром</small></span>
+					</label>
+				</div>
+				<p class="cart-notice">
+					Онлайн-оформлення замовлень поки недоступне. Після заповнення форми ми зв'яжемось з вами за
+					вказаним номером телефону, щоб підтвердити замовлення та спосіб оплати.<br /><br />
+					Оформити замовлення просто зараз можна за телефоном
+					<a href="tel:+380977111077"><u>+38 097 711 10 77</u></a>.
+				</p>
+			</div>
+
+			<div class="checkout-summary">
+				<h2>Ваше замовлення</h2>
+				<div>
+					@for (line of lines(); track line.product.id) {
+						<div class="checkout-line">
+							<span>PANACEA {{ line.product.brand }} × {{ line.quantity }}</span>
+							<span>{{ line.total | money }}</span>
+						</div>
+					}
+				</div>
+				<div class="total"><span>Разом</span><strong>{{ total() | money }}</strong></div>
+				<button
+					class="button"
+					style="width: 100%; display: flex; justify-content: center"
+					type="submit"
+					[disabled]="submitting()"
+				>
+					{{ submitting() ? 'Надсилаємо…' : 'Надіслати заявку' }}
+				</button>
+				@if (error()) {
+					<p class="stock-note" style="color: #a32b2b; margin-top: 12px">{{ error() }}</p>
+				}
+			</div>
+		</form>
+	}
+</div>

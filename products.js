@@ -1,8 +1,0 @@
-window.PANACEA_PRODUCTS = [
- {id:'arden-glass',brand:'Arden',category:'ЛІКУВАЛЬНО-СТОЛОВА ВОДА',gas:'Сильногазована',material:'Скло',image:'arden-2.webp',price:45,stock:120},
- {id:'arden-can',brand:'Arden',category:'ЛІКУВАЛЬНО-СТОЛОВА ВОДА',gas:'Сильногазована',material:'Банка',image:'arden-1.webp',price:35,stock:80},
- {id:'diamond-light-glass',brand:'Diamond',category:'АРТЕЗІАНСЬКА ПИТНА ВОДА',gas:'Слабогазована',material:'Скло',image:'diamond-4.webp',price:40,stock:95},
- {id:'diamond-still-glass',brand:'Diamond',category:'АРТЕЗІАНСЬКА ПИТНА ВОДА',gas:'Негазована',material:'Скло',image:'diamond-5.webp',price:40,stock:60},
- {id:'diamond-sparkling-can',brand:'Diamond',category:'АРТЕЗІАНСЬКА ПИТНА ВОДА',gas:'Сильногазована',material:'Банка',image:'diamond-1.webp',price:30,stock:150},
- {id:'diamond-light-can',brand:'Diamond',category:'АРТЕЗІАНСЬКА ПИТНА ВОДА',gas:'Слабогазована',material:'Банка',image:'diamond-2.webp',price:30,stock:10}
-];

@@ -1,0 +1,64 @@
+<div class="page-shell">
+	<div class="page-breadcrumb">
+		<a routerLink="/">Головна</a><span>/</span><a routerLink="/" fragment="products">Каталог</a><span>/</span>
+		<span>{{ product() ? 'PANACEA ' + product()!.brand : 'Товар' }}</span>
+	</div>
+
+	@if (!product()) {
+		<div class="no-results">
+			<h2>Товар не знайдено</h2>
+			<p>Можливо, посилання застаріле.</p>
+			<a class="button" routerLink="/" fragment="products">До каталогу</a>
+		</div>
+	} @else {
+		<article class="product-detail">
+			<div class="product-detail-photo">
+				<img [src]="'/products/' + product()!.image" [alt]="productImageAlt(product()!)" />
+			</div>
+			<div class="product-detail-info">
+				<p class="product-type">{{ productType(product()!) }}</p>
+				<h1>PANACEA {{ product()!.brand }}</h1>
+				<dl class="product-detail-specs">
+					<dt>Газованість</dt>
+					<dd>{{ product()!.gas }}</dd>
+					<dt>Паковання</dt>
+					<dd>{{ product()!.material }}</dd>
+					<dt>Об'єм</dt>
+					<dd>0,5 л</dd>
+				</dl>
+				<div class="price">{{ product()!.price | money }}<small>/ шт.</small></div>
+				<div class="buy-row">
+					<div class="quantity">
+						<button (click)="step(-1)" aria-label="Зменшити кількість">−</button>
+						<input
+							#qty
+							id="qty"
+							type="number"
+							min="1"
+							step="1"
+							[value]="quantity()"
+							inputmode="numeric"
+							(change)="setQuantity(qty)"
+						/>
+						<button (click)="step(1)" aria-label="Збільшити кількість">+</button>
+					</div>
+					<button class="add" (click)="addToCart()">
+						До кошика
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+							<path d="M5 7h14l1 14H4L5 7Z" />
+							<path d="M8 8V6a4 4 0 0 1 8 0v2" />
+						</svg>
+					</button>
+				</div>
+				<p class="stock-note">
+					@if (product()!.stock > 0) {
+						В наявності: {{ product()!.stock }} шт.
+					} @else {
+						Тимчасово немає в наявності
+					}
+				</p>
+				<p class="price-note">Ціна попередня. Остаточну вартість уточнюйте під час замовлення.</p>
+			</div>
+		</article>
+	}
+</div>

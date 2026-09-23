@@ -1,0 +1,28 @@
+<div class="page-shell">
+	<div class="page-breadcrumb"><a routerLink="/">Головна</a><span>/</span> Сертифікати та документи</div>
+	<div class="content-hero">
+		<p class="eyebrow">ЯКІСТЬ ТА БЕЗПЕЧНІСТЬ</p>
+		<h1>Сертифікати та документи</h1>
+		<p>Тут публікуватимуться офіційні документи, що підтверджують якість, безпечність і походження води PANACEA.</p>
+	</div>
+
+	<section class="content-section">
+		<div class="cert-list">
+			@for (item of items; track item.title) {
+				<div class="cert-item">
+					<span class="cert-icon">PDF</span>
+					<div>
+						<strong>{{ item.title }}</strong>
+						<span>Буде додано після надання документа замовником</span>
+					</div>
+				</div>
+			}
+		</div>
+	</section>
+
+	<p class="doc-note">
+		Розділ підготовлено як структурний макет відповідно до ТЗ (Сертифікати / Документи). Наповнення
+		реальними PDF-файлами відбувається лише на підставі документів, погоджених замовником —
+		ТОВ «Збручанські джерела».
+	</p>
+</div>

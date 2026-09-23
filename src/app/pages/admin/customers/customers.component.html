@@ -1,0 +1,20 @@
+<div class="admin-header"><div><h1>Клієнти</h1><p>База клієнтів PANACEA</p></div></div>
+
+<div class="panel">
+	<div class="table-scroll">
+		<table class="data-table">
+			<thead><tr><th>Ім'я</th><th>Телефон</th><th>Місто</th><th>Замовлень</th><th>Витрачено</th></tr></thead>
+			<tbody>
+				@for (customer of customers; track customer.phone) {
+					<tr>
+						<td>{{ customer.name }}</td>
+						<td>{{ customer.phone }}</td>
+						<td>{{ customer.city }}</td>
+						<td>{{ customer.orders }}</td>
+						<td>{{ customer.spent | money }}</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

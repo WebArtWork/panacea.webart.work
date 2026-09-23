@@ -1,0 +1,20 @@
+@if (checked()) {
+	<div class="admin-root">
+		<div class="admin-layout">
+			<nav class="admin-nav">
+				<div class="brand">PANACEA</div>
+				<a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Дашборд</a>
+				<a routerLink="/admin/products" routerLinkActive="active">Товари</a>
+				<a routerLink="/admin/orders" routerLinkActive="active">Замовлення</a>
+				<a routerLink="/admin/customers" routerLinkActive="active">Клієнти</a>
+				<button type="button" class="back" style="background: none; border: 0; cursor: pointer; text-align: left" (click)="logout()">
+					Вийти{{ user()?.email ? ' (' + user()!.email + ')' : '' }}
+				</button>
+				<a class="back" routerLink="/">← До магазину</a>
+			</nav>
+			<main class="admin-main">
+				<router-outlet />
+			</main>
+		</div>
+	</div>
+}

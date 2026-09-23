@@ -1,0 +1,61 @@
+<div class="page-shell">
+	<div class="page-breadcrumb"><a routerLink="/">Головна</a><span>/</span> Кошик</div>
+	<h1 style="font-size: 28px; margin-bottom: 20px">Ваш кошик</h1>
+
+	<div class="cart-page-layout" [class.cart-page-layout-empty]="!lines().length">
+		<div class="cart-page-items">
+			@if (lines().length) {
+				@for (line of lines(); track line.product.id) {
+					<article class="cart-item">
+						<img [src]="'/products/' + line.product.image" [alt]="'PANACEA ' + line.product.brand" />
+						<div>
+							<h3><a [routerLink]="['/product', line.product.id]">PANACEA {{ line.product.brand }}</a></h3>
+							<p>{{ line.product.gas }} · {{ line.product.material }} · 0,5 л</p>
+							<div class="buy-row">
+								<div class="quantity">
+									<button (click)="step(line.product.id, -1)" aria-label="Зменшити кількість">−</button>
+									<input
+										#qty
+										aria-label="Кількість"
+										inputmode="numeric"
+										type="number"
+										min="1"
+										step="1"
+										[value]="line.quantity"
+										(change)="setQuantity(line.product.id, qty)"
+									/>
+									<button (click)="step(line.product.id, 1)" aria-label="Збільшити кількість">+</button>
+								</div>
+								<span>{{ line.total | money }}</span>
+							</div>
+							<button class="remove" (click)="remove(line.product.id)">Видалити</button>
+						</div>
+					</article>
+				}
+			} @else {
+				<div class="empty">
+					<h3>Кошик порожній.</h3>
+					<p>Додайте улюблену воду до кошика.</p>
+					<a class="button" routerLink="/" fragment="products">Обрати воду ↗</a>
+				</div>
+			}
+		</div>
+
+		@if (lines().length) {
+			<div class="cart-page-summary">
+				<h2>Разом</h2>
+				<div class="total"><span>Сума</span><strong>{{ total() | money }}</strong></div>
+				<a class="button" style="width: 100%; display: flex" routerLink="/checkout">Оформити замовлення</a>
+				<p class="cart-notice" style="margin-top: 16px">
+					@if (isDemo()) {
+						Це приклад наповненого кошика для демонстрації сторінки.<br />
+					}
+					Онлайн-оплата поки недоступна.<br />
+					Замовити воду можна за телефоном
+					<a href="tel:+380977111077"><u>+38 097 711 10 77</u></a>.<br />
+					<small>Ціни попередні. Кошик зберігається на цьому пристрої.</small>
+				</p>
+			</div>
+		}
+	</div>
+</div>

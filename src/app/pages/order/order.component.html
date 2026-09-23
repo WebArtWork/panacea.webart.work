@@ -1,0 +1,64 @@
+<div class="page-shell">
+	<div class="page-breadcrumb"><a routerLink="/">Головна</a><span>/</span> Замовлення</div>
+
+	@if (order() === undefined) {
+		<div class="no-results">
+			<h2>Завантаження…</h2>
+		</div>
+	} @else if (order(); as order) {
+		<div class="order-head">
+			<div>
+				<h1 style="font-size: 26px; margin-bottom: 6px">Замовлення {{ order.id }}</h1>
+				<p class="stock-note">{{ orderDate() }}</p>
+			</div>
+			<span class="order-status-badge" [class]="'order-status-' + order.status">
+				{{ statusLabel[order.status] }}
+			</span>
+		</div>
+
+		<div class="checkout-layout">
+			<div class="checkout-form">
+				<h2>Деталі доставки</h2>
+				<dl class="product-detail-specs">
+					<dt>Отримувач</dt>
+					<dd>{{ order.name }}</dd>
+					<dt>Телефон</dt>
+					<dd>{{ order.phone }}</dd>
+					<dt>Місто</dt>
+					<dd>{{ order.city }}</dd>
+					<dt>Адреса</dt>
+					<dd>{{ order.address }}</dd>
+					@if (order.comment) {
+						<dt>Коментар</dt>
+						<dd>{{ order.comment }}</dd>
+					}
+					<dt>Оплата</dt>
+					<dd>{{ order.payment }}</dd>
+				</dl>
+			</div>
+
+			<div class="checkout-summary">
+				<h2>Склад замовлення</h2>
+				<div>
+					@for (item of order.items; track $index) {
+						<div class="checkout-line">
+							<span>PANACEA {{ item.brand }} × {{ item.quantity }}</span>
+							<span>{{ item.price * item.quantity | money }}</span>
+						</div>
+					}
+				</div>
+				<div class="total"><span>Разом</span><strong>{{ order.total | money }}</strong></div>
+				<p class="cart-notice" style="margin-top: 16px">
+					Ми зателефонуємо на вказаний номер, щоб підтвердити замовлення.<br />
+					Питання? Телефонуйте <a href="tel:+380977111077"><u>+38 097 711 10 77</u></a>.
+				</p>
+			</div>
+		</div>
+	} @else {
+		<div class="no-results">
+			<h2>Замовлення не знайдено</h2>
+			<p>Можливо, посилання застаріле.</p>
+			<a class="button" routerLink="/" fragment="products">До каталогу</a>
+		</div>
+	}
+</div>

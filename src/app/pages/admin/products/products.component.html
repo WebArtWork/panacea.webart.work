@@ -1,0 +1,72 @@
+<div class="admin-header">
+	<div><h1>Товари</h1><p>Каталог PANACEA, який показується в магазині</p></div>
+	<button class="save" (click)="openForCreate()">+ Додати товар</button>
+</div>
+
+<div class="panel">
+	<div class="table-scroll">
+		<table class="data-table">
+			<thead>
+				<tr><th>Товар</th><th>Газованість</th><th>Паковання</th><th>Ціна</th><th>Залишок</th><th>Статус</th><th></th></tr>
+			</thead>
+			<tbody>
+				@for (product of adminService.products(); track product.id) {
+					<tr>
+						<td>PANACEA {{ product.brand }}</td>
+						<td>{{ product.gas }}</td>
+						<td>{{ product.material }}</td>
+						<td>{{ product.price | money }}</td>
+						<td>{{ product.stock }} шт.</td>
+						<td><span class="badge" [class]="product.stock <= 20 ? 'low' : 'ok'">{{ product.stock <= 20 ? 'Мало' : 'В наявності' }}</span></td>
+						<td>
+							<div class="row-actions">
+								<button class="icon-btn" (click)="openForEdit(product)" aria-label="Редагувати товар">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+										<path d="M12 20h9" />
+										<path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+									</svg>
+								</button>
+								<button class="icon-btn danger" (click)="deleteProduct(product)" aria-label="Видалити товар">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+										<path d="M3 6h18" />
+										<path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+										<path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+									</svg>
+								</button>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<dialog #editDialog class="admin-dialog">
+	<form (submit)="submit($event)">
+		<h2>{{ editing() ? 'Редагувати товар' : 'Новий товар' }}</h2>
+		<div class="form-row"><label for="edit-brand">Бренд</label><input id="edit-brand" name="brand" required placeholder="Arden" [value]="editing()?.brand ?? ''" /></div>
+		<div class="form-row">
+			<label for="edit-gas">Газованість</label>
+			<select id="edit-gas" name="gas">
+				@for (gas of gases; track gas) {
+					<option [value]="gas" [selected]="(editing()?.gas ?? gases[0]) === gas">{{ gas }}</option>
+				}
+			</select>
+		</div>
+		<div class="form-row">
+			<label for="edit-material">Паковання</label>
+			<select id="edit-material" name="material">
+				@for (material of materials; track material) {
+					<option [value]="material" [selected]="(editing()?.material ?? materials[0]) === material">{{ material }}</option>
+				}
+			</select>
+		</div>
+		<div class="form-row"><label for="edit-price">Ціна, ₴</label><input id="edit-price" name="price" type="number" min="0" step="1" required [value]="editing()?.price ?? ''" /></div>
+		<div class="form-row"><label for="edit-stock">Залишок, шт.</label><input id="edit-stock" name="stock" type="number" min="0" step="1" required [value]="editing()?.stock ?? ''" /></div>
+		<div class="dialog-actions">
+			<button type="button" class="cancel" (click)="closeDialog()">Скасувати</button>
+			<button type="submit" class="save">Зберегти</button>
+		</div>
+	</form>
+</dialog>

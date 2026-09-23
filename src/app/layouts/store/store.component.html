@@ -1,0 +1,88 @@
+<div class="topbar">
+	<span>Офіційний інтернет-магазин PANACEA</span>
+	<nav aria-label="Інформація">
+		<a routerLink="/about">Про нас</a>
+		<a routerLink="/partner">B2B</a>
+		<a routerLink="/contacts">Контакти</a>
+		<a [href]="phoneHref">{{ company.phone }}</a>
+	</nav>
+</div>
+
+<header class="shop-header">
+	<a class="logo" routerLink="/" aria-label="PANACEA, на головну">
+		<img src="/logo-panacea.svg" alt="PANACEA" />
+	</a>
+
+	@if (isHome()) {
+		<form class="search" role="search" (submit)="search($event)">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+				<circle cx="10.5" cy="10.5" r="6.5" />
+				<path d="m16 16 5 5" />
+			</svg>
+			<input
+				id="search"
+				type="search"
+				aria-label="Пошук води"
+				placeholder="Яку воду шукаєте?"
+				autocomplete="off"
+				[value]="catalog.query()"
+				(input)="catalog.query.set($any($event.target).value)"
+			/>
+			<button type="submit">Знайти</button>
+		</form>
+	} @else {
+		<span style="flex: 1"></span>
+	}
+
+	<a class="cart-open" routerLink="/cart" aria-label="Перейти до кошика">
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+			<path d="M5 7h14l1 14H4L5 7Z" />
+			<path d="M8 8V6a4 4 0 0 1 8 0v2" />
+		</svg>
+		<span>Кошик</span>
+		<b>{{ cartCount() }}</b>
+	</a>
+</header>
+
+<router-outlet />
+
+<footer id="contacts">
+	<div class="footer-main">
+		<div>
+			<div class="wordmark">PANACEA</div>
+			<p class="footer-tagline">Природне походження.<br />Власне джерело.<br />Справжній характер Поділля.</p>
+		</div>
+		<div>
+			<p class="eyebrow">ПРО PANACEA</p>
+			<a routerLink="/about">Про Panacea</a>
+			<a routerLink="/production">Джерело та виробництво</a>
+			<a routerLink="/composition">Мінеральний склад</a>
+			<a routerLink="/certificates">Сертифікати</a>
+		</div>
+		<div>
+			<p class="eyebrow">МАГАЗИН</p>
+			<a routerLink="/" fragment="products">Каталог води</a>
+			<a routerLink="/cart">Кошик</a>
+			<a routerLink="/delivery">Доставка та оплата</a>
+			<a routerLink="/partner">Для бізнесу</a>
+			<a routerLink="/account">Особистий кабінет</a>
+		</div>
+		<div>
+			<p class="eyebrow">ЗАЛИШАЙМОСЯ НА ЗВ’ЯЗКУ</p>
+			<a [href]="phoneHref">{{ company.phone }}</a>
+			<a [href]="emailHref">{{ company.email }}</a>
+			<p>ТОВ «Збручанські джерела»<br />селище Сатанів, Хмельницька область</p>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<span>© 2026 PANACEA</span>
+		<nav aria-label="Юридична інформація">
+			<a routerLink="/privacy">Політика конфіденційності</a>
+			<a routerLink="/offer">Публічна оферта</a>
+			<a routerLink="/cookies">Cookie-політика</a>
+		</nav>
+		<span>Вода, народжена в серці Подільських Товтр.</span>
+	</div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite" [class.show]="toast.visible()">{{ toast.message() }}</div>

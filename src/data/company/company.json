@@ -1,0 +1,130 @@
+{
+	"_id": "",
+	"name": "PANACEA",
+	"title": "PANACEA | природна вода до вашого столу",
+	"description": "Оберіть воду PANACEA Arden та Diamond: газована, слабогазована чи негазована, у склі або банці 0,5 л. Замовляйте від однієї пляшки, без мінімальної суми замовлення.",
+	"image": "/og-image.jpg",
+	"siteUrl": "https://panacea.webart.work",
+	"lang": "uk",
+	"locale": "uk_UA",
+	"logo": "/logo-panacea.svg",
+	"phone": "+38 097 711 10 77",
+	"email": "zbruchanskidzherela@gmail.com",
+	"address": "селище Сатанів, Хмельницька область, Україна",
+	"currency": {
+		"code": "UAH",
+		"icon": "₴"
+	},
+	"defaultSeo": {
+		"title": "Природна вода до вашого столу",
+		"description": "Оберіть воду PANACEA Arden та Diamond: газована, слабогазована чи негазована, у склі або банці 0,5 л. Замовляйте від однієї пляшки, без мінімальної суми замовлення.",
+		"author": "ТОВ «Збручанські джерела»",
+		"robots": "index, follow",
+		"image": "/og-image.jpg",
+		"type": "website",
+		"twitterCard": "summary_large_image"
+	},
+	"pageSeo": {
+		"/about": {
+			"title": "Про Panacea | ТОВ «Збручанські джерела»",
+			"titleSuffix": "",
+			"description": "PANACEA — вода власного видобутку ТОВ «Збручанські джерела» з Подільських Товтр. Історія компанії, модернізація виробництва та лінійки Arden і Diamond."
+		},
+		"/production": {
+			"title": "Джерело та виробництво | PANACEA",
+			"description": "Власне родовище PANACEA в Подільських Товтрах та сучасне виробництво на обладнанні ALTEC (Чехія). Шлях води від джерела до пляшки."
+		},
+		"/composition": {
+			"title": "Мінеральний склад | PANACEA",
+			"description": "Структура показників мінерального складу води PANACEA: натрій, калій, магній, кальцій, хлориди, гідрокарбонати, сульфати та мінералізація."
+		},
+		"/certificates": {
+			"title": "Сертифікати та документи | PANACEA",
+			"description": "Документи, що підтверджують якість і безпечність води PANACEA: висновки, сертифікати та протоколи випробувань."
+		},
+		"/delivery": {
+			"title": "Доставка та оплата | PANACEA",
+			"description": "Умови доставки та способи оплати замовлень води PANACEA: Нова пошта, кур'єрська доставка, оплата готівкою, переказом чи карткою."
+		},
+		"/partner": {
+			"title": "Стати партнером | B2B PANACEA",
+			"titleSuffix": "",
+			"description": "B2B-співпраця з PANACEA для HoReCa, роздрібних мереж, дистриб'юторів та корпоративних клієнтів. Залиште заявку на оптові умови."
+		},
+		"/contacts": {
+			"title": "Контакти | PANACEA",
+			"description": "Контакти ТОВ «Збручанські джерела», ТМ PANACEA: відділ продажів, комерційний та виробничий директор, адреса та email."
+		},
+		"/account": {
+			"title": "Особистий кабінет | PANACEA",
+			"description": "Особистий кабінет клієнта PANACEA: профіль, історія замовлень, збережені адреси та повторне замовлення.",
+			"robots": "noindex, follow"
+		},
+		"/privacy": {
+			"title": "Політика конфіденційності | PANACEA",
+			"description": "Політика конфіденційності інтернет-магазину PANACEA: які персональні дані збираються, як використовуються та захищаються.",
+			"robots": "noindex, follow"
+		},
+		"/offer": {
+			"title": "Публічна оферта | PANACEA",
+			"description": "Публічна оферта на продаж води PANACEA через інтернет-магазин panacea.webart.work.",
+			"robots": "noindex, follow"
+		},
+		"/cookies": {
+			"title": "Cookie-політика | PANACEA",
+			"description": "Як сайт PANACEA використовує cookie-файли: для чого, які типи та як їх можна відключити.",
+			"robots": "noindex, follow"
+		},
+		"/cart": {
+			"title": "Кошик | PANACEA",
+			"description": "Перегляньте товари у кошику, змініть кількість і перейдіть до оформлення замовлення води PANACEA.",
+			"robots": "noindex, follow"
+		},
+		"/checkout": {
+			"title": "Оформлення замовлення | PANACEA",
+			"description": "Оформіть замовлення води PANACEA: вкажіть дані доставки та оберіть спосіб оплати.",
+			"robots": "noindex, follow"
+		},
+		"/order": {
+			"title": "Замовлення | PANACEA",
+			"description": "Перегляньте статус і деталі свого замовлення води PANACEA.",
+			"robots": "noindex, nofollow"
+		},
+		"/admin": {
+			"title": "Панель керування | PANACEA CRM",
+			"titleSuffix": "",
+			"description": "Огляд каталогу, замовлень і клієнтів PANACEA.",
+			"robots": "noindex, nofollow"
+		},
+		"/admin/sign": {
+			"title": "Вхід | PANACEA CRM",
+			"titleSuffix": "",
+			"description": "Вхід до панелі керування PANACEA.",
+			"robots": "noindex, nofollow"
+		},
+		"/admin/products": {
+			"title": "Товари | PANACEA CRM",
+			"titleSuffix": "",
+			"description": "Керування каталогом товарів PANACEA.",
+			"robots": "noindex, nofollow"
+		},
+		"/admin/orders": {
+			"title": "Замовлення | PANACEA CRM",
+			"titleSuffix": "",
+			"description": "Список та статуси замовлень PANACEA.",
+			"robots": "noindex, nofollow"
+		},
+		"/admin/customers": {
+			"title": "Клієнти | PANACEA CRM",
+			"titleSuffix": "",
+			"description": "База клієнтів PANACEA.",
+			"robots": "noindex, nofollow"
+		}
+	},
+	"structuredData": {
+		"type": "Organization",
+		"addressLocality": "Сатанів",
+		"addressCountry": "UA",
+		"sameAs": ["https://www.instagram.com/panacea_mineral_water"]
+	}
+}

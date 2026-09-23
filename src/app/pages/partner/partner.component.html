@@ -1,0 +1,95 @@
+<div class="page-shell">
+	<div class="page-breadcrumb"><a routerLink="/">Головна</a><span>/</span> Стати партнером</div>
+	<div class="content-hero">
+		<p class="eyebrow">B2B / ДЛЯ БІЗНЕСУ</p>
+		<h1>Вода, що доповнює ваш простір</h1>
+		<p>
+			Співпрацюємо з готелями, ресторанами, торговельними мережами та дистриб'юторами. Пропонуємо
+			PANACEA Arden і Diamond у склі та банці 0,5 л, паковання по 8 шт. у ящику, 27 ящиків на палеті.
+		</p>
+	</div>
+
+	<section class="content-section">
+		<h2>Кому підійде співпраця</h2>
+		<div class="info-card-grid">
+			<div class="info-card"><strong>HoReCa</strong><p>Готелі, ресторани та кафе — преміальна вода для гостей.</p></div>
+			<div class="info-card"><strong>Роздрібні мережі</strong><p>Продаж через магазини та супермаркети.</p></div>
+			<div class="info-card"><strong>Дистриб'ютори та експорт</strong><p>Оптові поставки в Україні та на нові ринки.</p></div>
+		</div>
+	</section>
+
+	<section class="content-section">
+		<h2>Заявка на партнерство</h2>
+		<form class="checkout-layout" (submit)="submit($event)">
+			<div class="checkout-form">
+				<div class="form-row"><label for="p-company">Компанія</label><input id="p-company" name="company" required /></div>
+				<div class="content-two-col">
+					<div class="form-row">
+						<label for="p-country">Країна</label>
+						<select id="p-country" name="country">
+							<option>Україна</option>
+							<option>Польща</option>
+							<option>Німеччина</option>
+							<option>Інша</option>
+						</select>
+					</div>
+					<div class="form-row"><label for="p-city">Місто</label><input id="p-city" name="city" required /></div>
+				</div>
+				<div class="form-row"><label for="p-contact">Контактна особа</label><input id="p-contact" name="contact" required /></div>
+				<div class="content-two-col">
+					<div class="form-row">
+						<label for="p-phone">Телефон</label>
+						<input id="p-phone" name="phone" type="tel" required placeholder="+38 0__ ___ __ __" />
+					</div>
+					<div class="form-row"><label for="p-email">Email</label><input id="p-email" name="email" type="email" required /></div>
+				</div>
+				<div class="content-two-col">
+					<div class="form-row">
+						<label for="p-type">Тип партнера</label>
+						<select id="p-type" name="partnerType">
+							<option value="horeca">HoReCa</option>
+							<option value="retail">Роздрібна мережа</option>
+							<option value="distributor">Дистриб'ютор</option>
+							<option value="export">Експорт</option>
+							<option value="corporate">Корпоративний клієнт</option>
+							<option value="other">Інше</option>
+						</select>
+					</div>
+					<div class="form-row">
+						<label for="p-packaging">Цікавить паковання</label>
+						<select id="p-packaging" name="packaging">
+							<option value="glass">Скло</option>
+							<option value="can">Банка</option>
+							<option value="pet">PET</option>
+							<option value="other">Інше</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-row"><label for="p-volume">Орієнтовний обсяг</label><input id="p-volume" name="volume" placeholder="напр., 50 палет/міс." /></div>
+				<div class="form-row"><label for="p-comment">Коментар</label><textarea id="p-comment" name="comment"></textarea></div>
+				<label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--muted); margin: 6px 0 4px">
+					<input type="checkbox" required style="margin-top: 3px; width: 16px; height: 16px; accent-color: var(--green)" />
+					Погоджуюсь на обробку персональних даних згідно з <a routerLink="/privacy">Політикою конфіденційності</a>
+				</label>
+			</div>
+			<div class="checkout-summary">
+				<h2>Наступний крок</h2>
+				<p style="font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 16px">
+					Заявка потрапить у CRM з відповідним статусом («Новий») та джерелом UTM. Менеджер зв'яжеться
+					з вами протягом одного робочого дня.
+				</p>
+				<button class="button" style="width: 100%; display: flex; justify-content: center" type="submit">
+					Надіслати заявку
+				</button>
+				@if (submitted()) {
+					<p class="success-note" style="margin-top: 16px">
+						Дякуємо! Це демо-форма без бекенду — заявка поки не надсилається в CRM. Для реального
+						звернення пишіть на
+						<a href="mailto:panacea.akokorin@gmail.com"><u>panacea.akokorin&#64;gmail.com</u></a> або
+						телефонуйте <a href="tel:+380977111077"><u>+38 097 711 10 77</u></a>.
+					</p>
+				}
+			</div>
+		</form>
+	</section>
+</div>

@@ -1,0 +1,226 @@
+<div class="shop-layout">
+	<aside class="sidebar" aria-label="Фільтри каталогу">
+		<div class="sidebar-title">Каталог води</div>
+		<div class="category-list">
+			<button
+				class="category"
+				[class.active]="catalog.brand() === 'all'"
+				[attr.aria-pressed]="catalog.brand() === 'all'"
+				(click)="setBrand('all')"
+			>
+				<span>Уся вода</span><small>{{ totalCount }}</small>
+			</button>
+			@for (brand of brands; track brand.value) {
+				<button
+					class="category"
+					[class.active]="catalog.brand() === brand.value"
+					[attr.aria-pressed]="catalog.brand() === brand.value"
+					(click)="setBrand(brand.value)"
+				>
+					<span>{{ brand.title }}<small>{{ brand.subtitle }}</small></span>
+					<small>{{ brandCount(brand.value) }}</small>
+				</button>
+			}
+		</div>
+
+		<fieldset>
+			<legend>Газованість</legend>
+			@for (option of gasOptions; track option.value) {
+				<label>
+					<input
+						type="checkbox"
+						name="gas"
+						[value]="option.value"
+						[checked]="catalog.gases().includes(option.value)"
+						(change)="toggleGas(option.value, $any($event.target).checked)"
+					/>
+					{{ option.label }} <small>{{ option.count }}</small>
+				</label>
+			}
+		</fieldset>
+		<fieldset>
+			<legend>Паковання</legend>
+			@for (option of materialOptions; track option.value) {
+				<label>
+					<input
+						type="checkbox"
+						name="material"
+						[value]="option.value"
+						[checked]="catalog.materials().includes(option.value)"
+						(change)="toggleMaterial(option.value, $any($event.target).checked)"
+					/>
+					{{ option.label }} <small>{{ option.count }}</small>
+				</label>
+			}
+		</fieldset>
+		<button class="reset" (click)="catalog.reset()">Скинути фільтри</button>
+
+		<div class="sidebar-message">
+			<img src="/brand-mark-gold.webp" alt="" />
+			<strong>Від джерела до вас</strong>
+			<p>Обирайте від однієї пляшки. Поєднуйте різні смаки та формати в одному кошику.</p>
+		</div>
+	</aside>
+
+	<main>
+		<section class="catalog" id="products">
+			<div class="breadcrumb"><a routerLink="/">Головна</a><span>/</span> Каталог води</div>
+			<div class="catalog-heading">
+				<h1>Вода PANACEA</h1>
+				<span aria-live="polite">{{ resultsLabel() }}</span>
+			</div>
+
+			<div class="catalog-toolbar">
+				<div class="quick-filters" aria-label="Лінійка води">
+					<button
+						[class.active]="catalog.brand() === 'all'"
+						[attr.aria-pressed]="catalog.brand() === 'all'"
+						(click)="setBrand('all')"
+					>
+						Уся вода
+					</button>
+					@for (brand of brands; track brand.value) {
+						<button
+							[class.active]="catalog.brand() === brand.value"
+							[attr.aria-pressed]="catalog.brand() === brand.value"
+							(click)="setBrand(brand.value)"
+						>
+							{{ brand.value }}
+						</button>
+					}
+				</div>
+				<label class="sort-label">
+					<span class="sr-only">Сортування</span>
+					<select [value]="catalog.sort()" (change)="setSort($any($event.target).value)">
+						<option value="default">За замовчуванням</option>
+						<option value="asc">Від дешевих до дорогих</option>
+						<option value="desc">Від дорогих до дешевих</option>
+					</select>
+				</label>
+				<button
+					class="mobile-filter"
+					[attr.aria-expanded]="mobileFiltersOpen()"
+					aria-controls="mobile-filters"
+					(click)="mobileFiltersOpen.set(!mobileFiltersOpen())"
+				>
+					Фільтри
+				</button>
+			</div>
+
+			<div id="mobile-filters" [hidden]="!mobileFiltersOpen()">
+				<label>
+					Газованість
+					<select (change)="setMobileGas($any($event.target).value)">
+						<option value="all" [selected]="mobileGas() === 'all'">Будь-яка</option>
+						@for (option of gasOptions; track option.value) {
+							<option [value]="option.value" [selected]="mobileGas() === option.value">{{ option.label }}</option>
+						}
+					</select>
+				</label>
+				<label>
+					Паковання
+					<select (change)="setMobileMaterial($any($event.target).value)">
+						<option value="all" [selected]="mobileMaterial() === 'all'">Будь-яке</option>
+						@for (option of materialOptions; track option.value) {
+							<option [value]="option.value" [selected]="mobileMaterial() === option.value">{{ option.label }}</option>
+						}
+					</select>
+				</label>
+				<button (click)="catalog.reset()">Скинути</button>
+			</div>
+
+			<div class="product-grid">
+				@for (product of catalog.products(); track product.id) {
+					<article class="product-card">
+						<div class="product-photo" [class.arden]="product.brand === 'Arden'">
+							<span class="product-material">{{ product.material === 'Скло' ? 'У склі' : 'У банці' }}</span>
+							<img
+								[class.can]="product.material === 'Банка'"
+								[src]="'/products/' + product.image"
+								[alt]="productImageAlt(product)"
+							/>
+							<span class="product-volume">0,5 л</span>
+						</div>
+						<div class="product-info">
+							<p class="product-type">{{ productType(product) }}</p>
+							<h2>
+								<a [routerLink]="['/product', product.id]">PANACEA <span>{{ product.brand }}</span></a>
+							</h2>
+							<p class="product-desc">{{ product.gas }} · {{ product.material.toLowerCase() }} · 0,5 л</p>
+							<div class="buy-row">
+								<div class="price">{{ product.price | money }}<small>/ шт.</small></div>
+								<div class="quantity">
+									<button (click)="step(product, -1)" aria-label="Зменшити кількість">−</button>
+									<input
+										#quantity
+										[attr.aria-label]="quantityLabel(product)"
+										inputmode="numeric"
+										type="number"
+										min="1"
+										step="1"
+										[value]="quantities()[product.id]"
+										(change)="setQuantity(product, quantity)"
+									/>
+									<button (click)="step(product, 1)" aria-label="Збільшити кількість">+</button>
+								</div>
+							</div>
+							<button class="add" (click)="addToCart(product, quantity)">
+								До кошика
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+									<path d="M5 7h14l1 14H4L5 7Z" />
+									<path d="M8 8V6a4 4 0 0 1 8 0v2" />
+								</svg>
+							</button>
+						</div>
+					</article>
+				}
+			</div>
+
+			@if (!catalog.products().length) {
+				<div class="no-results">
+					<h2>Такої води не знайдено</h2>
+					<p>Спробуйте інший запит або скиньте фільтри.</p>
+					<button class="button" (click)="catalog.reset()">Показати всю воду</button>
+				</div>
+			}
+
+			<p class="price-note">Ціни попередні. Остаточну вартість уточнюйте під час замовлення.</p>
+		</section>
+
+		<div class="benefits">
+			<div>
+				<span>01</span>
+				<p><strong>Від однієї пляшки</strong>Без мінімальної суми</p>
+			</div>
+			<div>
+				<span>02</span>
+				<p><strong>Власне виробництво</strong>ТОВ «Збручанські джерела»</p>
+			</div>
+			<div>
+				<span>03</span>
+				<p><strong>Природне походження</strong>Із серця Подільських Товтр</p>
+			</div>
+		</div>
+
+		<section class="source" id="source">
+			<div class="source-photo">
+				<img
+					src="/podilski-tovtry-landscape.webp"
+					alt="Річка серед зелених пагорбів Подільських Товтр"
+					loading="lazy"
+				/>
+				<span>ПОДІЛЬСЬКІ ТОВТРИ · УКРАЇНА</span>
+			</div>
+			<div class="source-copy">
+				<img class="brand-mark" src="/brand-mark-gold.webp" alt="" loading="lazy" />
+				<p class="eyebrow">ПРИРОДА СТВОРИЛА. МИ ЗБЕРЕГЛИ.</p>
+				<h2>Велика історія в кожній <em>маленькій краплі.</em></h2>
+				<p>
+					PANACEA народжується в серці Подільських Товтр. Власне родовище та контроль на кожному
+					етапі допомагають зберегти природний характер води від джерела до вашого столу.
+				</p>
+				<a class="text-link" routerLink="/" fragment="products">Знайомтеся з нашою водою ↗</a>
+			</div>
+		</section>
+	</main>
+</div>

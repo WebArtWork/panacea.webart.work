@@ -1,0 +1,54 @@
+<div class="admin-header"><div><h1>Дашборд</h1><p>Огляд каталогу, замовлень і клієнтів</p></div></div>
+
+<div class="stat-cards">
+	<div class="stat-card"><span>Товарів у каталозі</span><strong>{{ adminService.products().length }}</strong></div>
+	<div class="stat-card"><span>Замовлень</span><strong>{{ orders().length }}</strong></div>
+	<div class="stat-card"><span>Дохід</span><strong>{{ totalRevenue() | money }}</strong></div>
+	<div class="stat-card"><span>Клієнтів (приклад)</span><strong>{{ customerCount }}</strong></div>
+</div>
+
+<div class="panel">
+	<h2>Останні замовлення</h2>
+	<div class="table-scroll">
+		<table class="data-table">
+			<thead><tr><th>Номер</th><th>Клієнт</th><th>Товари</th><th>Сума</th><th>Статус</th></tr></thead>
+			<tbody>
+				@for (order of recentOrders(); track order.id) {
+					<tr>
+						<td>{{ order.id }}</td>
+						<td>{{ order.name }}</td>
+						<td>{{ order.items | orderSummary }}</td>
+						<td>{{ order.total | money }}</td>
+						<td><span class="badge" [class]="order.status">{{ statusLabel[order.status] }}</span></td>
+					</tr>
+				} @empty {
+					@if (!ordersLoading()) {
+						<tr><td colspan="5">Замовлень поки немає.</td></tr>
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="panel">
+	<h2>Товари з низьким залишком</h2>
+	<div class="table-scroll">
+		<table class="data-table">
+			<thead><tr><th>Товар</th><th>Залишок</th><th>Статус</th></tr></thead>
+			<tbody>
+				@if (lowStock().length) {
+					@for (product of lowStock(); track product.id) {
+						<tr>
+							<td>PANACEA {{ product.brand }} · {{ product.gas.toLowerCase() }} · {{ product.material.toLowerCase() }}</td>
+							<td>{{ product.stock }} шт.</td>
+							<td><span class="badge low">Мало</span></td>
+						</tr>
+					}
+				} @else {
+					<tr><td colspan="3">Усі товари в достатній кількості.</td></tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

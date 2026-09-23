@@ -1,0 +1,47 @@
+<div class="page-shell">
+	<div class="page-breadcrumb"><a routerLink="/">Головна</a><span>/</span> Мінеральний склад</div>
+	<div class="content-hero">
+		<p class="eyebrow">ВЛАСТИВОСТІ ВОДИ</p>
+		<h1>Мінеральний склад PANACEA</h1>
+		<p>
+			Показники зберігаються структуровано для кожної лінійки води, щоб їх можна було виводити на
+			сайті, перекладати іншими мовами та використовувати в SEO-розмітці Schema.org.
+		</p>
+	</div>
+
+	<section class="content-section">
+		<table class="mineral-table">
+			<thead>
+				<tr>
+					<th>Показник</th>
+					<th>Одиниця</th>
+					<th>Arden</th>
+					<th>Diamond</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (row of rows; track row.label) {
+					<tr>
+						<td [class.strong]="row.label === 'Мінералізація'">
+							@if (row.label === 'Мінералізація') {
+								<strong>{{ row.label }}</strong>
+							} @else {
+								{{ row.label }}
+							}
+						</td>
+						<td>{{ row.unit }}</td>
+						<td class="pending">уточнюється</td>
+						<td class="pending">уточнюється</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</section>
+
+	<p class="doc-note">
+		Значення показників вноситимуться тільки на підставі лабораторних протоколів і документів,
+		погоджених замовником — ТОВ «Збручанські джерела». Будь ласка, надішліть актуальні протоколи
+		аналізів для Arden і Diamond, щоб ми заповнили таблицю коректними даними та додали посилання на
+		PDF-документи на сторінці <a routerLink="/certificates">«Сертифікати»</a>.
+	</p>
+</div>
