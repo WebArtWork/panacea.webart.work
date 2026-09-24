@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { Component, computed, effect, ElementRef, inject, input, signal, viewChild } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { MetaService } from '@wawjs/ngx-core';
@@ -34,6 +34,16 @@ export class ProductComponent {
 	protected readonly productImageAlt = productImageAlt;
 	protected readonly formatVolume = formatVolume;
 	protected readonly quantity = signal(1);
+	protected readonly galleryDialog = viewChild<ElementRef<HTMLDialogElement>>('galleryDialog');
+	protected readonly galleryIndex = signal(0);
+	protected readonly galleryImages = computed(() => {
+		const image = this.product()?.image;
+
+		return image ? [image] : [];
+	});
+	protected readonly activeGalleryImage = computed(
+		() => this.galleryImages()[this.galleryIndex()] ?? null,
+	);
 
 	constructor() {
 		// Route data only covers the generic /product path; each product needs its own SEO tags.
@@ -92,5 +102,32 @@ export class ProductComponent {
 
 		this._cartService.add(product.id, this.quantity());
 		this._toastService.show(`Додано до кошика: ${this.quantity()} шт.`);
+	}
+
+	protected openGallery(index = 0) {
+		if (!this.galleryImages().length) {
+			return;
+		}
+
+		this.galleryIndex.set(index);
+		this.galleryDialog()?.nativeElement.showModal();
+	}
+
+	protected closeGallery() {
+		this.galleryDialog()?.nativeElement.close();
+	}
+
+	protected closeGalleryFromBackdrop(event: MouseEvent) {
+		if (event.target === event.currentTarget) {
+			this.closeGallery();
+		}
+	}
+
+	protected changeGalleryImage(delta: number) {
+		const images = this.galleryImages();
+
+		if (images.length > 1) {
+			this.galleryIndex.update((index) => (index + delta + images.length) % images.length);
+		}
 	}
 }
