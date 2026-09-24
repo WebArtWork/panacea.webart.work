@@ -1,25 +1,38 @@
-import { computed, inject, Service, signal } from '@angular/core';
+import { computed, effect, inject, Service, signal } from '@angular/core';
 import { StoreService } from '@wawjs/ngx-core';
+import { AdminService } from '../admin/admin.service';
 import { PRODUCTS } from '../product/product.data';
+import { Product } from '../product/product.interface';
 import { CART_STORE_KEY } from './cart.const';
 import { Cart, CartLine } from './cart.interface';
 
 @Service()
 export class CartService {
 	private readonly _storeService = inject(StoreService);
+	private readonly _adminService = inject(AdminService);
 
 	readonly cart = signal<Cart>({});
 	readonly loaded = signal(false);
 	readonly count = computed(() => cartCount(this.cart()));
 
 	constructor() {
-		void this._restore();
+		effect(() => {
+			if (this._adminService.loaded() && !this.loaded()) {
+				void this._restore();
+			}
+		});
 	}
 
 	add(id: string, quantity: number) {
 		const next = (this.cart()[id] ?? 0) + quantity;
+		const product = this._adminService.products().find((item) => item.id === id);
 
-		if (!isValidQuantity(quantity) || !isValidQuantity(next) || !PRODUCTS.some((p) => p.id === id)) {
+		if (
+			!product ||
+			!isValidQuantity(quantity) ||
+			!isValidQuantity(next) ||
+			next > product.stock
+		) {
 			throw new Error('Некоректний товар або кількість');
 		}
 
@@ -27,7 +40,9 @@ export class CartService {
 	}
 
 	setQuantity(id: string, quantity: number) {
-		if (isValidQuantity(quantity)) {
+		const product = this._adminService.products().find((item) => item.id === id);
+
+		if (product && isValidQuantity(quantity) && quantity <= product.stock) {
 			this.replace({ ...this.cart(), [id]: quantity });
 		}
 	}
@@ -48,10 +63,12 @@ export class CartService {
 	}
 
 	private async _restore() {
-		const saved = await this._storeService.getJson<Cart>(CART_STORE_KEY, { clearOnError: true });
+		const saved = await this._storeService.getJson<Cart>(CART_STORE_KEY, {
+			clearOnError: true,
+		});
 		const cart: Cart = {};
 
-		for (const product of PRODUCTS) {
+		for (const product of this._adminService.products()) {
 			const quantity = saved?.[product.id];
 
 			if (typeof quantity === 'number' && isValidQuantity(quantity)) {
@@ -68,8 +85,8 @@ export function cartCount(cart: Cart): number {
 	return Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
 }
 
-export function cartLines(cart: Cart): CartLine[] {
-	return PRODUCTS.filter((product) => cart[product.id]).map((product) => ({
+export function cartLines(cart: Cart, products: Product[] = PRODUCTS): CartLine[] {
+	return products.filter((product) => cart[product.id]).map((product) => ({
 		product,
 		quantity: cart[product.id]!,
 		total: product.price * cart[product.id]!,

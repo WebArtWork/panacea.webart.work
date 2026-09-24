@@ -43,6 +43,9 @@
 	.badge.done{background:#e2f2e6;color:#1f7a3f}
 	.badge.low{background:#fbe6e6;color:#a32b2b}
 	.badge.ok{background:#e2f2e6;color:#1f7a3f}
+	.badge.hit{background:#fdf2dc;color:#8a5a12}
+	.product-flags{display:flex;gap:5px}
+	.muted-value{color:var(--muted)}
 	.icon-btn{border:1px solid var(--line);background:white;border-radius:6px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--green)}
 	.icon-btn:hover{background:var(--pale)}
 	.icon-btn svg{width:16px;height:16px}
@@ -60,6 +63,10 @@
 	.admin-dialog .form-row{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
 	.admin-dialog .form-row label{font-size:12px;font-weight:600;color:var(--muted)}
 	.admin-dialog input,.admin-dialog select{border:1px solid #ccd8cd;border-radius:6px;padding:9px 10px;font-size:14px;color:var(--green);width:100%}
+	.admin-dialog .flag-options{display:flex;gap:18px;margin:0;padding:0;border:0}
+	.admin-dialog .flag-options legend{font-size:12px;font-weight:600;color:var(--muted);margin-bottom:8px}
+	.admin-dialog .flag-options label{display:flex;align-items:center;gap:7px;font-size:13px}
+	.admin-dialog .flag-options input{width:16px;height:16px;margin:0;accent-color:var(--green)}
 	.admin-dialog .dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
 	.admin-dialog .cancel{border:1px solid var(--line);background:white;border-radius:6px;padding:9px 16px;font-size:13px}
 	.admin-dialog .save{border:0;background:var(--green);color:white;border-radius:6px;padding:9px 16px;font-size:13px}

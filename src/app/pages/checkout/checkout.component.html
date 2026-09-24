@@ -69,7 +69,7 @@
 				<div>
 					@for (line of lines(); track line.product.id) {
 						<div class="checkout-line">
-							<span>PANACEA {{ line.product.brand }} × {{ line.quantity }}</span>
+							<span>PANACEA {{ line.product.brand }}, {{ formatVolume(line.product.volumeMl) }} × {{ line.quantity }}</span>
 							<span>{{ line.total | money }}</span>
 						</div>
 					}

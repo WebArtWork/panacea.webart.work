@@ -4,6 +4,8 @@ import { cartLines, CartService, isValidQuantity } from '../../feature/cart/cart
 import { DEMO_CART } from '../../feature/cart/cart.const';
 import { CartLine } from '../../feature/cart/cart.interface';
 import { MoneyPipe } from '../../pipes/money.pipe';
+import { formatVolume } from '../../feature/product/product.data';
+import { AdminService } from '../../feature/admin/admin.service';
 
 @Component({
 	imports: [MoneyPipe, RouterLink],
@@ -11,13 +13,19 @@ import { MoneyPipe } from '../../pipes/money.pipe';
 })
 export class CartComponent {
 	protected readonly cartService = inject(CartService);
+	private readonly _adminService = inject(AdminService);
 
 	/** True while the real cart is empty and the demo cart is shown instead. */
-	protected readonly isDemo = computed(() => this.cartService.loaded() && !this.cartService.count());
-	protected readonly lines = computed<CartLine[]>(() =>
-		cartLines(this.isDemo() ? DEMO_CART : this.cartService.cart()),
+	protected readonly isDemo = computed(
+		() => this.cartService.loaded() && !this.cartService.count(),
 	);
-	protected readonly total = computed(() => this.lines().reduce((sum, line) => sum + line.total, 0));
+	protected readonly lines = computed<CartLine[]>(() =>
+		cartLines(this.isDemo() ? DEMO_CART : this.cartService.cart(), this._adminService.products()),
+	);
+	protected readonly total = computed(() =>
+		this.lines().reduce((sum, line) => sum + line.total, 0),
+	);
+	protected readonly formatVolume = formatVolume;
 
 	protected step(id: string, delta: number) {
 		const line = this.lines().find((l) => l.product.id === id);

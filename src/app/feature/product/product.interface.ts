@@ -8,7 +8,11 @@ export interface Product {
 	category: string;
 	gas: ProductGas;
 	material: ProductMaterial;
-	image: string;
+	volumeMl: number;
+	image: string | null;
 	price: number;
 	stock: number;
+	popularity: number;
+	isNew: boolean;
+	isHit: boolean;
 }

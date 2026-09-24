@@ -5,9 +5,13 @@
 		"category": "ЛІКУВАЛЬНО-СТОЛОВА ВОДА",
 		"gas": "Сильногазована",
 		"material": "Скло",
+		"volumeMl": 500,
 		"image": "arden-2.webp",
 		"price": 45,
-		"stock": 120
+		"stock": 120,
+		"popularity": 92,
+		"isNew": false,
+		"isHit": true
 	},
 	{
 		"id": "arden-can",
@@ -15,9 +19,13 @@
 		"category": "ЛІКУВАЛЬНО-СТОЛОВА ВОДА",
 		"gas": "Сильногазована",
 		"material": "Банка",
+		"volumeMl": 500,
 		"image": "arden-1.webp",
 		"price": 35,
-		"stock": 80
+		"stock": 80,
+		"popularity": 76,
+		"isNew": true,
+		"isHit": false
 	},
 	{
 		"id": "diamond-light-glass",
@@ -25,9 +33,13 @@
 		"category": "АРТЕЗІАНСЬКА ПИТНА ВОДА",
 		"gas": "Слабогазована",
 		"material": "Скло",
+		"volumeMl": 500,
 		"image": "diamond-4.webp",
 		"price": 40,
-		"stock": 95
+		"stock": 95,
+		"popularity": 84,
+		"isNew": false,
+		"isHit": true
 	},
 	{
 		"id": "diamond-still-glass",
@@ -35,9 +47,13 @@
 		"category": "АРТЕЗІАНСЬКА ПИТНА ВОДА",
 		"gas": "Негазована",
 		"material": "Скло",
+		"volumeMl": 500,
 		"image": "diamond-5.webp",
 		"price": 40,
-		"stock": 60
+		"stock": 60,
+		"popularity": 68,
+		"isNew": false,
+		"isHit": false
 	},
 	{
 		"id": "diamond-sparkling-can",
@@ -45,9 +61,13 @@
 		"category": "АРТЕЗІАНСЬКА ПИТНА ВОДА",
 		"gas": "Сильногазована",
 		"material": "Банка",
+		"volumeMl": 500,
 		"image": "diamond-1.webp",
 		"price": 30,
-		"stock": 150
+		"stock": 150,
+		"popularity": 100,
+		"isNew": false,
+		"isHit": true
 	},
 	{
 		"id": "diamond-light-can",
@@ -55,8 +75,54 @@
 		"category": "АРТЕЗІАНСЬКА ПИТНА ВОДА",
 		"gas": "Слабогазована",
 		"material": "Банка",
+		"volumeMl": 500,
 		"image": "diamond-2.webp",
 		"price": 30,
-		"stock": 10
+		"stock": 10,
+		"popularity": 73,
+		"isNew": false,
+		"isHit": false
+	},
+	{
+		"id": "diamond-still-can-330",
+		"brand": "Diamond",
+		"category": "АРТЕЗІАНСЬКА ПИТНА ВОДА",
+		"gas": "Негазована",
+		"material": "Банка",
+		"volumeMl": 330,
+		"image": null,
+		"price": 28,
+		"stock": 70,
+		"popularity": 55,
+		"isNew": true,
+		"isHit": false
+	},
+	{
+		"id": "arden-still-glass-750",
+		"brand": "Arden",
+		"category": "ЛІКУВАЛЬНО-СТОЛОВА ВОДА",
+		"gas": "Негазована",
+		"material": "Скло",
+		"volumeMl": 750,
+		"image": null,
+		"price": 55,
+		"stock": 45,
+		"popularity": 47,
+		"isNew": true,
+		"isHit": false
+	},
+	{
+		"id": "diamond-sparkling-glass-1000",
+		"brand": "Diamond",
+		"category": "АРТЕЗІАНСЬКА ПИТНА ВОДА",
+		"gas": "Сильногазована",
+		"material": "Скло",
+		"volumeMl": 1000,
+		"image": null,
+		"price": 65,
+		"stock": 0,
+		"popularity": 35,
+		"isNew": true,
+		"isHit": true
 	}
 ]

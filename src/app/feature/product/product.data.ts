@@ -7,6 +7,10 @@ export const PRODUCT_GASES = ['Негазована', 'Слабогазован�
 
 export const PRODUCT_MATERIALS = ['Скло', 'Банка'] as const;
 
+export const PRODUCT_VOLUMES = [...new Set(PRODUCTS.map((product) => product.volumeMl))].sort(
+	(a, b) => a - b,
+);
+
 export function findProduct(id: string | null | undefined): Product | undefined {
 	return PRODUCTS.find((product) => product.id === id);
 }
@@ -16,7 +20,11 @@ export function productType(product: Product): string {
 }
 
 export function productImageAlt(product: Product): string {
-	return `PANACEA ${product.brand}, ${product.gas.toLowerCase()}, ${product.material.toLowerCase()}, 0,5 л`;
+	return `PANACEA ${product.brand}, ${product.gas.toLowerCase()}, ${product.material.toLowerCase()}, ${formatVolume(product.volumeMl)}`;
+}
+
+export function formatVolume(volumeMl: number): string {
+	return `${new Intl.NumberFormat('uk-UA', { maximumFractionDigits: 2 }).format(volumeMl / 1000)} л`;
 }
 
 export function formatMoney(value: number): string {

@@ -6,7 +6,7 @@ import { CatalogBrand, CatalogService, CatalogSort } from '../../feature/catalog
 import {
 	PRODUCT_GASES,
 	PRODUCT_MATERIALS,
-	PRODUCTS,
+	formatVolume,
 	productImageAlt,
 	productType,
 } from '../../feature/product/product.data';
@@ -31,6 +31,8 @@ const MATERIAL_LABEL: Record<ProductMaterial, string> = {
 	Банка: 'Алюмінієва банка',
 };
 
+type CatalogView = 'grid' | 'list';
+
 @Component({
 	imports: [MoneyPipe, RouterLink],
 	templateUrl: './home.component.html',
@@ -42,26 +44,44 @@ export class HomeComponent {
 	protected readonly catalog = inject(CatalogService);
 	protected readonly productType = productType;
 	protected readonly productImageAlt = productImageAlt;
+	protected readonly formatVolume = formatVolume;
 
 	protected readonly brands = [
 		{ value: 'Arden', title: 'Panacea Arden', subtitle: 'Лікувально-столова' },
 		{ value: 'Diamond', title: 'Panacea Diamond', subtitle: 'Артезіанська питна' },
 	] as const;
-	protected readonly gasOptions = PRODUCT_GASES.map((value) => ({
-		value,
-		label: value,
-		count: PRODUCTS.filter((p) => p.gas === value).length,
-	}));
-	protected readonly materialOptions = PRODUCT_MATERIALS.map((value) => ({
-		value,
-		label: MATERIAL_LABEL[value],
-		count: PRODUCTS.filter((p) => p.material === value).length,
-	}));
-	protected readonly totalCount = PRODUCTS.length;
+	protected readonly gasOptions = computed(() =>
+		PRODUCT_GASES.map((value) => ({
+			value,
+			label: value,
+			count: this.catalog.allProducts().filter((p) => p.gas === value).length,
+		})),
+	);
+	protected readonly materialOptions = computed(() =>
+		PRODUCT_MATERIALS.map((value) => ({
+			value,
+			label: MATERIAL_LABEL[value],
+			count: this.catalog.allProducts().filter((p) => p.material === value).length,
+		})),
+	);
+	protected readonly volumeOptions = computed(() =>
+		[...new Set(this.catalog.allProducts().map((product) => product.volumeMl))]
+			.sort((a, b) => a - b)
+			.map((value) => ({
+				value,
+				label: formatVolume(value),
+				count: this.catalog.allProducts().filter((p) => p.volumeMl === value).length,
+			})),
+	);
+	protected readonly totalCount = computed(() => this.catalog.allProducts().length);
+	protected readonly inStockCount = computed(
+		() => this.catalog.allProducts().filter((product) => product.stock > 0).length,
+	);
 
 	protected readonly mobileFiltersOpen = signal(false);
+	protected readonly viewMode = signal<CatalogView>('grid');
 	protected readonly quantities = signal<Record<string, number>>(
-		Object.fromEntries(PRODUCTS.map((p) => [p.id, 1])),
+		Object.fromEntries(this.catalog.allProducts().map((p) => [p.id, 1])),
 	);
 
 	protected readonly resultsLabel = computed(() => {
@@ -72,6 +92,7 @@ export class HomeComponent {
 	});
 	protected readonly mobileGas = computed(() => _single(this.catalog.gases()));
 	protected readonly mobileMaterial = computed(() => _single(this.catalog.materials()));
+	protected readonly mobileVolume = computed(() => _single(this.catalog.volumes()));
 
 	constructor() {
 		const document = inject(DOCUMENT);
@@ -80,7 +101,7 @@ export class HomeComponent {
 	}
 
 	protected brandCount(brand: string) {
-		return PRODUCTS.filter((p) => p.brand === brand).length;
+		return this.catalog.allProducts().filter((p) => p.brand === brand).length;
 	}
 
 	protected setBrand(brand: CatalogBrand) {
@@ -103,12 +124,22 @@ export class HomeComponent {
 		);
 	}
 
+	protected toggleVolume(volumeMl: number, checked: boolean) {
+		this.catalog.volumes.update((volumes) =>
+			checked ? [...volumes, volumeMl] : volumes.filter((value) => value !== volumeMl),
+		);
+	}
+
 	protected setMobileGas(value: string) {
 		this.catalog.gases.set(value === 'all' ? [] : [value as ProductGas]);
 	}
 
 	protected setMobileMaterial(value: string) {
 		this.catalog.materials.set(value === 'all' ? [] : [value as ProductMaterial]);
+	}
+
+	protected setMobileVolume(value: string) {
+		this.catalog.volumes.set(value === 'all' ? [] : [Number(value)]);
 	}
 
 	protected step(product: Product, delta: number) {
@@ -130,6 +161,10 @@ export class HomeComponent {
 	}
 
 	protected addToCart(product: Product, input: HTMLInputElement) {
+		if (product.stock === 0) {
+			return;
+		}
+
 		this.setQuantity(product, input);
 		this._add(product.id, this.quantities()[product.id]!);
 	}
@@ -161,7 +196,7 @@ export class HomeComponent {
 					inputSchema: {
 						type: 'object',
 						properties: {
-							productId: { type: 'string', enum: PRODUCTS.map((p) => p.id) },
+							productId: { type: 'string', enum: this.catalog.allProducts().map((p) => p.id) },
 							quantity: { type: 'integer', minimum: 1 },
 						},
 						required: ['productId', 'quantity'],
@@ -175,6 +210,6 @@ export class HomeComponent {
 	}
 }
 
-function _single(values: string[]): string {
+function _single<T extends string | number>(values: T[]): T | 'all' {
 	return values.length === 1 ? values[0]! : 'all';
 }

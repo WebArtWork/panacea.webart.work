@@ -7,7 +7,7 @@
 	<div class="table-scroll">
 		<table class="data-table">
 			<thead>
-				<tr><th>Товар</th><th>Газованість</th><th>Паковання</th><th>Ціна</th><th>Залишок</th><th>Статус</th><th></th></tr>
+				<tr><th>Товар</th><th>Газованість</th><th>Паковання</th><th>Об'єм</th><th>Ціна</th><th>Популярність</th><th>Позначки</th><th>Залишок</th><th>Статус</th><th></th></tr>
 			</thead>
 			<tbody>
 				@for (product of adminService.products(); track product.id) {
@@ -15,7 +15,16 @@
 						<td>PANACEA {{ product.brand }}</td>
 						<td>{{ product.gas }}</td>
 						<td>{{ product.material }}</td>
+						<td>{{ formatVolume(product.volumeMl) }}</td>
 						<td>{{ product.price | money }}</td>
+						<td>{{ product.popularity }}</td>
+						<td>
+							<div class="product-flags">
+								@if (product.isNew) { <span class="badge new">Новинка</span> }
+								@if (product.isHit) { <span class="badge hit">Хіт</span> }
+								@if (!product.isNew && !product.isHit) { <span class="muted-value">—</span> }
+							</div>
+						</td>
 						<td>{{ product.stock }} шт.</td>
 						<td><span class="badge" [class]="product.stock <= 20 ? 'low' : 'ok'">{{ product.stock <= 20 ? 'Мало' : 'В наявності' }}</span></td>
 						<td>
@@ -62,8 +71,15 @@
 				}
 			</select>
 		</div>
+		<div class="form-row"><label for="edit-volume">Об'єм, мл</label><input id="edit-volume" name="volumeMl" type="number" min="1" step="1" required [value]="editing()?.volumeMl ?? 500" /></div>
 		<div class="form-row"><label for="edit-price">Ціна, ₴</label><input id="edit-price" name="price" type="number" min="0" step="1" required [value]="editing()?.price ?? ''" /></div>
 		<div class="form-row"><label for="edit-stock">Залишок, шт.</label><input id="edit-stock" name="stock" type="number" min="0" step="1" required [value]="editing()?.stock ?? ''" /></div>
+		<div class="form-row"><label for="edit-popularity">Популярність, 0–100</label><input id="edit-popularity" name="popularity" type="number" min="0" max="100" step="1" required [value]="editing()?.popularity ?? 0" /></div>
+		<fieldset class="flag-options">
+			<legend>Позначки товару</legend>
+			<label><input name="isNew" type="checkbox" [checked]="editing()?.isNew ?? false" /> Новинка</label>
+			<label><input name="isHit" type="checkbox" [checked]="editing()?.isHit ?? false" /> Хіт</label>
+		</fieldset>
 		<div class="dialog-actions">
 			<button type="button" class="cancel" (click)="closeDialog()">Скасувати</button>
 			<button type="submit" class="save">Зберегти</button>

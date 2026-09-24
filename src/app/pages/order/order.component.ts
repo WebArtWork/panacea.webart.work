@@ -3,12 +3,14 @@ import { RouterLink } from '@angular/router';
 import { Order, ORDER_STATUS_LABEL } from '../../feature/order/order.interface';
 import { OrderService } from '../../feature/order/order.service';
 import { MoneyPipe } from '../../pipes/money.pipe';
+import { formatVolume } from '../../feature/product/product.data';
 
 @Component({
 	imports: [MoneyPipe, RouterLink],
 	templateUrl: './order.component.html',
 })
 export class OrderComponent {
+	protected readonly formatVolume = formatVolume;
 	private readonly _orderService = inject(OrderService);
 
 	readonly id = input<string>();
@@ -20,7 +22,12 @@ export class OrderComponent {
 	protected readonly orderDate = computed(() => {
 		const order = this.order();
 
-		return order ? new Date(order.date).toLocaleString('uk-UA', { dateStyle: 'long', timeStyle: 'short' }) : '';
+		return order
+			? new Date(order.date).toLocaleString('uk-UA', {
+					dateStyle: 'long',
+					timeStyle: 'short',
+				})
+			: '';
 	});
 
 	constructor() {
