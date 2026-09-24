@@ -7,7 +7,10 @@ import { AdminCustomer } from './admin.interface';
 
 export const ADMIN_CUSTOMERS = customersData as AdminCustomer[];
 
-export type ProductDraft = Pick<Product, 'brand' | 'gas' | 'material' | 'price' | 'stock'>;
+export type ProductDraft = Pick<
+	Product,
+	'brand' | 'gas' | 'material' | 'volumeMl' | 'price' | 'stock' | 'popularity' | 'isNew' | 'isHit'
+>;
 
 const KEYS = {
 	productOverrides: 'panacea-admin-products',
@@ -33,9 +36,16 @@ export class AdminService {
 		const overrides = this._productOverrides();
 		const deleted = this._productsDeleted();
 
-		return [...PRODUCTS.filter((p) => !deleted.includes(p.id)), ...this._productsAdded()].map(
-			(p) => ({ ...p, ...overrides[p.id] }),
-		);
+		return [...PRODUCTS.filter((p) => !deleted.includes(p.id)), ...this._productsAdded()]
+			.map((p) => ({ ...p, ...overrides[p.id] }))
+			.map((product) => ({
+				...product,
+				volumeMl: product.volumeMl ?? 500,
+				image: product.image ?? null,
+				popularity: product.popularity ?? 0,
+				isNew: product.isNew ?? false,
+				isHit: product.isHit ?? false,
+			}));
 	});
 
 	constructor() {
@@ -55,7 +65,7 @@ export class AdminService {
 
 		this._productsAdded.update((added) => [
 			...added,
-			{ id, ...data, category: '', image: 'diamond-1.webp' },
+			{ id, ...data, category: '', image: null },
 		]);
 		void this._storeService.setJson(KEYS.productsAdded, this._productsAdded());
 	}

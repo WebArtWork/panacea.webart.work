@@ -42,7 +42,7 @@
 				<div>
 					@for (item of order.items; track $index) {
 						<div class="checkout-line">
-							<span>PANACEA {{ item.brand }} × {{ item.quantity }}</span>
+							<span>PANACEA {{ item.brand }}{{ item.volumeMl ? ', ' + formatVolume(item.volumeMl) : '' }} × {{ item.quantity }}</span>
 							<span>{{ item.price * item.quantity | money }}</span>
 						</div>
 					}

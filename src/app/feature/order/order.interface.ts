@@ -10,6 +10,7 @@ export interface OrderItem {
 	brand: string;
 	gas: string;
 	material: string;
+	volumeMl?: number;
 	quantity: number;
 	price: number;
 }
