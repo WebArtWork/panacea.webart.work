@@ -10,7 +10,7 @@
 				<button type="button" class="back" style="background: none; border: 0; cursor: pointer; text-align: left" (click)="logout()">
 					Вийти{{ user()?.email ? ' (' + user()!.email + ')' : '' }}
 				</button>
-				<a class="back" routerLink="/catalog">← До магазину</a>
+				<a class="back" routerLink="/">← До магазину</a>
 			</nav>
 			<main class="admin-main">
 				<router-outlet />

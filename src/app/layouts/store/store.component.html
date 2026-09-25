@@ -1,8 +1,6 @@
 <div class="topbar">
 	<span>Офіційний інтернет-магазин PANACEA</span>
 	<nav aria-label="Інформація">
-		<a routerLink="/">Головна</a>
-		<a routerLink="/catalog">Каталог</a>
 		<a routerLink="/about">Про нас</a>
 		<a routerLink="/partner">B2B</a>
 		<a routerLink="/contacts">Контакти</a>
@@ -10,12 +8,12 @@
 	</nav>
 </div>
 
-<header class="shop-header" [class.has-search]="isCatalog()">
+<header class="shop-header">
 	<a class="logo" routerLink="/" aria-label="PANACEA, на головну">
 		<img src="/logo-panacea.svg" alt="PANACEA" />
 	</a>
 
-	@if (isCatalog()) {
+	@if (isHome()) {
 		<form class="search" role="search" (submit)="search($event)">
 			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
 				<circle cx="10.5" cy="10.5" r="6.5" />
@@ -33,7 +31,7 @@
 			<button type="submit">Знайти</button>
 		</form>
 	} @else {
-		<span class="header-spacer"></span>
+		<span style="flex: 1"></span>
 	}
 
 	<a class="cart-open" routerLink="/cart" aria-label="Перейти до кошика">
@@ -63,7 +61,7 @@
 		</div>
 		<div>
 			<p class="eyebrow">МАГАЗИН</p>
-			<a routerLink="/catalog" fragment="products">Каталог води</a>
+			<a routerLink="/" fragment="products">Каталог води</a>
 			<a routerLink="/cart">Кошик</a>
 			<a routerLink="/delivery">Доставка та оплата</a>
 			<a routerLink="/partner">Для бізнесу</a>

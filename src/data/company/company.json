@@ -25,10 +25,6 @@
 		"twitterCard": "summary_large_image"
 	},
 	"pageSeo": {
-		"/catalog": {
-			"title": "Каталог води | PANACEA",
-			"description": "Оберіть воду PANACEA Arden та Diamond: газована, слабогазована чи негазована, у склі або банці 0,5 л."
-		},
 		"/about": {
 			"title": "Про Panacea | ТОВ «Збручанські джерела»",
 			"titleSuffix": "",
