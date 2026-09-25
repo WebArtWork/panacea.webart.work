@@ -1,0 +1,1 @@
+import{Nn as qo,Y as Pn}from"./chunk-Dpo-cL9T.js";var r=class e{message=qo(``);visible=qo(!1);_timer;show(i){this.message.set(i),this.visible.set(!0),clearTimeout(this._timer),this._timer=setTimeout(()=>this.visible.set(!1),2500)}static ɵfac=function(a){return new(a||e)};static ɵprov=Pn({token:e,factory:e.ɵfac})};export{r as t};

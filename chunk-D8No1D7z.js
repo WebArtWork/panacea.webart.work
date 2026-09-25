@@ -1,0 +1,1 @@
+import{Z as Qc}from"./chunk-Dpo-cL9T.js";import{a as p}from"./chunk-Bw9tkvSW.js";var n=class r{transform(e){return p(e)}static ɵfac=function(m){return new(m||r)};static ɵpipe=Qc({name:`money`,type:r,pure:!0})};export{n as t};

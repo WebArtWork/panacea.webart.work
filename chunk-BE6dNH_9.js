@@ -1,0 +1,1 @@
+var r={new:`Нове`,processing:`В обробці`,done:`Виконано`};export{r as t};

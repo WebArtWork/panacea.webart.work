@@ -1,0 +1,1 @@
+import{Z as Qc}from"./chunk-Dpo-cL9T.js";var m=class e{transform(t){return t.map(r=>`${r.brand} \xD7 ${r.quantity}`).join(`, `)}static ɵfac=function(r){return new(r||e)};static ɵpipe=Qc({name:`orderSummary`,type:e,pure:!0})};export{m as t};
