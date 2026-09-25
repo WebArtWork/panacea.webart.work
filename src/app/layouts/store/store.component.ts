@@ -25,13 +25,13 @@ export class StoreComponent {
 	protected readonly phoneHref = companyPhoneHref;
 	protected readonly emailHref = companyEmailHref;
 
-	/** The catalog search lives in the header, but only on the home page. */
-	protected readonly isHome = toSignal(
+	/** The catalog search lives in the header, but only on the catalog page. */
+	protected readonly isCatalog = toSignal(
 		this._router.events.pipe(
 			filter((event) => event instanceof NavigationEnd),
-			map((event) => _isHomeUrl(event.urlAfterRedirects)),
+			map((event) => _isCatalogUrl(event.urlAfterRedirects)),
 		),
-		{ initialValue: _isHomeUrl(this._router.url) },
+		{ initialValue: _isCatalogUrl(this._router.url) },
 	);
 
 	protected search(event: SubmitEvent) {
@@ -40,6 +40,6 @@ export class StoreComponent {
 	}
 }
 
-function _isHomeUrl(url: string): boolean {
-	return (url.split(/[?#]/)[0] || '/') === '/';
+function _isCatalogUrl(url: string): boolean {
+	return (url.split(/[?#]/)[0] || '/') === '/catalog';
 }

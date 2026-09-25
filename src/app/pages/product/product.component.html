@@ -1,6 +1,6 @@
 <div class="page-shell">
 	<div class="page-breadcrumb">
-		<a routerLink="/">Головна</a><span>/</span><a routerLink="/" fragment="products">Каталог</a><span>/</span>
+		<a routerLink="/">Головна</a><span>/</span><a routerLink="/catalog" fragment="products">Каталог</a><span>/</span>
 		<span>{{ product() ? 'PANACEA ' + product()!.brand : 'Товар' }}</span>
 	</div>
 
@@ -8,7 +8,7 @@
 		<div class="no-results">
 			<h2>Товар не знайдено</h2>
 			<p>Можливо, посилання застаріле.</p>
-			<a class="button" routerLink="/" fragment="products">До каталогу</a>
+			<a class="button" routerLink="/catalog" fragment="products">До каталогу</a>
 		</div>
 	} @else {
 		<article class="product-detail">

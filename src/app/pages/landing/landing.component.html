@@ -1,0 +1,238 @@
+<main class="landing">
+	<section class="landing-hero" aria-labelledby="landing-title">
+		<img
+			ngSrc="/hero-video-poster.webp"
+			fill
+			priority
+			alt="Жінка з пляшкою води PANACEA біля гірського озера"
+		/>
+		<div class="hero-shade" aria-hidden="true"></div>
+		<div class="hero-inner">
+			<div class="hero-copy">
+				<p class="section-label">ПРИРОДНА ВОДА З ПОДІЛЬСЬКИХ ТОВТР</p>
+				<h1 id="landing-title">PANACEA</h1>
+				<p class="hero-lead">Вода з власного родовища. Від джерела у Сатанові до вашого столу.</p>
+				<div class="hero-actions">
+					<a class="primary-link" routerLink="/catalog">Купити воду</a>
+					<a class="text-link-light" routerLink="/production">Дізнатися про джерело</a>
+				</div>
+			</div>
+			<div class="hero-meta" aria-label="Ключові факти про PANACEA">
+				<span>Сатанів, Україна</span>
+				<span>Власне родовище</span>
+				<span>Скло та алюмінієва банка</span>
+			</div>
+		</div>
+	</section>
+
+	<section class="intro-section landing-shell" aria-labelledby="origin-title">
+		<div class="section-index" aria-hidden="true">01</div>
+		<div class="intro-copy">
+			<p class="section-label">ПОХОДЖЕННЯ</p>
+			<h2 id="origin-title">Вода, народжена в серці Подільських Товтр</h2>
+			<p class="large-copy">
+				PANACEA бере початок у природному середовищі Поділля. Власне родовище дає змогу
+				контролювати шлях води від першого підйому на поверхню до готової пляшки чи банки.
+			</p>
+			<a class="inline-link" routerLink="/about">Історія PANACEA <span aria-hidden="true">→</span></a>
+		</div>
+		<figure class="origin-visual">
+			<img
+				ngSrc="/podilski-tovtry-landscape.webp"
+				fill
+				alt="Зелена долина та річка в Подільських Товтрах"
+			/>
+			<figcaption>Подільські Товтри · Україна</figcaption>
+		</figure>
+	</section>
+
+	<section class="product-section" aria-labelledby="lines-title">
+		<div class="landing-shell">
+			<div class="section-heading">
+				<div>
+					<p class="section-label">ДВІ ЛІНІЙКИ</p>
+					<h2 id="lines-title">Свій характер для кожної миті</h2>
+				</div>
+				<a class="inline-link" routerLink="/catalog">Увесь каталог <span aria-hidden="true">→</span></a>
+			</div>
+
+			<div class="water-lines">
+				<article class="water-line arden-line">
+					<div class="line-copy">
+						<p class="section-label">МІНЕРАЛЬНА ПРИРОДНА</p>
+						<h3>PANACEA <em>Arden</em></h3>
+						<p>Лікувально-столова вода «Збручанська». Сильногазована, у склі та банці.</p>
+						<a routerLink="/catalog" class="line-link">Обрати Arden</a>
+					</div>
+					<div class="line-products" aria-hidden="true">
+						<img ngSrc="/products/arden-2.webp" width="720" height="1080" alt="" />
+						<img ngSrc="/products/arden-1.webp" width="720" height="1080" alt="" />
+					</div>
+				</article>
+
+				<article class="water-line diamond-line">
+					<div class="line-copy">
+						<p class="section-label">АРТЕЗІАНСЬКА ПИТНА</p>
+						<h3>PANACEA <em>Diamond</em></h3>
+						<p>Негазована, слабогазована або сильногазована. У склі та банці.</p>
+						<a routerLink="/catalog" class="line-link">Обрати Diamond</a>
+					</div>
+					<div class="line-products" aria-hidden="true">
+						<img ngSrc="/products/diamond-5.webp" width="720" height="1080" alt="" />
+						<img ngSrc="/products/diamond-1.webp" width="720" height="1080" alt="" />
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="journey-section landing-shell" aria-labelledby="journey-title">
+		<div class="section-heading journey-heading">
+			<div>
+				<p class="section-label">ВЛАСНЕ ВИРОБНИЦТВО</p>
+				<h2 id="journey-title">Три кроки. Один контрольований шлях.</h2>
+			</div>
+			<p>У 2026 році виробництво модернізовано на обладнанні чеського виробника ALTEC.</p>
+		</div>
+		<ol class="journey-list">
+			<li>
+				<span>01</span>
+				<h3>Видобуток</h3>
+				<p>Вода піднімається з власної свердловини без контакту із зовнішнім середовищем.</p>
+			</li>
+			<li>
+				<span>02</span>
+				<h3>Контроль</h3>
+				<p>Склад і безпечність перевіряються на ключових етапах виробничого циклу.</p>
+			</li>
+			<li>
+				<span>03</span>
+				<h3>Розлив</h3>
+				<p>Автоматизований розлив зберігає характер води у склі та алюмінієвій банці.</p>
+			</li>
+		</ol>
+		<a class="inline-link" routerLink="/production">Як працює виробництво <span aria-hidden="true">→</span></a>
+	</section>
+
+	<section class="composition-section">
+		<div class="landing-shell composition-inner">
+			<div class="composition-mark" aria-hidden="true">
+				<img ngSrc="/brand-mark-gold.webp" width="651" height="622" alt="" />
+			</div>
+			<div class="composition-copy">
+				<p class="section-label">СКЛАД І ЯКІСТЬ</p>
+				<h2>У воді важливе те, що можна підтвердити</h2>
+				<p>
+					Показники PANACEA зберігаються окремо для кожної лінійки. Значення мінерального
+					складу публікуються лише на підставі погоджених лабораторних протоколів.
+				</p>
+				<div class="composition-links">
+					<a class="primary-link light" routerLink="/composition">Переглянути склад</a>
+					<a class="text-link-light" routerLink="/certificates">Документи та сертифікати</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="values-section landing-shell" aria-labelledby="values-title">
+		<div class="section-heading">
+			<div>
+				<p class="section-label">ЧОМУ PANACEA</p>
+				<h2 id="values-title">Від природи до сучасного формату</h2>
+			</div>
+		</div>
+		<div class="values-grid">
+			<article>
+				<span class="value-icon" aria-hidden="true">⌁</span>
+				<h3>Власне родовище</h3>
+				<p>Контроль сировини починається там, де народжується вода.</p>
+			</article>
+			<article>
+				<span class="value-icon" aria-hidden="true">◎</span>
+				<h3>Дві лінійки</h3>
+				<p>Мінеральна Arden та артезіанська Diamond для різних смаків і нагод.</p>
+			</article>
+			<article>
+				<span class="value-icon" aria-hidden="true">◇</span>
+				<h3>Скло та банка</h3>
+				<p>Класична подача для столу й легкий формат, який зручно брати із собою.</p>
+			</article>
+			<article>
+				<span class="value-icon" aria-hidden="true">✓</span>
+				<h3>Контроль якості</h3>
+				<p>Увага до складу та безпечності на кожному етапі виробництва.</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="business-section" aria-labelledby="business-title">
+		<div class="landing-shell business-inner">
+			<div class="business-copy">
+				<p class="section-label">PANACEA ДЛЯ БІЗНЕСУ</p>
+				<h2 id="business-title">Вода, що доповнює ваш простір</h2>
+				<p>
+					Співпрацюємо з HoReCa, роздрібними мережами, дистриб'юторами, корпоративними
+					клієнтами та експортними партнерами.
+				</p>
+				<ul>
+					<li>Продукт у склі та алюмінієвій банці</li>
+					<li>Окремий сценарій для оптових запитів</li>
+					<li>Підбір формату під ваш канал продажу</li>
+				</ul>
+				<a class="primary-link light" routerLink="/partner">Стати партнером</a>
+			</div>
+			<div class="business-product" aria-hidden="true">
+				<img ngSrc="/products/diamond-1.webp" width="720" height="1080" alt="" />
+			</div>
+		</div>
+	</section>
+
+	<section class="explore-section landing-shell" aria-labelledby="explore-title">
+		<div class="section-heading">
+			<div>
+				<p class="section-label">ДІЗНАЙТЕСЯ БІЛЬШЕ</p>
+				<h2 id="explore-title">PANACEA без зайвих слів</h2>
+			</div>
+		</div>
+		<nav class="explore-links" aria-label="Більше про PANACEA">
+			<a routerLink="/about"><span>01</span><strong>Про бренд</strong><small>Історія та цінності</small><b aria-hidden="true">→</b></a>
+			<a routerLink="/production"><span>02</span><strong>Джерело</strong><small>Походження та виробництво</small><b aria-hidden="true">→</b></a>
+			<a routerLink="/delivery"><span>03</span><strong>Доставка</strong><small>Як отримати замовлення</small><b aria-hidden="true">→</b></a>
+		</nav>
+	</section>
+
+	<section class="faq-section landing-shell" aria-labelledby="faq-title">
+		<div class="faq-heading">
+			<p class="section-label">FAQ</p>
+			<h2 id="faq-title">Коротко про головне</h2>
+			<p>Не знайшли відповіді? <a routerLink="/contacts">Зв'яжіться з нами</a>.</p>
+		</div>
+		<div class="faq-list-home">
+			<details>
+				<summary>Чим відрізняються Arden і Diamond?</summary>
+				<p>Arden — мінеральна природна лікувально-столова вода «Збручанська». Diamond — артезіанська питна вода.</p>
+			</details>
+			<details>
+				<summary>Які варіанти газованості доступні?</summary>
+				<p>Arden представлена у сильногазованому форматі. Diamond доступна негазованою, слабогазованою та сильногазованою.</p>
+			</details>
+			<details>
+				<summary>Де виробляють PANACEA?</summary>
+				<p>Воду видобувають і розливають на власному виробничому майданчику в селищі Сатанів Хмельницької області.</p>
+			</details>
+			<details>
+				<summary>Чи можна замовити воду для закладу або мережі?</summary>
+				<p>Так. Для HoReCa, retail, дистриб'юторів та корпоративних клієнтів передбачена окрема форма партнерської заявки.</p>
+			</details>
+		</div>
+	</section>
+
+	<section class="closing-section" aria-labelledby="closing-title">
+		<div class="landing-shell closing-inner">
+			<p class="section-label">ВІД ДЖЕРЕЛА ДО ВАШОГО СТОЛУ</p>
+			<h2 id="closing-title">Оберіть свою PANACEA</h2>
+			<p>Arden чи Diamond. Скло чи банка. Від однієї пляшки.</p>
+			<a class="primary-link" routerLink="/catalog">Перейти до каталогу</a>
+		</div>
+	</section>
+</main>

@@ -12,6 +12,12 @@ export const routes: Routes = [
 			{
 				path: '',
 				data: { meta: meta('/') },
+				loadComponent: () =>
+					import('./pages/landing/landing.component').then((m) => m.LandingComponent),
+			},
+			{
+				path: 'catalog',
+				data: { meta: meta('/catalog') },
 				loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
 			},
 			{
